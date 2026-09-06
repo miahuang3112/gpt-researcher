@@ -1,0 +1,22 @@
+{
+  "annotations": {"list": []},
+  "editable": false,
+  "graphTooltip": 1,
+  "panels": [
+    {"type": "stat", "title": "Queued jobs", "id": 1, "gridPos": {"h": 6, "w": 6, "x": 0, "y": 0}, "targets": [{"expr": "academic_jobs{status=\"queued\"}", "refId": "A"}]},
+    {"type": "stat", "title": "Running jobs", "id": 2, "gridPos": {"h": 6, "w": 6, "x": 6, "y": 0}, "targets": [{"expr": "academic_jobs{status=\"running\"}", "refId": "A"}]},
+    {"type": "stat", "title": "Pending / DLQ", "id": 3, "gridPos": {"h": 6, "w": 6, "x": 12, "y": 0}, "targets": [{"expr": "academic_queue_pending", "legendFormat": "pending", "refId": "A"}, {"expr": "academic_queue_dlq_length", "legendFormat": "DLQ", "refId": "B"}]},
+    {"type": "stat", "title": "Dependency health", "id": 4, "gridPos": {"h": 6, "w": 6, "x": 18, "y": 0}, "targets": [{"expr": "academic_metrics_mysql_up", "legendFormat": "MySQL", "refId": "A"}, {"expr": "academic_metrics_redis_up", "legendFormat": "Redis", "refId": "B"}]},
+    {"type": "timeseries", "title": "Evaluation latency (seconds)", "id": 5, "gridPos": {"h": 8, "w": 12, "x": 0, "y": 6}, "targets": [{"expr": "academic_evaluation_duration_seconds_avg", "legendFormat": "average", "refId": "A"}, {"expr": "academic_evaluation_duration_seconds_max", "legendFormat": "maximum", "refId": "B"}]},
+    {"type": "timeseries", "title": "Retries, failures and DLQ", "id": 6, "gridPos": {"h": 8, "w": 12, "x": 12, "y": 6}, "targets": [{"expr": "academic_retry_events_total", "legendFormat": "retries", "refId": "A"}, {"expr": "academic_model_failures_total", "legendFormat": "model failures", "refId": "B"}, {"expr": "academic_queue_dlq_length", "legendFormat": "DLQ", "refId": "C"}]}
+  ],
+  "refresh": "15s",
+  "schemaVersion": 39,
+  "tags": ["academic", "evaluation"],
+  "templating": {"list": []},
+  "time": {"from": "now-6h", "to": "now"},
+  "timezone": "browser",
+  "title": "Academic Evaluation Overview",
+  "uid": "academic-evaluation",
+  "version": 1
+}

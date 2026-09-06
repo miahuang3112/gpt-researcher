@@ -1,0 +1,73 @@
+{
+  "format_version": 1,
+  "evaluation": "eval03-development-ablations",
+  "selection_scope": "development-only",
+  "model": "qwen3.5:9b",
+  "temperature": 0.0,
+  "paper_count": 3,
+  "dimension_count_per_configuration": 27,
+  "configuration_count": 3,
+  "terminal_failure_count": 0,
+  "recovered_terminal_item_count": 4,
+  "versioned_artifacts": {
+    "protocol": "evals/academic_quality/eval03_development_ablation_protocol.v1.json",
+    "protocol_sha256": "ff85a62d9bab3cf52d28a231cdb1e64a4e84ac25626fe6378c0a3639503db6f0",
+    "report": "evals/academic_quality/results/eval03-development-ablations.json",
+    "report_sha256": "6eaa436e69c65f4208373157c894dfc596687ebd9bdfa2d890e2508db841ce7d"
+  },
+  "configuration_metrics": {
+    "hybrid_anchored": {
+      "scorable_count": 23,
+      "insufficient_evidence_count": 4,
+      "chatgpt_reference_mae": 0.304348,
+      "within_one_point_rate": 0.956522,
+      "mean_recall_at_4": 0.222359
+    },
+    "hybrid_no_anchors": {
+      "scorable_count": 23,
+      "insufficient_evidence_count": 4,
+      "chatgpt_reference_mae": 0.521739,
+      "within_one_point_rate": 0.956522,
+      "mean_recall_at_4": 0.222359
+    },
+    "section_anchored": {
+      "scorable_count": 25,
+      "insufficient_evidence_count": 2,
+      "chatgpt_reference_mae": 0.28,
+      "within_one_point_rate": 1.0,
+      "mean_recall_at_4": 0.313365
+    }
+  },
+  "adoption_rule": {
+    "minimum_mae_improvement": 0.1,
+    "requires_zero_terminal_failures": true,
+    "requires_scorable_count_not_below_baseline": true,
+    "requires_within_one_point_rate_not_below_baseline": true,
+    "retriever_also_requires_recall_at_4_not_below_baseline": true
+  },
+  "decisions": {
+    "prompt": {
+      "selected": "hybrid_anchored",
+      "changed": false,
+      "reason": "Removing anchors worsened MAE by 0.217391."
+    },
+    "retriever": {
+      "selected": "hybrid_anchored",
+      "changed": false,
+      "reason": "Section-only improved MAE by only 0.024348, below the frozen 0.1 adoption minimum."
+    },
+    "contradiction_warning_threshold": {
+      "selected": 0.95,
+      "changed": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "interpretation_boundary": {
+    "reference_annotator": "ChatGPT",
+    "heldout_used": false,
+    "inferential_significance_claimed": false,
+    "caveat": "Three development papers and one AI reference annotator support configuration calibration only, not generalisation claims."
+  }
+}

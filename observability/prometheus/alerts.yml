@@ -1,0 +1,38 @@
+groups:
+  - name: academic-evaluation
+    rules:
+      - alert: AcademicMetricsDependencyDown
+        expr: academic_metrics_mysql_up == 0 or academic_metrics_redis_up == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: Academic metrics cannot query a dependency
+      - alert: AcademicQueueBacklog
+        expr: academic_queue_pending > 5 or academic_jobs{status="queued"} > 10
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Academic evaluation queue is not draining
+      - alert: AcademicDeadLetterDetected
+        expr: academic_queue_dlq_length > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: Academic evaluation messages entered the DLQ
+      - alert: AcademicModelFailureDetected
+        expr: academic_model_failures_total > 0
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: Academic model/provider failures are present
+      - alert: AcademicEvaluationLatencyHigh
+        expr: academic_evaluation_duration_seconds_avg > 600
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: Average completed evaluation latency exceeds ten minutes

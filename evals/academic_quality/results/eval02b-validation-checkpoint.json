@@ -1,0 +1,200 @@
+{
+  "model": "qwen3.5:9b",
+  "input_hashes": {
+    "citation_labels_sha256": "bdea157996681917f459ea948398dc6a2c45de2dc2fb559c7fefdf7d11a28fee",
+    "contradiction_labels_sha256": "72fa66382342ca5fa577415a3a538aaaac5b5bc11fa6adf8ee0cf22effc79c2c",
+    "corpus_sha256": "5fd28cf85a7bdc18d02e5ff707d989b6220f14501ea28ab6dd7772420d94ef34",
+    "provenance_sha256": "599dd6ae2c7cabe28129cd9a90a723371aff013fc85bcace0bc1b96004623e41"
+  },
+  "citation_predictions": {
+    "test-citation-supported-01": {
+      "status": "supported",
+      "support_score": 0.95,
+      "explanation": "The claim accurately reflects the Abstract of the provided evidence (arxiv:2106.09685). The text explicitly states that compared to GPT-3 175B fine-tuned with Adam, LoRA reduces trainable parameters by 10,000 times and GPU memory requirements by 3 times. All numerical values, comparisons, and experimental conditions (GPT-3 175B vs LoRA) match the evidence.",
+      "error": null
+    },
+    "test-citation-supported-02": {
+      "status": "supported",
+      "support_score": 0.95,
+      "explanation": "The claim states that for adapting both Wq and Wv on WikiSQL and MultiNLI, LoRA with rank one performs competitively. The evidence in Table 6 shows the validation accuracy for {Wq, Wv} on WikiSQL is 73.4% at r=1, which is very close to the peak performance of 73.8% at r=2 and r=4. Similarly, on MultiNLI, the accuracy for {Wq, Wv} at r=1 is 91.3%, nearly matching the peak of 91.6% at r=4. The text explicitly states, 'To our surprise, a rank as small as one suffices for adapting both Wq and Wv on these datasets,' confirming that r=1 performs competitively (i.e., near-optimally) for this specific configuration.",
+      "error": null
+    },
+    "test-citation-supported-03": {
+      "status": "supported",
+      "support_score": 0.95,
+      "explanation": "The claim is fully supported by the evidence. The text explicitly states: 'MBR decoding with LLM judge Prometheus-2-7B ... improves performance by +3.6% on AlpacaEval and +0.28 on MT-Bench on average across five LLMs relative to greedy decoding.' This matches the claim's numbers, metrics, comparison baseline (greedy decoding), scope (five LLMs), and direction of improvement.",
+      "error": null
+    },
+    "test-citation-supported-04": {
+      "status": "supported",
+      "support_score": 0.95,
+      "explanation": "The claim is fully supported by the evidence. The text explicitly states: 'We use 3000 random samples from UltraChat... for SFT.' It further confirms that 'Each sample consists of multi-turn prompts and responses, although we only take the first turn of each sample in order to simplify experimentation.' Both the specific number (3,000), the dataset (UltraChat), the action (using random samples), and the methodological constraint (keeping only the first turn) are directly verified.",
+      "error": null
+    },
+    "test-citation-partial-01": {
+      "status": "partially_supported",
+      "support_score": 0.65,
+      "explanation": "The evidence supports the claim that LoRA reduces trainable parameters by 10,000 times. However, the provided text only mentions evaluations on language models (RoBERTa, DeBERTa, GPT-2, and GPT-3). It does not contain any information regarding evaluation on ImageNet image classification.",
+      "error": null
+    },
+    "test-citation-partial-02": {
+      "status": "partially_supported",
+      "support_score": 0.55,
+      "explanation": "The evidence confirms that LoRA cannot straightforwardly batch different task adapters after merging them into W (supported by the text: 'it is not straightforward to batch inputs to different tasks with different A and B in a single forward pass, if one chooses to absorb A and B into W'). However, the claim states that the paper 'quantifies how frequently this limitation occurs in production.' The provided evidence describes the experimental setup (datasets, models, hardware) and mentions storage savings in footnotes, but it does not contain any data, metrics, or quantification regarding the frequency of this specific limitation occurring in production environments.",
+      "error": null
+    },
+    "test-citation-partial-03": {
+      "status": "partially_supported",
+      "support_score": 0.65,
+      "explanation": "The evidence confirms that MBR experiments sample 30 candidates at temperature 0.3. However, the provided text does not mention reporting every random seed used for those generations; it only specifies the generation parameters (Ncand=30, t=0.3). Therefore, the claim regarding the reporting of random seeds is unsupported by the supplied evidence.",
+      "error": null
+    },
+    "test-citation-partial-04": {
+      "status": "partially_supported",
+      "support_score": 0.65,
+      "explanation": "The evidence confirms that prompts and hyperparameters are documented (referencing Appendices E, B, and K). However, the provided text does not mention a 'ready-to-run Docker image' being published; it only lists documentation of prompts, hyperparameters, API version info, and model choices. Therefore, the claim regarding the Docker image is unsupported by the supplied evidence.",
+      "error": null
+    },
+    "test-citation-contradicted-01": {
+      "status": "contradicted",
+      "support_score": 0.05,
+      "explanation": "The claim states that LoRA requires '10,000 times more trainable parameters' than full fine-tuning. The evidence explicitly states the opposite: 'LoRA can reduce the number of trainable parameters by 10,000 times'. While the memory comparison (3 times less) is consistent with the claim's direction (claim says 'three times more', which is a contradiction to 'reduce... by 3 times' if interpreted as magnitude, but usually 'X times more' implies increase while evidence says decrease. Let's re-read carefully. Claim: 'LoRA requires 10,000 times more trainable parameters'. Evidence: 'reduce the number of trainable parameters by 10,000 times'. These are direct contradictions. The claim also says 'three times more GPU memory', while evidence says 'reduce... GPU memory requirement by 3 times'. Both parts of the claim contradict the evidence regarding the direction of change (increase vs decrease).",
+      "error": null
+    },
+    "test-citation-contradicted-02": {
+      "status": "contradicted",
+      "support_score": 0.05,
+      "explanation": "The claim states that adapter layers introduce 'no inference latency' and can be processed in parallel. The provided evidence explicitly contradicts this by stating, 'Adapter Layers Introduce Inference Latency,' and explains that 'adapter layers have to be processed sequentially.' Furthermore, the text notes a 'noticeable increase in latency when using adapters' in generic scenarios without model parallelism.",
+      "error": null
+    },
+    "test-citation-contradicted-03": {
+      "status": "contradicted",
+      "support_score": 0.05,
+      "explanation": "The claim states that MBR decoding 'reduces' performance by specific amounts, whereas the evidence explicitly states that it 'improves performance by +3.6% on AlpacaEval and +0.28 on MT-Bench'. The direction of the effect (reduction vs. improvement) is directly opposed.",
+      "error": null
+    },
+    "test-citation-contradicted-04": {
+      "status": "contradicted",
+      "support_score": 0.05,
+      "explanation": "The claim states that 'Iterative SFT self-training yields significantly larger gains than DPO self-training'. However, the provided evidence explicitly states: 'SFT self-training yields smaller gains than DPO self-training' and 'We find that SFT training yields significantly less improvement than DPO.' The direction of the comparison in the claim (larger) is directly opposite to the finding in the text (smaller/less).",
+      "error": null
+    },
+    "test-citation-insufficient-01": {
+      "status": "contradicted",
+      "support_score": 0.05,
+      "explanation": "The claim asserts a specific throughput reduction of 'exactly 18 percent' due to cross-task batching limitations. The provided evidence discusses the existence of such limitations (not straightforward to batch inputs with different A and B) but does not mention any quantitative impact on production throughput, nor does it cite an 18% figure. Furthermore, the evidence explicitly states that LoRA improves throughput compared to full fine-tuning (32.5 vs 43.1 tokens/s), which contradicts the implication of a significant negative impact if interpreted against baselines, but primarily the claim is unsupported because the specific '18 percent' metric is absent from the text.",
+      "error": null
+    },
+    "test-citation-insufficient-02": {
+      "status": "insufficient_evidence",
+      "support_score": 0.25,
+      "explanation": "The provided evidence is from the 'Conclusion and Future Work' section of the paper and discusses the benefits and future directions of LoRA. It does not contain any specific experimental results, numerical metrics, or mention of an aggregate GLUE score of 91.7.",
+      "error": null
+    },
+    "test-citation-insufficient-03": {
+      "status": "contradicted",
+      "support_score": 0.05,
+      "explanation": "The claim states that a human study used exactly 100 annotators. The provided evidence describes the use of GPT-4o as an automated judge for AlpacaEval 2.0 and MT-Bench, detailing model versions, endpoints, and evaluation procedures. There is no mention of any human annotators or a study involving humans in the text. Therefore, the claim about human annotators is not supported by the evidence; instead, the evidence suggests the study relied on automated models, contradicting the presence of human annotators.",
+      "error": null
+    },
+    "test-citation-insufficient-04": {
+      "status": "contradicted",
+      "support_score": 0.02,
+      "explanation": "The claim states that reward hacking begins when the utility score exceeds a threshold of 0.85. The provided evidence discusses 'reward-hacking' as a bias where a utility metric selects outputs that evaluate well on benchmarks but are worse in quality. However, the text explicitly states that the authors preclude this behavior in their experiments via a human study (Appendix H). Crucially, the text does not mention any specific numerical threshold of 0.85 for when reward hacking begins; it only discusses the general concept and limitations regarding utility metrics. Therefore, the specific condition 'whenever the utility score exceeds a threshold of 0.85' is not supported by the evidence and appears to be an unsupported detail or hallucination relative to the provided text.",
+      "error": null
+    }
+  },
+  "contradiction_predictions": {
+    "test-contradiction-01": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly state they are under the 'same GPT-3 175B comparison', implying identical experimental conditions, datasets, and metrics. Claim A states LoRA uses '10,000 times fewer' trainable parameters than full fine-tuning, while Claim B states it uses '10,000 times more'. These are mutually exclusive mathematical assertions regarding the same metric under the same conditions, constituting a direct contradiction.",
+      "error": null
+    },
+    "test-contradiction-02": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly state that they use the same five LLMs, the same greedy baseline, and evaluate on AlpacaEval. Claim A reports an improvement of 3.6%, while Claim B reports a worsening of 3.6%. Since the experimental conditions are identical according to the text and the outcomes are mutually exclusive (improvement vs. worsening by the exact same magnitude), they constitute a direct contradiction.",
+      "error": null
+    },
+    "test-partial-01": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly reference the same baseline ('full GPT-3 175B fine-tuning') and the same method ('LoRA'). Claim A states LoRA uses 'three times less GPU memory', while Claim B states it uses 'five times more GPU memory'. Since the conditions (baseline, metric, method) are explicitly stated as identical in both claims, these incompatible numerical conclusions regarding GPU memory usage constitute a direct contradiction.",
+      "error": null
+    },
+    "test-partial-02": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly state that the experimental conditions are identical (same greedy baseline, same five LLMs, same metrics AlpacaEval and MT-Bench). Claim A reports an improvement of +0.28 on MT-Bench, while Claim B reports a decrease of -0.28 on MT-Bench. Since the conditions are explicitly defined as the same and the outcomes are incompatible (one is an increase, the other is a decrease), this constitutes a direct contradiction.",
+      "error": null
+    },
+    "test-conditions-01": {
+      "relation": "different_conditions",
+      "confidence": 0.95,
+      "condition_differences": [
+        "intervention"
+      ],
+      "explanation": "Both claims evaluate LoRA on WikiSQL with rank one, but Claim A applies LoRA to both Wq and Wv matrices, whereas Claim B applies it only to the Wq matrix. The difference in validation accuracy (73.4 vs 68.8) is attributable to this explicit difference in the intervention configuration.",
+      "error": null
+    },
+    "test-conditions-02": {
+      "relation": "different_conditions",
+      "confidence": 0.95,
+      "condition_differences": [
+        "intervention"
+      ],
+      "explanation": "The claims report results for two different interventions: 'Prometheus MBR' (Claim A) and 'SFR-Embedder MBR' (Claim B). While both evaluate the impact of MBR decoding on AlpacaEval performance relative to greedy decoding, they apply distinct methods. Consequently, the observed differences in performance direction (increase vs. decrease) and magnitude are attributable to these different interventions rather than a direct contradiction.",
+      "error": null
+    },
+    "test-consistent-01": {
+      "relation": "consistent",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims assert that merging LoRA low-rank matrices into pretrained weights results in zero additional inference latency. Claim A states 'does not add inference latency' and Claim B states 'introduces no additional latency'. These are semantically equivalent conclusions regarding the same methodological intervention (merging) under comparable conditions.",
+      "error": null
+    },
+    "test-consistent-02": {
+      "relation": "consistent",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Claim A states that SFT yields 'significantly less improvement' than DPO, which is logically equivalent to Claim B stating that DPO produces 'larger gains' than SFT. Both claims address the same iterative self-training experiment and reach the same conclusion regarding the relative performance of DPO versus SFT.",
+      "error": null
+    },
+    "test-unrelated-01": {
+      "relation": "unrelated",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Claim A discusses the impact of adapter layers on online inference latency (a methodological observation about sequential processing), while Claim B describes the specific procedure for aggregating GPT-4o judgments in MT-Bench (an evaluation setting detail). These claims address completely different topics, metrics, and experimental contexts with no overlapping proposition.",
+      "error": null
+    },
+    "test-unrelated-02": {
+      "relation": "unrelated",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Claim A discusses the sufficiency of rank one for LoRA adaptation in query and value matrices (a technical result on model architecture/efficiency). Claim B discusses reward hacking in utility-metric rewards leading to lower actual quality (an issue in RLHF/reward modeling). These claims address completely different topics, methods, and problems with no overlapping propositions.",
+      "error": null
+    },
+    "test-uncertain-01": {
+      "relation": "uncertain",
+      "confidence": 0.85,
+      "condition_differences": [
+        "method"
+      ],
+      "explanation": "Claim A states that LoRA is an efficient adaptation method, while Claim B states that 'the alternative adaptation approach' is more effective. The term 'alternative' implies a comparison between different methods (LoRA vs. another). However, Claim B does not explicitly identify which specific alternative method is being discussed or the conditions under which it was found to be more effective. Without explicit statements defining the dataset, metric, or specific baseline for Claim B, we cannot determine if the claims address the same proposition under comparable conditions or if the difference in conclusion (efficient vs. more effective) stems from unstated experimental variables. Therefore, the relationship is uncertain due to insufficient information.",
+      "error": null
+    },
+    "test-uncertain-02": {
+      "relation": "uncertain",
+      "confidence": 0.85,
+      "condition_differences": [],
+      "explanation": "Claim A states that MBR decoding produces 'significant and consistent improvements' in 'instruction-following experiments', while Claim B states that 'Its benefits are limited in practice'. Although these conclusions appear incompatible, the claims do not explicitly state that they refer to the same dataset, metric, model architecture, or experimental setting. Without explicit confirmation that the conditions (e.g., specific datasets like Alpaca vs. Vicuna, specific metrics, or evaluation protocols) are identical, we cannot definitively classify this as a contradiction based on the provided text alone. The difference might be due to unstated variations in populations or methods.",
+      "error": null
+    }
+  },
+  "completed_at": "2026-09-03T10:59:45.277482+00:00"
+}

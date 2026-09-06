@@ -1,0 +1,19 @@
+{
+  "paper_id": "arxiv:1810.04805",
+  "dimension": "citation_quality",
+  "model": "qwen3.5:9b",
+  "selected_chunk_ids": [
+    "arxiv:1810.04805-p2-c3-ac96eaaad3e9da53",
+    "arxiv:1810.04805-p4-c8-4e9e37d968e1f63b",
+    "arxiv:1810.04805-p2-c4-bf05b24da4392efe",
+    "arxiv:1810.04805-p1-c1-5edc33c268336bcc"
+  ],
+  "raw_length": 854,
+  "raw_sha256": "9cfc8219414961d76e14532c0fb41b2e68a90ca520b24f1f47e162a6dc64c3ad",
+  "json_valid": false,
+  "json_error": "Unterminated string starting at",
+  "json_error_position": 846,
+  "parse_ok": false,
+  "error_type": "PaperEvaluationPipelineError",
+  "safe_error": "Paper evaluation model returned invalid JSON."
+}

@@ -1,0 +1,2 @@
+{"query_id":"example-experimental-design","paper_id":"example-paper","query":"Which datasets, baselines and evaluation metrics are used in the experiments?","dimension":"experimental_design","relevance_by_chunk_id":{"example-paper-p1-c1":2}}
+{"query_id":"example-reproducibility","paper_id":"example-paper","query":"Does the paper report random seeds, hyperparameters, hardware and source code?","dimension":"reproducibility","relevance_by_chunk_id":{"example-paper-p2-c2":2}}

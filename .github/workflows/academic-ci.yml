@@ -1,0 +1,119 @@
+name: Academic CI
+
+on:
+  pull_request:
+    branches: [main, master]
+    paths:
+      - ".github/workflows/academic-ci.yml"
+      - ".github/workflows/academic-benchmarks.yml"
+      - "alembic.ini"
+      - "backend/academic_api/**"
+      - "compose.academic.yml"
+      - "Dockerfile.academic"
+      - "evals/academic_quality/**"
+      - "evals/academic_retrieval/**"
+      - "evals/verify_academic_benchmarks.py"
+      - "gpt_researcher/academic/**"
+      - "pyproject.toml"
+      - "requirements-academic.txt"
+      - "scripts/run_academic_benchmarks.sh"
+      - "tests/academic/**"
+  push:
+    branches: [main, master]
+    paths:
+      - ".github/workflows/academic-ci.yml"
+      - ".github/workflows/academic-benchmarks.yml"
+      - "alembic.ini"
+      - "backend/academic_api/**"
+      - "compose.academic.yml"
+      - "Dockerfile.academic"
+      - "evals/academic_quality/**"
+      - "evals/academic_retrieval/**"
+      - "evals/verify_academic_benchmarks.py"
+      - "gpt_researcher/academic/**"
+      - "pyproject.toml"
+      - "requirements-academic.txt"
+      - "scripts/run_academic_benchmarks.sh"
+      - "tests/academic/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: academic-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  academic-fast-gate:
+    name: Unit, API, Worker and migrations
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: academic_root
+          MYSQL_DATABASE: academic_evaluation
+          MYSQL_USER: academic
+          MYSQL_PASSWORD: academic_dev
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uacademic -pacademic_dev --silent"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+      redis:
+        image: redis:7.4-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd="redis-cli ping"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    env:
+      PYTHONPATH: .
+      MYSQL_HOST: 127.0.0.1
+      MYSQL_PORT: 3306
+      MYSQL_USER: academic
+      MYSQL_PASSWORD: academic_dev
+      MYSQL_DATABASE: academic_evaluation
+      REDIS_URL: redis://127.0.0.1:6379/0
+      OLLAMA_BASE_URL: http://127.0.0.1:11434
+      RUN_ACADEMIC_E2E: "0"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-academic.txt
+
+      - name: Install Academic test dependencies
+        run: >-
+          python -m pip install
+          -r requirements-academic.txt
+          "pytest>=8,<9"
+          "pytest-asyncio>=0.24,<2"
+          "PyYAML>=6,<7"
+
+      - name: Verify clean MySQL migration cycle
+        run: |
+          python -m alembic -c alembic.ini upgrade head
+          python -m alembic -c alembic.ini downgrade base
+          python -m alembic -c alembic.ini upgrade head
+
+      - name: Verify versioned benchmark artifacts and policy boundaries
+        run: python -m evals.verify_academic_benchmarks
+
+      - name: Run Academic fast gate
+        run: python -m pytest tests/academic

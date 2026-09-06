@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "comparison": "ret11b-section-vs-frozen-hybrid-paper-quality",
+  "scope": "held-out-test-descriptive-only",
+  "model": "qwen3.5:9b",
+  "temperature": 0.0,
+  "paper_count": 2,
+  "dimension_label_count": 18,
+  "top_k": 4,
+  "full_report": "results/ret11b-section-vs-hybrid-heldout.json",
+  "full_report_sha256": "1f5d220ecf5bb63d6b816a7318dc9c5d1def6770dfc9ed44e511ae3a0e478537",
+  "checkpoint_sha256": "09e2a036a9a1333c1d739c59682c2dcdc1be06d766ea6691582c4b4e47f72c0c",
+  "reference_labels_sha256": "a4ea3d519fcc740b1059e5cee14a40efd1f1463edb85e9cba7a0d2ae1ef9925e",
+  "selector_report_sha256": "a64da04e7c3c325e2a7a15b47e59f55dc6906c16eb54d4a4ade1a70a7f5f35a1",
+  "section": {
+    "generated_evaluation_count": 18,
+    "scorable_evaluation_count": 17,
+    "insufficient_evidence_count": 1,
+    "failure_count": 0,
+    "dimension_score_mae": 0.470588,
+    "pearson": 0.26968,
+    "spearman": 0.28747,
+    "exact_match_rate": 0.5882352941176471,
+    "within_one_point_rate": 0.9411764705882353,
+    "mean_overall_score_absolute_error": 5.60525
+  },
+  "hybrid": {
+    "generated_evaluation_count": 18,
+    "scorable_evaluation_count": 17,
+    "insufficient_evidence_count": 1,
+    "failure_count": 0,
+    "dimension_score_mae": 0.588235,
+    "pearson": -0.235702,
+    "spearman": -0.235702,
+    "exact_match_rate": 0.47058823529411764,
+    "within_one_point_rate": 0.9411764705882353,
+    "mean_overall_score_absolute_error": 12.3421
+  },
+  "hybrid_minus_section": {
+    "dimension_score_mae": 0.117647,
+    "mean_overall_score_absolute_error": 6.73685
+  },
+  "interpretation": {
+    "winner_on_chatgpt_reference_mae": "section",
+    "human_paper_quality_measured": false,
+    "retuning_permitted": false,
+    "inferential_significance_claimed": false,
+    "caveat": "The comparison contains only two held-out papers and 17 scorable dimension pairs per selector. Both selectors returned insufficient evidence for LoRA limitations discussion. Results measure agreement with one versioned ChatGPT reference set, not human agreement or ground-truth paper quality."
+  }
+}

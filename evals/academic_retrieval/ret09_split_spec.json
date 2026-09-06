@@ -1,0 +1,14 @@
+{
+  "format_version": 1,
+  "split_name": "ret09-five-paper-v1",
+  "selection_note": "Fixed before retrieval tuning. Development spans Transformer, BERT and RAG; held-out test contains MBR and LoRA. Test labels must not be inspected for parameter selection.",
+  "development": [
+    "arxiv:1706.03762",
+    "arxiv:1810.04805",
+    "arxiv:2005.11401"
+  ],
+  "test": [
+    "arxiv:2410.02902",
+    "arxiv:2106.09685"
+  ]
+}

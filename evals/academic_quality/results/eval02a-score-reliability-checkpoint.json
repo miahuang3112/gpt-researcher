@@ -1,0 +1,2486 @@
+{
+  "schema_version": 1,
+  "model": "qwen3.5:9b",
+  "run_count": 1,
+  "input_hashes": {
+    "development_report_sha256": "82439ba2d7879ed2df474e0d1ef67bc83f1f238d7c1694a9b37458ce50b5fd0f",
+    "heldout_report_sha256": "354a423b468f4e1e434264370d6995f1ca143bdfe762646a1ab10ca50be98f2a",
+    "reference_labels_sha256": "a4ea3d519fcc740b1059e5cee14a40efd1f1463edb85e9cba7a0d2ae1ef9925e"
+  },
+  "completed_at_utc": "2026-09-03T09:37:38.437453+00:00",
+  "records": [
+    {
+      "paper_id": "arxiv:1706.03762",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1706.03762-p9-c13-2da9d4133c947a4c",
+        "arxiv:1706.03762-p8-c12-9953321fb9d097c1",
+        "arxiv:1706.03762-p14-c23-7192b557fa1d9cc9",
+        "arxiv:1706.03762-p6-c8-b223fc5a211e9e62"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "baseline_quality",
+        "status": "scored",
+        "score": 5.0,
+        "rationale": "The paper establishes a new state-of-the-art (SOTA) on WMT 2014 English-to-German and English-to-French translation tasks. It explicitly compares its 'big' model against all previously published models and ensembles, achieving significant improvements (e.g., >2.0 BLEU points). The paper also includes a comprehensive ablation study (Table 3) varying architectural components like attention heads, key dimensions, dropout rates, and positional encodings to demonstrate the necessity of specific design choices. Furthermore, it provides a detailed comparison of computational complexity and training costs against recurrent and convolutional baselines in Table 1 and Section 4, ensuring fair conditions by accounting for training time and hardware usage.",
+        "evidence_chunk_ids": [
+          "arxiv:1706.03762-p8-c12-9953321fb9d097c1",
+          "arxiv:1706.03762-p9-c13-2da9d4133c947a4c",
+          "arxiv:1706.03762-p6-c8-b223fc5a211e9e62"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Establishes a clear new state-of-the-art with significant BLEU improvements over previous SOTA models.",
+          "Includes extensive ablation studies (Table 3) to isolate the contribution of specific architectural components.",
+          "Provides fair comparisons including training cost analysis and computational complexity metrics against diverse baselines.",
+          "Reports results on multiple language pairs (English-German, English-French) to validate generalizability."
+        ],
+        "concerns": [],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1706.03762",
+      "dimension": "citation_quality",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1706.03762-p1-c2-d52ba73afedc44d4",
+        "arxiv:1706.03762-p10-c16-d5281abc949dcb3c",
+        "arxiv:1706.03762-p15-c24-1cc32858904af575",
+        "arxiv:1706.03762-p6-c8-b223fc5a211e9e62"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "citation_quality",
+        "status": "insufficient_evidence",
+        "score": null,
+        "rationale": "The provided evidence chunks contain the abstract, conclusion, references section (which appears corrupted with figure captions and placeholder text rather than a list of citations), background section, and acknowledgements. None of these chunks display the actual bibliography or in-text citation list required to assess whether important claims are connected to relevant prior work or if coverage is balanced. The 'References' chunk does not list the cited works. While external records were not requested or supplied, the internal evidence is insufficient to judge citation quality.",
+        "evidence_chunk_ids": [
+          "arxiv:1706.03762-p1-c2-d52ba73afedc44d4",
+          "arxiv:1706.03762-p10-c16-d5281abc949dcb3c",
+          "arxiv:1706.03762-p15-c24-1cc32858904af575",
+          "arxiv:1706.03762-p6-c8-b223fc5a211e9e62"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [],
+        "concerns": [
+          "The provided 'References' chunk (p15) does not contain a list of cited works, making it impossible to verify citation coverage or relevance.",
+          "No in-text citations are visible in the provided text segments to evaluate the connection between claims and prior work."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1706.03762",
+      "dimension": "experimental_design",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1706.03762-p9-c14-17bb8e770f33b068",
+        "arxiv:1706.03762-p9-c13-2da9d4133c947a4c",
+        "arxiv:1706.03762-p1-c2-d52ba73afedc44d4",
+        "arxiv:1706.03762-p11-c18-1ca77cedb83d5f73"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "experimental_design",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The experimental design is strong, featuring a comprehensive ablation study (Table 3) varying architecture components like attention heads, key dimensions, and dropout rates. The paper explicitly controls for computational cost in some variations and includes a specific task evaluation (English constituency parsing) to test generalization beyond translation. However, the design has meaningful limitations: the hyperparameter search for the parsing task was minimal ('small number of experiments'), relying heavily on settings from the base translation model rather than a dedicated optimization process for that specific task.",
+        "evidence_chunk_ids": [
+          "arxiv:1706.03762-p9-c14-17bb8e770f33b068",
+          "arxiv:1706.03762-p9-c13-2da9d4133c947a4c"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Comprehensive ablation study varying attention heads, key dimensions, and dropout rates while controlling for computation.",
+          "Evaluation on a distinct task (English constituency parsing) to assess generalization capabilities.",
+          "Clear reporting of training data sizes and vocabulary settings for different experimental regimes."
+        ],
+        "concerns": [
+          "Hyperparameter tuning for the English constituency parsing task was limited, with most parameters inherited from the translation model rather than being optimized specifically for parsing."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1706.03762",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1706.03762-p14-c23-7192b557fa1d9cc9",
+        "arxiv:1706.03762-p15-c24-1cc32858904af575",
+        "arxiv:1706.03762-p1-c1-b8a72832d6755fb9",
+        "arxiv:1706.03762-p7-c10-0639f2875b5081a7"
+      ],
+      "reference_score": 2.0,
+      "evaluation": {
+        "dimension": "limitations_discussion",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper acknowledges specific limitations and future directions, such as the computational cost of self-attention for very long sequences (suggesting neighborhood restrictions) and the potential for convolutional layers to be more expensive than recurrent ones. The authors explicitly state plans to investigate these approaches further in future work. Additionally, they note that while self-attention could yield more interpretable models, this is presented as a side benefit rather than a guaranteed outcome, implicitly acknowledging current interpretability challenges. However, the discussion of limitations is somewhat brief and relies heavily on computational constraints and future investigation rather than a comprehensive analysis of failure cases or ethical concerns.",
+        "evidence_chunk_ids": [
+          "arxiv:1706.03762-p7-c10-0639f2875b5081a7"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicitly identifies computational performance issues with very long sequences and proposes a potential solution (neighborhood restriction) for future work.",
+          "Acknowledges that convolutional layers can be more expensive than recurrent layers and discusses complexity trade-offs.",
+          "Notes that interpretability is a potential side benefit but does not claim it as an inherent property, showing awareness of current model limitations in this regard."
+        ],
+        "concerns": [
+          "The discussion on limitations is primarily focused on computational efficiency and future work plans rather than a deep dive into specific failure cases or ethical implications.",
+          "The paper does not extensively discuss the generalization limits of the model beyond the scope of the datasets used (WMT 2014)."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1706.03762",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1706.03762-p14-c23-7192b557fa1d9cc9",
+        "arxiv:1706.03762-p15-c24-1cc32858904af575",
+        "arxiv:1706.03762-p1-c2-d52ba73afedc44d4",
+        "arxiv:1706.03762-p10-c16-d5281abc949dcb3c"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "methodological_rigor",
+        "status": "scored",
+        "score": 5.0,
+        "rationale": "The paper proposes a novel architecture (Transformer) based entirely on attention mechanisms, explicitly dispensing with recurrence and convolutions. The method is technically sound, justified by the need for parallelization and efficiency, and described with sufficient detail to reproduce results (e.g., specific BLEU scores, training time comparisons, and dataset specifications like WMT 2014). The internal consistency between the proposed architecture and the reported experimental outcomes (superior quality, faster training) is strong. Visualizations of attention heads further support the methodological claims regarding model behavior.",
+        "evidence_chunk_ids": [
+          "arxiv:1706.03762-p1-c2-d52ba73afedc44d4",
+          "arxiv:1706.03762-p10-c16-d5281abc949dcb3c"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Proposes a novel, simple network architecture based solely on attention mechanisms.",
+          "Provides clear quantitative evidence of superiority (BLEU scores) and efficiency gains over existing models.",
+          "Includes detailed experimental conditions (datasets, hardware, training time).",
+          "Offers visualizations (attention heads) to validate internal model behavior."
+        ],
+        "concerns": [],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1706.03762",
+      "dimension": "novelty",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1706.03762-p1-c2-d52ba73afedc44d4",
+        "arxiv:1706.03762-p1-c1-b8a72832d6755fb9",
+        "arxiv:1706.03762-p14-c23-7192b557fa1d9cc9",
+        "arxiv:1706.03762-p15-c24-1cc32858904af575"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "novelty",
+        "status": "scored",
+        "score": 5.0,
+        "rationale": "The paper claims a novel architecture based solely on attention mechanisms, dispensing with recurrence and convolutions entirely (chunk arxiv:1706.03762-p1-c2-d52ba73afedc44d4). It explicitly contrasts this with dominant models based on recurrent or convolutional neural networks. The claim of novelty is supported by specific architectural innovations mentioned in the author contributions, such as scaled dot-product attention, multi-head attention, and parameter-free position representation (chunk arxiv:1706.03762-p1-c2-d52ba73afedc44d4). The evidence clearly distinguishes the proposed method from prior work.",
+        "evidence_chunk_ids": [
+          "arxiv:1706.03762-p1-c2-d52ba73afedc44d4"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicitly proposes a new architecture based solely on attention mechanisms, removing recurrence and convolutions.",
+          "Details specific novel components like scaled dot-product attention, multi-head attention, and parameter-free position representation.",
+          "Claims superior performance on standard benchmarks compared to existing best results including ensembles."
+        ],
+        "concerns": [],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1706.03762",
+      "dimension": "reproducibility",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1706.03762-p8-c12-9953321fb9d097c1",
+        "arxiv:1706.03762-p1-c2-d52ba73afedc44d4",
+        "arxiv:1706.03762-p1-c1-b8a72832d6755fb9",
+        "arxiv:1706.03762-p7-c10-0639f2875b5081a7"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "reproducibility",
+        "status": "scored",
+        "score": 5.0,
+        "rationale": "The paper provides comprehensive documentation for reproducibility. It specifies the exact datasets (WMT 2014 English-German and English-French with token counts), preprocessing methods (byte-pair encoding, vocabulary sizes), training hyperparameters (Adam optimizer settings, learning rate schedule formula, warmup steps), regularization techniques, inference details (beam search size, length penalty, max output length), and hardware configuration (8 P100 GPUs). It also explicitly states training duration in both hours and days, along with step counts. The model architecture is described as being based solely on attention mechanisms without recurrence or convolutions.",
+        "evidence_chunk_ids": [
+          "arxiv:1706.03762-p8-c12-9953321fb9d097c1",
+          "arxiv:1706.03762-p1-c2-d52ba73afedc44d4",
+          "arxiv:1706.03762-p7-c10-0639f2875b5081a7"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Detailed specification of training data sizes and vocabulary construction methods.",
+          "Explicit formulas for learning rate scheduling including warmup steps.",
+          "Clear description of hardware setup (NVIDIA P100 GPUs) and step counts.",
+          "Specific inference hyperparameters such as beam size, length penalty, and early termination conditions.",
+          "Documentation of model averaging strategies for base and big models."
+        ],
+        "concerns": [],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1706.03762",
+      "dimension": "research_question_clarity",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1706.03762-p1-c1-b8a72832d6755fb9",
+        "arxiv:1706.03762-p14-c23-7192b557fa1d9cc9",
+        "arxiv:1706.03762-p15-c24-1cc32858904af575",
+        "arxiv:1706.03762-p1-c2-d52ba73afedc44d4"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "research_question_clarity",
+        "status": "scored",
+        "score": 5.0,
+        "rationale": "The paper clearly states the research problem (limitations of recurrent/convolutional models in sequence transduction), the objective (proposing a new architecture based solely on attention mechanisms), and the scope (machine translation tasks and constituency parsing). The motivation is well-supported by claims of superior quality, parallelizability, and reduced training time. The abstract explicitly defines the proposed solution and its advantages.",
+        "evidence_chunk_ids": [
+          "arxiv:1706.03762-p1-c2-d52ba73afedc44d4"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Clearly identifies limitations of existing models (recurrent/convolutional networks).",
+          "Explicitly states the proposed solution (Transformer based solely on attention mechanisms).",
+          "Defines specific objectives and scope (machine translation, constituency parsing).",
+          "Provides clear motivation through performance metrics and efficiency claims."
+        ],
+        "concerns": [],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1706.03762",
+      "dimension": "result_validity",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1706.03762-p14-c23-7192b557fa1d9cc9",
+        "arxiv:1706.03762-p1-c1-b8a72832d6755fb9",
+        "arxiv:1706.03762-p15-c24-1cc32858904af575",
+        "arxiv:1706.03762-p1-c2-d52ba73afedc44d4"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "result_validity",
+        "status": "insufficient_evidence",
+        "score": null,
+        "rationale": "The provided evidence chunks contain the paper's title page, abstract (stating BLEU scores and training times), and references. However, they do not include the main body text containing the experimental results, tables, or figures that substantiate the claims made in the abstract. Without access to the specific data points, error bars, statistical significance tests, or discussion of limitations found in the results section, it is impossible to assess whether the conclusions follow from the results, how uncertainty was handled, or if negative results were appropriately reported.",
+        "evidence_chunk_ids": [
+          "arxiv:1706.03762-p1-c1-b8a72832d6755fb9",
+          "arxiv:1706.03762-p1-c2-d52ba73afedc44d4"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [],
+        "concerns": [
+          "The provided evidence lacks the experimental results, tables, and figures necessary to verify the claims made in the abstract regarding BLEU scores and training efficiency.",
+          "There is no evidence of how uncertainty or negative results were handled within the supplied text."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "experimental_design",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1810.04805-p12-c30-a52642603c97a86e",
+        "arxiv:1810.04805-p14-c36-693e332cf509ce56",
+        "arxiv:1810.04805-p8-c19-8df91b844e33f93c",
+        "arxiv:1810.04805-p14-c38-5a32cbbcf4aa2962"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "experimental_design",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper demonstrates a strong experimental design by explicitly detailing hyperparameters (learning rates, epochs, batch sizes) in the Appendix (chunk: arxiv:1810.04805-p14-c36-693e332cf509ce56), performing ablation studies to isolate specific effects like pre-training tasks and bidirectionality (chunk: arxiv:1810.04805-p14-c36-693e332cf509ce56), and comparing different architectures (GPT vs BERT) with clear distinctions in training procedures and token usage (chunk: arxiv:1810.04805-p14-c38-5a32cbbcf4aa2962). The authors also address potential weaknesses by adding components like BiLSTMs to improve specific metrics (chunk: arxiv:1810.04805-p8-c19-8df91b844e33f93c). A minor limitation is that the provided evidence focuses heavily on hyperparameter choices and architectural comparisons rather than extensive dataset diversity or large-scale sample size analysis, though it notes sensitivity to data size.",
+        "evidence_chunk_ids": [
+          "arxiv:1810.04805-p12-c30-a52642603c97a86e",
+          "arxiv:1810.04805-p14-c36-693e332cf509ce56",
+          "arxiv:1810.04805-p8-c19-8df91b844e33f93c",
+          "arxiv:1810.04805-p14-c38-5a32cbbcf4aa2962"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicit reporting of hyperparameters (learning rates, epochs, batch sizes) in the Appendix.",
+          "Conducting ablation studies to isolate the contribution of specific components (pre-training tasks, bidirectionality).",
+          "Clear comparison of training procedures and architectural differences between GPT and BERT models.",
+          "Proactive improvement of model performance by adding BiLSTMs where token-level predictions were weak."
+        ],
+        "concerns": [
+          "Limited evidence provided regarding the diversity of datasets used beyond standard benchmarks like SQuAD, MRPC, QNLI, and QQP.",
+          "The discussion on sample sizes notes that large datasets are less sensitive to hyperparameters but does not detail the full range of data scales tested or potential biases in dataset selection."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1810.04805-p1-c1-5edc33c268336bcc",
+        "arxiv:1810.04805-p16-c43-efcb81733191a917",
+        "arxiv:1810.04805-p14-c38-5a32cbbcf4aa2962",
+        "arxiv:1810.04805-p8-c19-8df91b844e33f93c"
+      ],
+      "reference_score": 2.0,
+      "evaluation": {
+        "dimension": "limitations_discussion",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper explicitly acknowledges the primary limitation of existing pre-training strategies: standard language models are unidirectional (LTR), which restricts the architectural choices and limits the ability to attend to both left and right context during pre-training (Chunk 1). The authors also discuss specific failure cases and limitations of alternative approaches, such as the Generative Pre-trained Transformer (GPT), noting that LTR models perform poorly on token prediction tasks like SQuAD because hidden states lack right-side context (Chunk 8). Furthermore, the paper addresses the sensitivity of feature-based approaches to masking strategies, noting that using only the MASK strategy is problematic for this approach compared to fine-tuning (Chunk 2). While these limitations are well-identified and used to motivate BERT's design, the discussion could be considered 'exceptional' (5) if it included a more extensive analysis of ethical concerns or broader generalization limits beyond the specific architectural comparisons made.",
+        "evidence_chunk_ids": [
+          "arxiv:1810.04805-p1-c1-5edc33c268336bcc",
+          "arxiv:1810.04805-p8-c19-8df91b844e33f93c",
+          "arxiv:1810.04805-p16-c43-efcb81733191a917"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicitly identifies unidirectionality as a major limitation of current techniques that restricts pre-training power.",
+          "Discusses specific failure modes of LTR models on token prediction tasks (e.g., SQuAD) due to lack of right-side context.",
+          "Analyzes the robustness of fine-tuning versus feature-based approaches regarding different masking strategies."
+        ],
+        "concerns": [
+          "The discussion on limitations is primarily focused on architectural constraints and specific task failures rather than broader ethical concerns or generalization limits to other domains."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1810.04805-p12-c30-a52642603c97a86e",
+        "arxiv:1810.04805-p12-c31-bff7ef2fe27b789a",
+        "arxiv:1810.04805-p12-c33-3368f880197dd108",
+        "arxiv:1810.04805-p9-c21-70fdb204add21ded"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "methodological_rigor",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper demonstrates strong methodological rigor by providing detailed descriptions of the BERT architecture, including specific masking procedures (1.5% random replacement) and implementation details like case-preserving WordPiece models (arxiv:1810.04805-p9-c21-70fdb204add21ded). The authors explicitly commit to presenting additional ablation studies and implementation details in the Appendix, which are referenced as containing evaluations of training steps and masking procedures (arxiv:1810.04805-p12-c30-a52642603c97a86e, arxiv:1810.04805-p12-c31-bff7ef2fe27b789a, arxiv:1810.04805-p12-c33-3368f880197dd108). The methodology is internally consistent, comparing fine-tuning against feature-based approaches with clear justification for the chosen tagging task formulation.",
+        "evidence_chunk_ids": [
+          "arxiv:1810.04805-p9-c21-70fdb204add21ded",
+          "arxiv:1810.04805-p12-c30-a52642603c97a86e",
+          "arxiv:1810.04805-p12-c31-bff7ef2fe27b789a",
+          "arxiv:1810.04805-p12-c33-3368f880197dd108"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Detailed specification of BERT pre-training parameters (masking ratio) and tokenization strategy.",
+          "Clear delineation of where additional ablation studies and implementation details can be found in the Appendix.",
+          "Transparent comparison between full fine-tuning and feature extraction approaches with quantitative results."
+        ],
+        "concerns": [
+          "Some specific ablation results (e.g., effect of number of training steps) are deferred to the Appendix rather than being fully detailed in the main text, which limits immediate verification without accessing supplementary materials."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "reproducibility",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1810.04805-p12-c33-3368f880197dd108",
+        "arxiv:1810.04805-p16-c43-efcb81733191a917",
+        "arxiv:1810.04805-p8-c18-412f2a5e910479b5",
+        "arxiv:1810.04805-p13-c35-f8d6ef5c1dca3b1c"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "reproducibility",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper provides extensive implementation details including specific hyperparameters (dropout=0.1, batch sizes), training procedures (pre-training steps, masking rates of 15%, sequence lengths), and model architectures (BERTBASE/BERTLARGE parameter counts). It also documents the fine-tuning setup and ablation studies with clear tables. However, some minor details like the specific random seed initialization or exact hardware configuration beyond 'TPU' might be inferred but not explicitly detailed in the provided chunks, preventing a perfect score.",
+        "evidence_chunk_ids": [
+          "arxiv:1810.04805-p12-c33-3368f880197dd108",
+          "arxiv:1810.04805-p16-c43-efcb81733191a917",
+          "arxiv:1810.04805-p8-c18-412f2a5e910479b5",
+          "arxiv:1810.04805-p13-c35-f8d6ef5c1dca3b1c"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Detailed documentation of pre-training hyperparameters including batch size (256 sequences), sequence length (512 tokens), and total steps (1,000,000).",
+          "Explicit description of masking strategies (80% MASK, 10% SAME, 10% RND) and their impact on results.",
+          "Clear specification of model sizes in terms of layers, hidden units, attention heads, and parameter counts for BERTBASE and BERTLARGE.",
+          "Comprehensive fine-tuning procedure details including dropout rate (0.1) and batch size ranges.",
+          "Ablation studies are well-documented with tables showing results for different masking strategies and model configurations."
+        ],
+        "concerns": [
+          "While the paper mentions using TPU, specific hardware configuration details beyond this general statement are not explicitly detailed in the provided chunks.",
+          "The exact random seed values used for reproducibility across experiments are not mentioned in the provided evidence."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "research_question_clarity",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1810.04805-p1-c1-5edc33c268336bcc",
+        "arxiv:1810.04805-p2-c3-ac96eaaad3e9da53",
+        "arxiv:1810.04805-p1-c2-3256318640276505",
+        "arxiv:1810.04805-p7-c16-2a58006485ced3e7"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "research_question_clarity",
+        "status": "scored",
+        "score": 5.0,
+        "rationale": "The paper clearly states the research problem (limitations of unidirectional pre-training and feature-based approaches), objectives (developing a bidirectional model via MLM and NSP), scope (pre-training on unlabeled text for downstream tasks), and motivation (improving fine-tuning performance by leveraging full context). The abstract and introduction explicitly define the gap in existing techniques and how BERT addresses it.",
+        "evidence_chunk_ids": [
+          "arxiv:1810.04805-p1-c1-5edc33c268336bcc",
+          "arxiv:1810.04805-p2-c3-ac96eaaad3e9da53",
+          "arxiv:1810.04805-p1-c2-3256318640276505"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Clearly articulates the limitations of current unidirectional models and feature-based approaches in the abstract and introduction.",
+          "Explicitly defines the research objective: to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context.",
+          "Lists specific contributions that directly map to the research questions, such as demonstrating the importance of bidirectional pre-training and reducing the need for task-specific architectures.",
+          "Provides a clear motivation based on the sub-optimality of current restrictions for sentence-level and token-level tasks."
+        ],
+        "concerns": [],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2005.11401-p18-c38-c2724706eaaa6630",
+        "arxiv:2005.11401-p5-c11-e188d4fe03898e9f",
+        "arxiv:2005.11401-p7-c16-4394fa47c23d6a73",
+        "arxiv:2005.11401-p17-c37-68a1ab00b7af5f1a"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "baseline_quality",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper includes a strong baseline (BART) for generation tasks like Jeopardy question generation and FEVER classification, explicitly training it for comparison. It also compares against BM25 for retrieval ablation studies. However, the evidence shows that for Open-Domain QA, the authors primarily compare against DPR [26] and other works using specific splits (e.g., Roberts et al.), but do not always include a direct head-to-head comparison with the most recent state-of-the-art models on all datasets in the main text, relying instead on ablations (freezing retriever) or comparisons to older/specific baselines like DPR. The human evaluation setup is robust, and the use of BART as a strong generative baseline is well-justified.",
+        "evidence_chunk_ids": [
+          "arxiv:2005.11401-p5-c11-e188d4fe03898e9f",
+          "arxiv:2005.11401-p7-c16-4394fa47c23d6a73",
+          "arxiv:2005.11401-p17-c37-68a1ab00b7af5f1a"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Includes BART as a strong generative baseline for Jeopardy and Open-Domain QA tasks.",
+          "Performs ablation studies comparing learned retrieval against BM25 to isolate the contribution of the retriever.",
+          "Uses human evaluation with pairwise comparison against BART to assess factuality and specificity."
+        ],
+        "concerns": [
+          "For Open-Domain QA, comparisons are often limited to DPR or specific splits (e.g., Roberts et al.) rather than a comprehensive comparison with the latest SOTA models across all datasets in the main results."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "citation_quality",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2005.11401-p6-c14-4de4090ce1dabb73",
+        "arxiv:2005.11401-p7-c16-4394fa47c23d6a73",
+        "arxiv:2005.11401-p9-c20-eb718eb71ee88c80",
+        "arxiv:2005.11401-p8-c19-eece203d333065c9"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "citation_quality",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper effectively connects its claims to relevant prior work by citing specific architectures (BART, T5), retrieval methods (BM25, search, RL), and memory networks. It explicitly contrasts its unified approach with single-task retrieval works and acknowledges concurrent efforts in entity retrieval. The Related Work section provides a balanced overview of general-purpose models, learned retrieval, memory-based architectures, and retrieve-and-edit approaches, grounding the paper's contributions within the existing literature.",
+        "evidence_chunk_ids": [
+          "arxiv:2005.11401-p6-c14-4de4090ce1dabb73",
+          "arxiv:2005.11401-p7-c16-4394fa47c23d6a73",
+          "arxiv:2005.11401-p8-c19-eece203d333065c9",
+          "arxiv:2005.11401-p9-c20-eb718eb71ee88c80"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Comprehensive coverage of related work across general-purpose architectures, learned retrieval, memory networks, and retrieve-and-edit approaches.",
+          "Explicit comparison with single-task retrieval works to highlight the paper's unified architecture contribution.",
+          "Acknowledgment of concurrent work in entity retrieval and distinction from raw text retrieval methods."
+        ],
+        "concerns": [
+          "The Related Work section is somewhat brief, potentially missing deeper engagement with specific recent advances in non-parametric memory or differentiable retrieval beyond the cited works."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "novelty",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2005.11401-p9-c21-f6f813f6c65a09ed",
+        "arxiv:2005.11401-p9-c20-eb718eb71ee88c80",
+        "arxiv:2005.11401-p10-c23-89d4b727e71ebfd0",
+        "arxiv:2005.11401-p7-c16-4394fa47c23d6a73"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "novelty",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper distinguishes its contribution by combining parametric and non-parametric memory with a learned retrieval component (chunk arxiv:2005.11401-p9-c21-f6f813f6c65a09ed). It explicitly contrasts its unified architecture against prior general-purpose models like BART/T5 that lack retrieval (chunk arxiv:2005.11401-p9-c20-eb718eb71ee88c80) and differentiates its raw-text memory from distributed representations in other memory-based architectures, highlighting interpretability and dynamic updatable features (chunk arxiv:2005.11401-p9-c20-eb718eb71ee88c80). While it acknowledges similarities to retrieve-and-edit approaches, it clarifies key differences such as aggregating content versus editing single items (chunk arxiv:2005.11401-p9-c20-eb718eb71ee88c80). The novelty is strong but limited by the fact that learned retrieval for QA was an active area of research at the time, as noted in the Related Work section.",
+        "evidence_chunk_ids": [
+          "arxiv:2005.11401-p9-c21-f6f813f6c65a09ed",
+          "arxiv:2005.11401-p9-c20-eb718eb71ee88c80"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Proposes a unified architecture combining parametric and non-parametric memory with learned retrieval.",
+          "Demonstrates unique features like raw-text memory enabling interpretability and dynamic updates without retraining.",
+          "Clearly delineates differences from retrieve-and-edit methods by focusing on aggregation rather than editing."
+        ],
+        "concerns": [
+          "The core idea of using learned retrieval to augment generative models for QA was concurrent with other works optimizing retrieval for specific tasks, limiting the exceptional nature of the novelty."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "reproducibility",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2005.11401-p17-c37-68a1ab00b7af5f1a",
+        "arxiv:2005.11401-p10-c23-89d4b727e71ebfd0",
+        "arxiv:2005.11401-p19-c40-ef4f59645aca4125",
+        "arxiv:2005.11401-p18-c38-c2724706eaaa6630"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "reproducibility",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper provides strong reproducibility support by detailing implementation frameworks (Fairseq, HuggingFace Transformers), hardware specifications (8x V100 GPUs), specific hyperparameters (beam size, decoding strategies like greedy vs. Thorough/Fast Decoding), and dataset statistics including train/dev/test splits. It explicitly states that code has been ported to HuggingFace Transformers and is open-sourced with links provided. However, the score is capped at 4 due to minor limitations: specific versions of libraries (e.g., Fairseq, FAISS) are not explicitly versioned in the text, and while dataset sizes are listed, exact preprocessing scripts or data cleaning logs beyond general descriptions (e.g., regex handling for CuratedTrec) are referenced but not fully detailed as standalone artifacts.",
+        "evidence_chunk_ids": [
+          "arxiv:2005.11401-p17-c37-68a1ab00b7af5f1a",
+          "arxiv:2005.11401-p19-c40-ef4f59645aca4125"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicitly states code is open-sourced and ported to HuggingFace Transformers.",
+          "Provides detailed hardware configuration (8x V100 GPUs) and mixed precision usage.",
+          "Lists specific hyperparameters such as beam size, decoding strategies, and number of retrieved documents per task.",
+          "Includes comprehensive dataset statistics with train/dev/test splits in Table 7."
+        ],
+        "concerns": [
+          "Specific software library versions (e.g., Fairseq, FAISS) are not explicitly versioned in the provided text.",
+          "Detailed preprocessing scripts for specific datasets (e.g., CuratedTrec regex handling) are described but not linked as separate downloadable artifacts."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "research_question_clarity",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2005.11401-p10-c23-89d4b727e71ebfd0",
+        "arxiv:2005.11401-p9-c21-f6f813f6c65a09ed",
+        "arxiv:2005.11401-p6-c14-4de4090ce1dabb73",
+        "arxiv:2005.11401-p12-c29-494e21c4c931ff73"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "research_question_clarity",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper clearly states its research problem and objectives in the Discussion section (chunk arxiv:2005.11401-p9-c21-f6f813f6c65a09ed), focusing on hybrid generation models combining parametric and non-parametric memory for open-domain QA. The scope is well-defined through specific tasks like Jeopardy question generation and fact verification (chunk arxiv:2005.11401-p6-c14-4de4090ce1dabb73). However, the motivation could be considered slightly limited as it primarily focuses on demonstrating effectiveness over existing baselines without explicitly detailing a broader societal or theoretical gap in the provided excerpts, though this is common for technical papers. The clarity is strong with only minor room for expansion on the 'why' beyond performance metrics.",
+        "evidence_chunk_ids": [
+          "arxiv:2005.11401-p9-c21-f6f813f6c65a09ed",
+          "arxiv:2005.11401-p6-c14-4de4090ce1dabb73"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Clear statement of the core contribution: hybrid generation models with parametric and non-parametric memory.",
+          "Well-defined scope covering open-domain QA, Jeopardy question generation, and fact verification tasks.",
+          "Explicit mention of key capabilities like hot-swapping retrieval indices and joint pre-training directions."
+        ],
+        "concerns": [
+          "The provided excerpts focus heavily on results and discussion rather than a dedicated introductory section defining the specific research gap or motivation in depth.",
+          "While the problem is clear, the 'why' behind investigating parametric vs non-parametric memory interaction could be more explicitly motivated beyond just performance gains."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "citation_quality",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2106.09685-p12-c25-f492a46afa3a6e6e",
+        "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+        "arxiv:2106.09685-p11-c24-0925c7b33a4bb957",
+        "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "citation_quality",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper connects its claims about LoRA's intrinsic rank and the relationship between adaptation matrices (ΔW) and pre-trained weights (W) to relevant prior work on low-rank adaptations (e.g., prefix tuning, fine-tuning). It provides balanced coverage by comparing different ranks (r=1, 2, 4, 8, 64) and different weight configurations (Wq, Wq+Wv, etc.), as well as contrasting LoRA with other methods like PrefixEmbed and PrefixLayer. The evidence shows that the paper cites or references prior work implicitly through comparisons and explicit mentions of alternative approaches.",
+        "evidence_chunk_ids": [
+          "arxiv:2106.09685-p12-c25-f492a46afa3a6e6e",
+          "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+          "arxiv:2106.09685-p11-c24-0925c7b33a4bb957",
+          "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "The paper compares LoRA with other adaptation methods (PrefixEmbed, PrefixLayer, Fine-Tuning) to contextualize its findings.",
+          "It explores the effect of different ranks (r) and weight configurations, providing a comprehensive analysis of low-rank adaptations.",
+          "The paper includes comparisons with random matrices to highlight the significance of learned subspaces."
+        ],
+        "concerns": [
+          "The paper does not explicitly cite specific prior works in the provided evidence chunks, which limits the ability to assess the depth of citation coverage beyond implicit references."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2106.09685-p8-c18-d6ab30b8363f332b",
+        "arxiv:2106.09685-p23-c58-5b09a7727cf53844",
+        "arxiv:2106.09685-p13-c28-167c505f8065785a",
+        "arxiv:2106.09685-p14-c30-73f9b75b8cb90021"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "methodological_rigor",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper presents a technically sound method (LoRA) with clear internal consistency in its experimental setup. Evidence shows detailed comparisons of validation accuracy across multiple datasets (WikiSQL, MNLI-matched) and adaptation methods (Fine-Tune, PrefixEmbed, PrefixLayer, Adapter(H), LoRA), demonstrating favorable sample-efficiency for LoRA (chunk arxiv:2106.09685-p8-c18-d6ab30b8363f332b). The methodology includes rigorous mathematical definitions for projection metrics and singular value analysis in the appendix, supporting theoretical claims (chunk arxiv:2106.09685-p23-c58-5b09a7727cf53844). However, limitations exist: the provided evidence does not fully detail the hyperparameter tuning process or ablation studies beyond parameter counts, which could be considered meaningful but not critical weaknesses for a methodological rigor assessment.",
+        "evidence_chunk_ids": [
+          "arxiv:2106.09685-p8-c18-d6ab30b8363f332b",
+          "arxiv:2106.09685-p23-c58-5b09a7727cf53844"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Clear experimental comparisons across multiple datasets and adaptation methods.",
+          "Mathematical rigor in defining projection metrics and singular value analysis.",
+          "Demonstrated sample-efficiency of LoRA over other methods."
+        ],
+        "concerns": [
+          "Limited detail on hyperparameter tuning processes or ablation studies beyond parameter counts."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "novelty",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2106.09685-p24-c63-6dec547ab8822bf8",
+        "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+        "arxiv:2106.09685-p12-c25-f492a46afa3a6e6e",
+        "arxiv:2106.09685-p12-c26-bf6815c46961f578"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "novelty",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper proposes LoRA as an efficient adaptation strategy that allows quick task-switching by sharing model parameters, distinguishing itself from full fine-tuning which is expensive and requires storing independent instances. The novelty is supported by empirical evidence showing that the low-rank adaptation matrix (ΔW) amplifies features not emphasized in the pre-trained weights W, rather than repeating top singular directions, providing a mechanistic insight into how pre-trained models adapt to downstream tasks. However, the paper relies on replicating setups from prior work (e.g., Li & Liang, 2021) for baselines, which limits the extent of novel experimental comparisons.",
+        "evidence_chunk_ids": [
+          "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+          "arxiv:2106.09685-p12-c25-f492a46afa3a6e6e",
+          "arxiv:2106.09685-p12-c26-bf6815c46961f578"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Proposes LoRA as a novel efficient adaptation strategy enabling task-switching without inference latency.",
+          "Provides empirical evidence that ΔW amplifies non-emphasized features in W, offering mechanistic insights into model adaptation.",
+          "Demonstrates that LoRA avoids repeating top singular directions of W, distinguishing its behavior from random or full fine-tuning approaches."
+        ],
+        "concerns": [
+          "Relies on replicating setups from prior work for baselines, which may limit the novelty of experimental comparisons.",
+          "The paper focuses on Transformer language models, though it claims general applicability; this could be seen as a limitation in scope."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "reproducibility",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2106.09685-p19-c45-625c29c64d93a5f3",
+        "arxiv:2106.09685-p18-c42-e75f28accccc93b2",
+        "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+        "arxiv:2106.09685-p18-c41-554a5ff3a2d6131e"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "reproducibility",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper provides detailed documentation of training procedures, including optimizer (AdamW), learning rate schedules, batch sizes, and random seed handling (reporting mean/median over specific seeds). It explicitly lists hyperparameters in appendices (Tables 9-11) and describes data sampling strategies for low-data regimes. However, it relies on citations (e.g., Li & Liang, 2021; He et al., 2021) for baseline hyperparameters rather than listing all values inline, which constitutes a meaningful limitation preventing 'exceptional' reproducibility.",
+        "evidence_chunk_ids": [
+          "arxiv:2106.09685-p19-c45-625c29c64d93a5f3",
+          "arxiv:2106.09685-p18-c42-e75f28accccc93b2",
+          "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+          "arxiv:2106.09685-p18-c41-554a5ff3a2d6131e"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicitly documents optimizer, learning rate schedule, and seed handling strategies.",
+          "Reports specific data sampling sizes (100, 1k, 10k) for low-data experiments.",
+          "References tables containing hyperparameters for different model configurations.",
+          "Describes specific initialization strategies and constraints (e.g., frozen pre-trained models, sequence length limits)."
+        ],
+        "concerns": [
+          "Relies on external citations for baseline hyperparameters instead of providing a complete list in the paper itself."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "research_question_clarity",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2106.09685-p2-c5-c28bfba120197ff2",
+        "arxiv:2106.09685-p3-c7-ee3760d3c3988eb6",
+        "arxiv:2106.09685-p16-c34-7dfd1a94bb7cce64",
+        "arxiv:2106.09685-p5-c11-c16cb8a82e181e83"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "research_question_clarity",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper clearly states the problem statement in Section 2 (Chunk: arxiv:2106.09685-p2-c5-c28bfba120197ff2), focusing on adapting pre-trained language models to downstream tasks. It explicitly identifies two main challenges: inference latency introduced by adapter layers (Chunk: arxiv:2106.09685-p3-c7-ee3760d3c3988eb6) and the difficulty of directly optimizing prompts (Chunk: arxiv:2106.09685-p3-c7-ee3760d3c3988eb6). The scope is well-defined, covering NLU and NLG tasks across various models like RoBERTa, DeBERTa, GPT-2, and GPT-3 (Chunk: arxiv:2106.09685-p5-c11-c16cb8a82e181e83). The motivation for investigating parameter-efficient fine-tuning methods like LoRA is clear, addressing limitations of full fine-tuning and standard adapters.",
+        "evidence_chunk_ids": [
+          "arxiv:2106.09685-p2-c5-c28bfba120197ff2",
+          "arxiv:2106.09685-p3-c7-ee3760d3c3988eb6",
+          "arxiv:2106.09685-p5-c11-c16cb8a82e181e83"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Clear articulation of the language modeling problem and downstream adaptation tasks.",
+          "Explicit identification of specific limitations in existing methods (adapter latency, prompt optimization difficulty).",
+          "Well-defined experimental scope covering multiple models and task types."
+        ],
+        "concerns": [
+          "The paper mentions deferring performance studies to Section 5 for certain aspects, which slightly limits the immediate clarity of all performance-related research questions in the introduction."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+        "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+        "arxiv:2410.02902-p4-c9-58cbe89aa5795de5",
+        "arxiv:2410.02902-p22-c58-7e767b37f324af41"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "baseline_quality",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper includes a comprehensive set of baselines covering standard decoding strategies (greedy, beam search), length-controlled variants (LONGEST, best-of-N), and alternative utility metrics (ROUGE, BERTScore, dense embedders). It also compares against established LLM-based evaluation frameworks like AlpacaEval 2.0 and MT-Bench using a strong judge model (GPT-4o). The comparison conditions appear fair, with specific attention to length-controlled win rates to mitigate bias. A meaningful limitation is that the primary utility metric for MBR decoding relies on an LLM judge (GPT-4o) rather than ground-truth human annotations or diverse non-LLM metrics for all aspects, though this is standard practice in recent literature and partially mitigated by comparisons to other metrics.",
+        "evidence_chunk_ids": [
+          "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+          "arxiv:2410.02902-p4-c9-58cbe89aa5795de5",
+          "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+          "arxiv:2410.02902-p22-c58-7e767b37f324af41"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Includes diverse baselines including standard decoding, length-controlled variants, and alternative utility metrics like ROUGE and BERTScore.",
+          "Uses strong judge models (GPT-4o) for evaluation on AlpacaEval 2.0 and MT-Bench.",
+          "Reports length-controlled win rates to address output length bias in head-to-head comparisons.",
+          "Compares against multiple dense embedders and other decoding strategies beyond just greedy/beam search."
+        ],
+        "concerns": [
+          "Primary evaluation relies heavily on LLM judges (GPT-4o) which may introduce alignment biases, though this is a common constraint in the field.",
+          "Some baseline comparisons are limited to specific model families (e.g., Llama-2, Llama-3.1) as shown in tables, potentially limiting generalizability claims if not explicitly stated."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "citation_quality",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+        "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+        "arxiv:2410.02902-p22-c58-7e767b37f324af41",
+        "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "citation_quality",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper demonstrates strong citation quality by explicitly grounding its evaluation methodology in prior work (citing AlpacaEval and FastChat for the scoring rubric) and acknowledging limitations relative to future research directions. However, a meaningful limitation exists: the paper relies on existing judge LLMs without citing specific prior works that established those judges or discussed their biases, which slightly limits the comprehensiveness of the citation coverage regarding the 'utility metrics' mentioned.",
+        "evidence_chunk_ids": [
+          "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+          "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+          "arxiv:2410.02902-p22-c58-7e767b37f324af41"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicitly cites and utilizes established frameworks (AlpacaEval, FastChat) for evaluation rubrics.",
+          "Acknowledges limitations and suggests future research directions regarding utility metrics and bias."
+        ],
+        "concerns": [
+          "The discussion of 'utility metrics' and their potential biases does not cite specific prior literature defining or analyzing these metrics, relying instead on general statements about future work."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "experimental_design",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5",
+        "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+        "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+        "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "experimental_design",
+        "status": "scored",
+        "score": 3.0,
+        "rationale": "The experimental design is adequate but has meaningful limitations regarding sample size and generalizability. The human study relies on only 4 volunteers evaluating a total of 240 samples (60 per experiment), which is a very small scale for robust statistical inference in LLM evaluation contexts. While the paper justifies using an LLM judge (GPT-4o) to align with human preferences, the reliance on such a small human cohort limits the confidence in the 'human alignment' claims. The metrics (win rates) and protocols are clearly defined, and controls (random order, specific rubrics) are present, but the sample size is a significant weakness.",
+        "evidence_chunk_ids": [
+          "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5",
+          "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Clear definition of evaluation metrics (LC win rates, direct assessment scores) and protocols.",
+          "Use of a standardized scoring rubric for human evaluation to ensure consistency.",
+          "Implementation of controls such as random order of generations and even distribution of samples across experiments.",
+          "Explicit documentation of reproducibility details including prompts and hyperparameters."
+        ],
+        "concerns": [
+          "The human study involves only 4 volunteers, resulting in a very small sample size (60 samples per experiment) that may not be sufficient for robust statistical conclusions.",
+          "Reliance on a single generic scoring rubric might not capture nuanced differences across diverse task types effectively."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+        "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+        "arxiv:2410.02902-p31-c82-c758c8903fb9d038",
+        "arxiv:2410.02902-p25-c67-857ff040cc908b39"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "limitations_discussion",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper explicitly acknowledges several key limitations in Appendix (Chunk arxiv:2410.02902-p33-c88-95c3a567c4f7ae12). These include: 1) The potential existence of reference-free metrics that could match or surpass reference-based ones, challenging the consensus quality assumption. 2) The lack of study on biases introduced by utility metrics, specifically 'reward-hacking' behavior where models optimize for benchmarks rather than actual quality (though mitigated in their specific human study context). 3) Scalability limits regarding weaker utility metrics failing against very strong LLMs or complex tasks. Additionally, the paper identifies data distribution issues as a limitation for reasoning-based categories (Chunk arxiv:2410.02902-p31-c82-c758c8903fb9d038), noting that mathematical reasoning and puzzles are underrepresented in their training dataset, leading to inconsistent improvements in those areas. The discussion is comprehensive but admits these specific weaknesses.",
+        "evidence_chunk_ids": [
+          "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+          "arxiv:2410.02902-p31-c82-c758c8903fb9d038"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicitly discusses the theoretical limitation of consensus quality not always being optimal.",
+          "Acknowledges the risk of 'reward-hacking' bias in utility metrics and notes where it was mitigated versus where it remains a concern.",
+          "Identifies scalability constraints regarding the strength of judge models relative to target models.",
+          "Pinpoints specific data distribution imbalances (underrepresentation of reasoning tasks) as a cause for performance inconsistencies."
+        ],
+        "concerns": [
+          "The paper admits that their human study mitigating reward-hacking does not guarantee its absence in other settings.",
+          "Scalability is acknowledged as an unresolved question regarding when utility metrics break down.",
+          "Performance degradation in reasoning tasks is attributed to a lack of data rather than methodological failure, which is a generalization limit."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "novelty",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+        "arxiv:2410.02902-p9-c22-31ecf2c7ee28004b",
+        "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+        "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "novelty",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper distinguishes its contribution by introducing MBR (Majority Vote) decoding as a reference-free utility metric for output selection in self-training, contrasting it with BoN and DPO/SFT baselines. Evidence shows the authors explicitly analyze performance across question categories (e.g., writing vs. reasoning) and attribute differences to data distribution biases, demonstrating a nuanced understanding of prior work's limitations. However, the novelty is limited by reliance on existing judge LLMs and metrics without proposing new utility functions or architectural changes beyond decoding strategy.",
+        "evidence_chunk_ids": [
+          "arxiv:2410.02902-p9-c22-31ecf2c7ee28004b",
+          "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Introduces MBR decoding as a novel reference-free utility metric for self-training, contrasting with prior DPO/SFT approaches.",
+          "Provides detailed analysis of performance across diverse question categories, revealing insights into data distribution biases that prior work may have overlooked."
+        ],
+        "concerns": [
+          "The core contribution is limited to a decoding strategy rather than a new model architecture or utility function, which may constrain the perceived novelty compared to methodological innovations.",
+          "Reliance on existing judge LLMs without proposing new metrics limits the scope of novelty in terms of metric design."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "reproducibility",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f",
+        "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5",
+        "arxiv:2410.02902-p34-c90-0ce9fb8f6fd7ea91",
+        "arxiv:2410.02902-p8-c19-ff864b577c227fb7"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "reproducibility",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper provides a Reproducibility Statement (chunk arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f) explicitly documenting prompts, hyperparameters, API versions, and model choices. Specific training details are available in Tables 21 and 22 (chunk arxiv:2410.02902-p34-c90-0ce9fb8f6fd7ea91), including learning rates, batch sizes, optimizers, and hardware configurations (A100 GPUs). Inference details like the vLLM engine are also specified. However, a meaningful limitation exists regarding the human evaluation study: only 4 volunteers were recruited to evaluate 60 samples each (chunk arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5), which is a small sample size that limits the statistical robustness and generalizability of the human alignment claims, representing a limitation in the evaluation procedure documentation rather than missing code or data.",
+        "evidence_chunk_ids": [
+          "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f",
+          "arxiv:2410.02902-p34-c90-0ce9fb8f6fd7ea91",
+          "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicit Reproducibility Statement covering prompts, hyperparameters, and model versions.",
+          "Detailed tables for SFT and DPO hyperparameters including learning rates, epochs, batch sizes, and optimizers.",
+          "Clear specification of hardware resources (A100 GPUs) and inference engines (vLLM).",
+          "Documentation of specific decoding parameters (Ncand=30, t=0.3) and utility metrics."
+        ],
+        "concerns": [
+          "Human evaluation study relies on a very small number of volunteers (4), which may limit the reliability of the human alignment results compared to fully automated or larger-scale human studies."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1810.04805-p14-c37-5efdfe496d1cde2e",
+        "arxiv:1810.04805-p15-c41-4d0fb84f4da031a7",
+        "arxiv:1810.04805-p9-c21-70fdb204add21ded",
+        "arxiv:1810.04805-p14-c38-5a32cbbcf4aa2962"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "baseline_quality",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper includes OpenAI GPT as a primary baseline for comparison with BERT, which is appropriate given their architectural similarities. The authors explicitly justify the exclusion of the WNLI dataset from GLUE due to known construction issues and poor baseline performance, ensuring fair comparisons on remaining tasks (evidence_chunk_ids: arxiv:1810.04805-p15-c41-4d0fb84f4da031a7). The paper also compares against feature-based approaches like ELMo (evidence_chunk_ids: arxiv:1810.04805-p14-c37-5efdfe496d1cde2e). However, the evidence reveals meaningful limitations in experimental fairness: GPT and BERT were trained with different batch sizes (32k vs 128k words) and potentially different learning rate schedules for fine-tuning (task-specific vs fixed), which could influence results beyond just architectural differences (evidence_chunk_ids: arxiv:1810.04805-p14-c38-5a32cbbcf4aa2962). Additionally, the paper notes that BERT was trained on BooksCorpus + Wikipedia while GPT was only on BooksCorpus, introducing a data distribution difference (evidence_chunk_ids: arxiv:1810.04805-p14-c37-5efdfe496d1cde2e). These factors prevent the comparison from being 'exceptional' or fully fair, but the inclusion of relevant baselines and explicit discussion of these differences supports a strong score.",
+        "evidence_chunk_ids": [
+          "arxiv:1810.04805-p14-c37-5efdfe496d1cde2e",
+          "arxiv:1810.04805-p15-c41-4d0fb84f4da031a7",
+          "arxiv:1810.04805-p14-c38-5a32cbbcf4aa2962"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Includes OpenAI GPT as a strong architectural baseline for BERT comparison.",
+          "Explicitly excludes problematic WNLI dataset to ensure fair evaluation on GLUE tasks.",
+          "Compares against feature-based models like ELMo to demonstrate versatility."
+        ],
+        "concerns": [
+          "Training data distributions differ (GPT: BooksCorpus only; BERT: BooksCorpus + Wikipedia).",
+          "Different batch sizes used during pre-training (32k vs 128k words) may affect generalization.",
+          "Fine-tuning hyperparameters differ (fixed LR for GPT vs task-specific LR for BERT), complicating direct architectural comparison."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2005.11401-p10-c22-26ae0729b43b6e03",
+        "arxiv:2005.11401-p19-c40-ef4f59645aca4125",
+        "arxiv:2005.11401-p14-c33-901e585db11198c4",
+        "arxiv:2005.11401-p6-c14-4de4090ce1dabb73"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "limitations_discussion",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper acknowledges significant limitations including potential biases in external knowledge sources (Wikipedia), ethical risks such as generating abuse or misinformation similar to GPT-2, and the phenomenon of 'retrieval collapse' where the retriever learns to retrieve identical documents for certain tasks like story generation. The authors also note that parametric knowledge can sometimes suffice without retrieval (e.g., completing book titles). These points are well-supported by evidence chunks.",
+        "evidence_chunk_ids": [
+          "arxiv:2005.11401-p10-c22-26ae0729b43b6e03",
+          "arxiv:2005.11401-p19-c40-ef4f59645aca4125"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicitly discusses ethical concerns and societal downsides like bias in external sources and potential for generating misleading content.",
+          "Identifies specific failure modes such as 'retrieval collapse' where the retriever fails to adapt to input variations.",
+          "Notes that parametric knowledge can sometimes substitute for retrieval, indicating a boundary condition for the RAG approach."
+        ],
+        "concerns": [
+          "The paper admits that external knowledge sources like Wikipedia are not entirely factual and contain bias.",
+          "Acknowledges that retrieval components may 'collapse' on tasks with less explicit factual requirements or longer sequences.",
+          "Notes that advanced language models could lead to job automation, a broader societal concern."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2005.11401-p17-c37-68a1ab00b7af5f1a",
+        "arxiv:2005.11401-p18-c38-c2724706eaaa6630",
+        "arxiv:2005.11401-p5-c11-e188d4fe03898e9f",
+        "arxiv:2005.11401-p12-c29-494e21c4c931ff73"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "methodological_rigor",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper demonstrates strong methodological rigor with detailed implementation specifics (e.g., FAISS usage, GPU distribution, mixed precision) and careful handling of dataset nuances like filtering TriviaQA answers or addressing regex-based FEVER claims. However, limitations exist: the Jeopardy evaluation relies on a single metric (Q-BLEU-1) despite acknowledging its correlation with human judgment may vary, and the FEVER task is explicitly noted as not fully addressed due to Wikipedia dump mismatches, which limits scope but is transparently reported.",
+        "evidence_chunk_ids": [
+          "arxiv:2005.11401-p17-c37-68a1ab00b7af5f1a",
+          "arxiv:2005.11401-p18-c38-c2724706eaaa6630",
+          "arxiv:2005.11401-p5-c11-e188d4fe03898e9f"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Detailed training setup including hardware, precision, and memory optimization strategies.",
+          "Transparent handling of dataset-specific challenges like TriviaQA answer filtering and FEVER regex preprocessing.",
+          "Use of human evaluation with bias mitigation (randomized sentence order) and gold standard checks for annotator reliability."
+        ],
+        "concerns": [
+          "Limited discussion on why Q-BLEU-1 was chosen over alternative metrics for Jeopardy question generation despite acknowledging its limitations.",
+          "Explicit admission that FEVER task cannot be directly tackled due to Wikipedia dump differences, limiting the scope of evaluation for that specific sub-task."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "result_validity",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2005.11401-p18-c38-c2724706eaaa6630",
+        "arxiv:2005.11401-p10-c23-89d4b727e71ebfd0",
+        "arxiv:2005.11401-p5-c11-e188d4fe03898e9f",
+        "arxiv:2005.11401-p15-c34-35bcb1ebd842bb36"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "result_validity",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper's conclusions are well-supported by its experimental setup and results. The authors clearly define their evaluation metrics (e.g., Q-BLEU-1 for question generation, label accuracy for FEVER) and justify their choices, such as using public development datasets for open-domain QA tasks to align with community standards while also reporting on official test sets for fair comparison. They acknowledge limitations, such as the inability to answer certain MSMARCO questions without gold passages or the use of different Wikipedia dumps for FEVER, which they plan to address in future work. The handling of negative results and alternative evaluation setups is transparent, and claims are proportionate to the evidence provided.",
+        "evidence_chunk_ids": [
+          "arxiv:2005.11401-p5-c11-e188d4fe03898e9f",
+          "arxiv:2005.11401-p18-c38-c2724706eaaa6630"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Transparent justification of evaluation metrics and dataset splits.",
+          "Acknowledgment of limitations in specific tasks (e.g., MSMARCO questions requiring gold passages).",
+          "Fair comparison strategies by reporting on multiple test sets where applicable."
+        ],
+        "concerns": [
+          "Some limitations in task applicability due to data constraints are noted but not fully resolved within the current work.",
+          "The use of different Wikipedia dumps for FEVER introduces potential inconsistencies that are acknowledged as a future direction rather than addressed here."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "result_validity",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+        "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+        "arxiv:2106.09685-p13-c28-167c505f8065785a",
+        "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "result_validity",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper presents quantitative results (Tables 6 and Table 16) comparing LoRA ranks and adaptation methods. The conclusions drawn are proportionate to the evidence: the authors note that a small rank (r=1) suffices for specific weight configurations on WikiSQL/MultiNLI, while explicitly acknowledging limitations in their thought experiment regarding cross-lingual tasks. Similarly, they report poor performance of PrefixEmbed/PrefixLayer in low-data regimes and attribute this to insufficient data rather than methodological flaws, noting that the gap closes with more data. The authors handle negative results (e.g., Prefix methods failing on MNLI-100) by contextualizing them within the low-data regime analysis. However, the score is capped at 4 because the provided evidence chunks are limited to specific tables and appendices; a comprehensive assessment of all claims would require seeing the main experimental sections where broader generalizations might be made.",
+        "evidence_chunk_ids": [
+          "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+          "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicitly acknowledges limitations and conditions where proposed methods may not work (e.g., cross-lingual tasks, low-data regimes).",
+          "Quantifies uncertainty using variance due to random seeds.",
+          "Handles negative results by comparing against baselines and explaining performance gaps in specific contexts."
+        ],
+        "concerns": [
+          "Limited evidence provided restricts verification of all claims made in the main body of the paper.",
+          "Some conclusions rely on 'surprise' findings which, while honest, might benefit from deeper theoretical justification or additional ablation studies not visible in the supplied chunks."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "research_question_clarity",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+        "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+        "arxiv:2410.02902-p11-c28-f694ed0def84138c",
+        "arxiv:2410.02902-p26-c68-9236b792d5ac27e7"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "research_question_clarity",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper clearly states its research problem (evaluating MBR vs BoN decoding using utility metrics) and objectives. The scope is well-defined through the use of specific benchmarks (AlpacaEval, MT-Bench) and a detailed categorization methodology for analysis (Chunk: arxiv:2410.02902-p26-c69-d9e99ccb332985c4). The motivation is supported by the identification of limitations such as scalability and bias in utility metrics, which frames future work (Chunk: arxiv:2410.02902-p33-c88-95c3a567c4f7ae12). However, the scope is limited to specific benchmarks and does not claim universal applicability without qualification, representing a meaningful limitation rather than a flaw.",
+        "evidence_chunk_ids": [
+          "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+          "arxiv:2410.02902-p26-c69-d9e99ccb332985c4"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Clear articulation of the core research problem regarding MBR decoding utility metrics.",
+          "Well-defined scope through specific benchmark datasets and categorization strategies.",
+          "Explicit discussion of limitations (scalability, bias) which clarifies the boundaries of the study."
+        ],
+        "concerns": [
+          "The scope is restricted to specific benchmarks (AlpacaEval, MT-Bench) and may not generalize to all LLM settings without further validation."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "result_validity",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+        "arxiv:2410.02902-p11-c28-f694ed0def84138c",
+        "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+        "arxiv:2410.02902-p22-c58-7e767b37f324af41"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "result_validity",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper presents clear quantitative results (Table 6) comparing decoding strategies with specific win rates and average differences. The conclusions drawn—that MBR with Prometheus offers greater improvement than USC—are directly supported by the data in Table 6. The methodology for evaluation is detailed in the Appendix (chunks p28, p26), showing how questions are categorized and how judges are prompted, which supports the validity of the reported metrics. However, the evidence provided does not include details on error analysis, robustness checks across different model families beyond Llama-3.1, or a discussion of potential biases in the AlpacaEval dataset itself, which represents a meaningful limitation preventing a perfect score.",
+        "evidence_chunk_ids": [
+          "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+          "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+          "arxiv:2410.02902-p22-c58-7e767b37f324af41"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Quantitative results are clearly presented with specific win rates and deltas in Table 6.",
+          "The evaluation methodology is transparent, detailing the categorization process and judge prompts in the Appendix.",
+          "Conclusions about relative performance improvements are directly derived from the reported numerical data."
+        ],
+        "concerns": [
+          "Limited scope of models tested (only Llama-3.1 variants) may limit generalizability of conclusions to other architectures.",
+          "No discussion of potential biases in the AlpacaEval dataset or the impact of question categorization on results is evident in the provided chunks."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1810.04805-p1-c1-5edc33c268336bcc",
+        "arxiv:1810.04805-p2-c3-ac96eaaad3e9da53",
+        "arxiv:1810.04805-p1-c2-3256318640276505",
+        "arxiv:1810.04805-p14-c37-5efdfe496d1cde2e"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "novelty",
+        "status": "scored",
+        "score": 5.0,
+        "rationale": "The paper clearly distinguishes its bidirectional pre-training approach from prior unidirectional models like OpenAI GPT and feature-based methods like ELMo. It explicitly argues that existing techniques restrict model power due to unidirectionality, which BERT addresses via a masked language model objective.",
+        "evidence_chunk_ids": [
+          "arxiv:1810.04805-p1-c1-5edc33c268336bcc",
+          "arxiv:1810.04805-p2-c3-ac96eaaad3e9da53",
+          "arxiv:1810.04805-p1-c2-3256318640276505"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Proposes a novel bidirectional pre-training strategy using masked language models and next sentence prediction.",
+          "Explicitly contrasts its architecture and objectives with prior unidirectional and feature-based approaches."
+        ],
+        "concerns": [],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1810.04805-p14-c38-5a32cbbcf4aa2962",
+        "arxiv:1810.04805-p16-c43-efcb81733191a917",
+        "arxiv:1810.04805-p7-c16-2a58006485ced3e7",
+        "arxiv:1810.04805-p6-c12-0518d6b0dcd09a0b"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "result_validity",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper provides detailed ablation studies on masking strategies and hyperparameters, explicitly addressing potential issues like fine-tuning instability with random restarts. However, the reliance on Dev set selection for learning rates and model initialization introduces a risk of overfitting to validation metrics.",
+        "evidence_chunk_ids": [
+          "arxiv:1810.04805-p6-c12-0518d6b0dcd09a0b",
+          "arxiv:1810.04805-p16-c43-efcb81733191a917"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Explicit ablation studies evaluate the impact of masking strategies and model size.",
+          "Methodological robustness is demonstrated through random restarts to handle fine-tuning instability."
+        ],
+        "concerns": [
+          "Hyperparameters like learning rates are selected based on Dev set performance, which may inflate reported gains.",
+          "The paper admits that top leaderboard results from other systems lack up-to-date public descriptions, limiting direct comparison."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2106.09685-p7-c16-eb02375af6278956",
+        "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+        "arxiv:2106.09685-p6-c14-6d590bec76dd52c1",
+        "arxiv:2106.09685-p18-c41-554a5ff3a2d6131e"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "baseline_quality",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper includes a comprehensive set of baselines including full fine-tuning, bias-only tuning, prefix-layer tuning, and various adapter designs (AdapterH, AdapterL, AdapterP) alongside prior work results. However, the comparison with GPT-2 relies on replicating Li & Liang (2021) without explicitly detailing if those specific baseline configurations were re-run or strictly matched in conditions.",
+        "evidence_chunk_ids": [
+          "arxiv:2106.09685-p7-c16-eb02375af6278956",
+          "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+          "arxiv:2106.09685-p6-c14-6d590bec76dd52c1"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Replicates prior setups for RoBERTa and DeBERTa while enforcing fair conditions like matching batch sizes and sequence lengths.",
+          "Includes diverse adaptation baselines such as BitFit, PreEmbed, and multiple Adapter variants to ensure broad comparison."
+        ],
+        "concerns": [
+          "Some baseline numbers are reused from prior works rather than being re-run, which may limit direct comparability if experimental conditions differ slightly.",
+          "The GPT-2 section explicitly states results are kept close to Li & Liang (2021) without confirming a full replication of their specific baseline configurations."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "experimental_design",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2106.09685-p18-c40-c175a4291794a259",
+        "arxiv:2106.09685-p7-c16-eb02375af6278956",
+        "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+        "arxiv:2106.09685-p5-c11-c16cb8a82e181e83"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "experimental_design",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper employs a comprehensive experimental design covering NLU and NLG tasks across multiple models (RoBERTa, DeBERTa, GPT-2) with specific controls like matching batch sizes and sequence lengths for fair comparison. However, limitations exist in the low-data regime analysis where only three specific sample sizes (100, 1k, 10k) were tested on MNLI.",
+        "evidence_chunk_ids": [
+          "arxiv:2106.09685-p7-c16-eb02375af6278956",
+          "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+          "arxiv:2106.09685-p5-c11-c16cb8a82e181e83"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Fair comparison protocols are explicitly defined, such as using identical batch sizes and sequence lengths when comparing LoRA against adapter baselines.",
+          "The study evaluates a diverse range of datasets including GLUE, WikiSQL, SAMSum, E2E NLG Challenge, DART, and WebNLG to cover both NLU and NLG domains."
+        ],
+        "concerns": [
+          "The low-data regime analysis is limited to only three specific training set sizes (100, 1k, 10k) for MNLI, which may not fully characterize performance across all data scarcity levels.",
+          "Some baseline results are reused from prior works rather than being directly replicated in the current experimental runs, potentially introducing inconsistencies if original setups differed slightly."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2106.09685-p15-c32-ed0fd6c1d533c132",
+        "arxiv:2106.09685-p15-c33-e2e8492202096143",
+        "arxiv:2106.09685-p3-c7-ee3760d3c3988eb6",
+        "arxiv:2106.09685-p13-c28-167c505f8065785a"
+      ],
+      "reference_score": 3.0,
+      "evaluation": {
+        "dimension": "limitations_discussion",
+        "status": "insufficient_evidence",
+        "score": null,
+        "rationale": "The provided evidence consists solely of reference lists and an introduction discussing general challenges like latency and optimization difficulty without detailing specific failure cases, ethical concerns, or unresolved questions. The text mentions deferring performance studies to a later section but does not explicitly discuss the limitations of those findings or the scope of the proposed method's applicability.",
+        "evidence_chunk_ids": [],
+        "external_evidence_ids": [],
+        "strengths": [],
+        "concerns": [],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+        "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+        "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+        "arxiv:2410.02902-p1-c2-7a4fa9c1eb7b4655"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "methodological_rigor",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper provides detailed descriptions of its evaluation methodology, including specific prompts for AlpacaEval and MT-Bench classification (arxiv:2410.02902-p26-c69-d9e99ccb332985c4) and a clear scoring rubric for Prometheus (arxiv:2410.02902-p25-c67-857ff040cc908b39). However, the reliance on GPT-4o for question categorization introduces potential bias or inconsistency in how questions are assigned to categories.",
+        "evidence_chunk_ids": [
+          "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+          "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+          "arxiv:2410.02902-p25-c67-857ff040cc908b39"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Detailed prompts and rubrics are explicitly provided for both AlpacaEval and MT-Bench evaluations.",
+          "The methodology covers both reference-based and reference-free evaluation strategies with clear instructions."
+        ],
+        "concerns": [
+          "Question categorization relies on GPT-4o, which may introduce classification bias or inconsistency.",
+          "The single generic scoring rubric is applied across all experiments without discussing potential domain-specific nuances."
+        ],
+        "verification": null
+      },
+      "error": null
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:1810.04805-p2-c3-ac96eaaad3e9da53",
+        "arxiv:1810.04805-p4-c8-4e9e37d968e1f63b",
+        "arxiv:1810.04805-p2-c4-bf05b24da4392efe",
+        "arxiv:1810.04805-p1-c1-5edc33c268336bcc"
+      ],
+      "reference_score": 4.0,
+      "evaluation": {
+        "dimension": "citation_quality",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper effectively contrasts its bidirectional approach with prior left-to-right models like GPT (Radford et al., 2018) and feature-based methods like ELMo (Peters et al., 2018a). It also appropriately cites foundational work on sentence embeddings and denoising autoencoders to contextualize its contributions.",
+        "evidence_chunk_ids": [
+          "arxiv:1810.04805-p1-c1-5edc33c268336bcc",
+          "arxiv:1810.04805-p2-c3-ac96eaaad3e9da53"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Clearly distinguishes BERT's bidirectional pre-training from unidirectional models like GPT and feature-based approaches like ELMo.",
+          "Cites relevant prior work on sentence embeddings (Kiros et al., Logeswaran and Lee) to establish the context for next-sentence prediction tasks."
+        ],
+        "concerns": [
+          "The review of related work is brief, potentially omitting some nuanced discussions on specific fine-tuning strategies or other pre-training objectives from that era."
+        ],
+        "verification": null
+      },
+      "error": null,
+      "recovery_mode": true
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "selected_chunk_ids": [
+        "arxiv:2005.11401-p19-c40-ef4f59645aca4125",
+        "arxiv:2005.11401-p18-c38-c2724706eaaa6630",
+        "arxiv:2005.11401-p17-c37-68a1ab00b7af5f1a",
+        "arxiv:2005.11401-p5-c11-e188d4fe03898e9f"
+      ],
+      "reference_score": 5.0,
+      "evaluation": {
+        "dimension": "experimental_design",
+        "status": "scored",
+        "score": 4.0,
+        "rationale": "The paper employs diverse datasets with clear train/dev/test splits and addresses data-specific challenges like regex preprocessing for CuratedTrec. However, the reliance on public dev sets as test sets for some tasks represents a meaningful limitation in evaluation rigor.",
+        "evidence_chunk_ids": [
+          "arxiv:2005.11401-p19-c40-ef4f59645aca4125",
+          "arxiv:2005.11401-p18-c38-c2724706eaaa6630"
+        ],
+        "external_evidence_ids": [],
+        "strengths": [
+          "Comprehensive dataset coverage including Natural Questions, TriviaQA, and Jeopardy Question Generation with explicit instance counts.",
+          "Robust handling of data-specific issues such as filtering invalid TriviaQA answers and preprocessing regex-based CuratedTrec targets."
+        ],
+        "concerns": [
+          "Some datasets like MSMARCO use public development sets as test sets, which may inflate reported performance estimates.",
+          "The evaluation of retrieval collapse is mentioned only in preliminary experiments without detailed quantitative analysis or mitigation strategies."
+        ],
+        "verification": null
+      },
+      "error": null,
+      "recovery_mode": true
+    }
+  ],
+  "attempt_failures": [
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "migrated_from_terminal_record": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "migrated_from_terminal_record": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "result_validity",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "result_validity",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "research_question_clarity",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "result_validity",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "result_validity",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "experimental_design",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "result_validity",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "research_question_clarity",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "result_validity",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "experimental_design",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "novelty",
+      "run": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "result_validity",
+      "run": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "baseline_quality",
+      "run": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "experimental_design",
+      "run": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dimension": "limitations_discussion",
+      "run": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dimension": "methodological_rigor",
+      "run": 1,
+      "error": {
+        "type": "OllamaStructuredClientError"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 3,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "attempt": 2,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      }
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "dimension": "citation_quality",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      },
+      "superseded_for_retry": true
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "dimension": "experimental_design",
+      "run": 1,
+      "error": {
+        "type": "PaperEvaluationPipelineError",
+        "code": "invalid_json"
+      },
+      "superseded_for_retry": true
+    }
+  ]
+}

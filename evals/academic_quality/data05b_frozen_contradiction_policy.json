@@ -1,0 +1,44 @@
+{
+  "policy_id": "data05b-qwen35-9b-chatgpt-dev-v1",
+  "status": "frozen",
+  "selection_scope": "development-only",
+  "model": "qwen3.5:9b",
+  "temperature": 0.0,
+  "warning_confidence_threshold": 0.95,
+  "positive_relations": [
+    "contradiction",
+    "partial_contradiction"
+  ],
+  "selection_rule": {
+    "minimum_precision": 0.8,
+    "objective": "Maximize warning-class F1, then recall, precision, and threshold.",
+    "candidate_thresholds": "0.00 through 1.00 in 0.01 increments"
+  },
+  "development_result": {
+    "sample_count": 24,
+    "positive_count": 8,
+    "negative_count": 16,
+    "true_positive": 8,
+    "false_positive": 0,
+    "true_negative": 16,
+    "false_negative": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "six_class_relation_accuracy": 0.875
+  },
+  "integrity": {
+    "annotator_type": "ai",
+    "annotator_name": "ChatGPT",
+    "independent_human_review": false,
+    "held_out_test_used_for_selection": false,
+    "retuning_after_test_permitted": false,
+    "labels_sha256": "f3fc81893d66960ad0c0869e4330822c62cc851433fe50b63fe31d37f6582369",
+    "calibration_report_sha256": "85231bf7c4e2e08a40ff2eb2ab4ef3d2d3832f1dbe064d95aaf161081a4db381"
+  },
+  "limitations": [
+    "Metrics are development-set calibration results, not held-out accuracy.",
+    "Labels were authored by ChatGPT and are not independent human review.",
+    "The small controlled challenge set may not represent natural cross-paper disagreements."
+  ]
+}

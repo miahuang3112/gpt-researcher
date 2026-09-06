@@ -1,0 +1,71 @@
+{
+  "format_version": 1,
+  "status": "frozen_before_model_run",
+  "task": "EVAL-03",
+  "selection_scope": "development-only",
+  "paper_ids": [
+    "arxiv:1706.03762",
+    "arxiv:1810.04805",
+    "arxiv:2005.11401"
+  ],
+  "excluded_heldout_paper_ids": [
+    "arxiv:2106.09685",
+    "arxiv:2410.02902"
+  ],
+  "model": "qwen3.5:9b",
+  "temperature": 0.0,
+  "evidence_top_k": 4,
+  "score_reference": "ChatGPT AI labels; not independent human review",
+  "configurations": [
+    {
+      "config_id": "hybrid_anchored",
+      "retriever": "frozen_hybrid",
+      "prompt": "production_with_scoring_anchors",
+      "role": "baseline"
+    },
+    {
+      "config_id": "hybrid_no_anchors",
+      "retriever": "frozen_hybrid",
+      "prompt": "production_without_numeric_scoring_anchors",
+      "role": "prompt_ablation"
+    },
+    {
+      "config_id": "section_anchored",
+      "retriever": "deterministic_section_only",
+      "prompt": "production_with_scoring_anchors",
+      "role": "retriever_ablation"
+    }
+  ],
+  "primary_metric": "ChatGPT-reference dimension MAE",
+  "guardrails": [
+    "zero terminal failures",
+    "scorable count not below baseline",
+    "within-one-point rate not below baseline"
+  ],
+  "minimum_mae_improvement_for_adoption": 0.1,
+  "retriever_additional_guardrail": "development Recall@4 must not be below frozen Hybrid Recall@4",
+  "tie_break_order": [
+    "lower MAE",
+    "higher within-one-point rate",
+    "higher scorable count",
+    "keep existing production configuration"
+  ],
+  "policy_ablation": {
+    "source": "DATA-05B development threshold curve",
+    "candidate_thresholds": [0.0, 0.5, 0.8, 0.95, 1.0],
+    "minimum_warning_precision": 0.8,
+    "selection_rule": "highest warning F1, then recall, precision and threshold among candidates meeting the precision floor"
+  },
+  "input_hashes": {
+    "quality_labels_sha256": "a4ea3d519fcc740b1059e5cee14a40efd1f1463edb85e9cba7a0d2ae1ef9925e",
+    "development_corpus_sha256": "ebd66c777001c31e4fde562963fc582be50bbc7e1e8e4af75307c91263e4f5e8",
+    "development_queries_sha256": "e6ae471aa2fb7d3a799d548f2d45c06a494d80897f6093245f9dceaef6d7c790",
+    "ret09_development_report_sha256": "82439ba2d7879ed2df474e0d1ef67bc83f1f238d7c1694a9b37458ce50b5fd0f",
+    "data05b_calibration_report_sha256": "85231bf7c4e2e08a40ff2eb2ab4ef3d2d3832f1dbe064d95aaf161081a4db381"
+  },
+  "interpretation_boundary": {
+    "heldout_access_permitted": false,
+    "inferential_significance_claimed": false,
+    "human_ground_truth_claimed": false
+  }
+}

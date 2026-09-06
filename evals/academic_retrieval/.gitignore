@@ -1,0 +1,5 @@
+# Real benchmark corpora may contain copyrighted paper text and local labels.
+datasets/
+results/
+.cache/
+sources/

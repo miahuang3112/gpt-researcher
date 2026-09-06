@@ -1,0 +1,38 @@
+{
+  "paper_id": "arxiv:1810.04805",
+  "dimension": "baseline_quality",
+  "model": "qwen3.5:9b",
+  "selected_chunk_ids": [
+    "arxiv:1810.04805-p14-c37-5efdfe496d1cde2e",
+    "arxiv:1810.04805-p15-c41-4d0fb84f4da031a7",
+    "arxiv:1810.04805-p9-c21-70fdb204add21ded",
+    "arxiv:1810.04805-p14-c38-5a32cbbcf4aa2962"
+  ],
+  "raw_length": 2196,
+  "raw_sha256": "9aa05012e26b30578fd831ffa10b4219031f4260fecd0d688d1d47ac694fba90",
+  "json_valid": true,
+  "root_type": "object",
+  "keys": [
+    "concerns",
+    "dimension",
+    "evidence_chunk_ids",
+    "external_evidence_ids",
+    "rationale",
+    "score",
+    "status",
+    "strengths"
+  ],
+  "status": "scored",
+  "score_type": "int",
+  "evidence_chunk_ids": [
+    "arxiv:1810.04805-p14-c37-5efdfe496d1cde2e",
+    "arxiv:1810.04805-p15-c41-4d0fb84f4da031a7",
+    "arxiv:1810.04805-p14-c38-5a32cbbcf4aa2962"
+  ],
+  "external_evidence_ids": [
+    ""
+  ],
+  "parse_ok": false,
+  "error_type": "PaperEvaluationPipelineError",
+  "safe_error": "Model cited External Scholarly Records that were not included in its prompt: ['']"
+}

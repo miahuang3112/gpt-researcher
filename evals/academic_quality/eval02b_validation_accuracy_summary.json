@@ -1,0 +1,45 @@
+{
+  "format_version": 1,
+  "evaluation": "eval02b-validation-and-contradiction-accuracy",
+  "split": "held-out-test",
+  "created_at": "2026-09-03T10:59:45.277482+00:00",
+  "model": "qwen3.5:9b",
+  "temperature": 0.0,
+  "full_report": "results/eval02b-validation-accuracy.json",
+  "full_report_sha256": "957495b5fbcbff7cea4447bac3f962207e74f4822ccbc82bd7bce2f612c5b7fe",
+  "checkpoint_sha256": "114a3194c147b34e9b1b616eaf5f5ed9a2097b0b425568b7c2732c9359bcf2d8",
+  "citation_labels_sha256": "bdea157996681917f459ea948398dc6a2c45de2dc2fb559c7fefdf7d11a28fee",
+  "contradiction_labels_sha256": "72fa66382342ca5fa577415a3a538aaaac5b5bc11fa6adf8ee0cf22effc79c2c",
+  "provenance_sha256": "599dd6ae2c7cabe28129cd9a90a723371aff013fc85bcace0bc1b96004623e41",
+  "citation_validation": {
+    "sample_count": 16,
+    "failure_count": 0,
+    "four_class_accuracy": 0.8125,
+    "four_class_macro_f1": 0.781818,
+    "supported_decision_accuracy": 1.0,
+    "supported_decision_precision": 1.0,
+    "supported_decision_recall": 1.0,
+    "supported_decision_f1": 1.0,
+    "observed_error": "Three insufficient-evidence cases were classified as contradicted."
+  },
+  "contradiction_detection": {
+    "sample_count": 12,
+    "failure_count": 0,
+    "six_class_accuracy": 0.833333,
+    "six_class_macro_f1": 0.777778,
+    "frozen_warning_threshold": 0.95,
+    "warning_accuracy": 1.0,
+    "warning_precision": 1.0,
+    "warning_recall": 1.0,
+    "warning_f1": 1.0,
+    "observed_error": "Two partial-contradiction cases were classified as full contradictions."
+  },
+  "interpretation": {
+    "reference_annotator_type": "ai",
+    "reference_annotator_name": "ChatGPT",
+    "independent_human_review": false,
+    "heldout_used_for_retuning": false,
+    "inferential_significance_claimed": false,
+    "caveat": "Results are descriptive measurements on 28 balanced controlled cases derived from two held-out computer-science papers. They do not establish human agreement, scientific correctness or real-world generalisation."
+  }
+}

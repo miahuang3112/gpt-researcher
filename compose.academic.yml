@@ -1,0 +1,274 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: academic-mysql
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: academic_root
+      MYSQL_DATABASE: academic_evaluation
+      MYSQL_USER: academic
+      MYSQL_PASSWORD: academic_dev
+
+    ports:
+      - "127.0.0.1:3307:3306"
+
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+    volumes:
+      - academic_mysql_data:/var/lib/mysql
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "mysqladmin ping -h localhost -u$$MYSQL_USER -p$$MYSQL_PASSWORD --silent"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: academic-redis
+    restart: unless-stopped
+
+    ports:
+      - "127.0.0.1:6380:6379"
+
+    volumes:
+      - academic_redis_data:/data
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "redis-cli",
+          "ping"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+
+  academic-migrate:
+    image: gpt-researcher-academic:local
+    container_name: academic-migrate
+    restart: "no"
+
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: academic
+      MYSQL_PASSWORD: academic_dev
+      MYSQL_DATABASE: academic_evaluation
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+    command:
+      [
+        "python",
+        "-m",
+        "alembic",
+        "-c",
+        "alembic.ini",
+        "upgrade",
+        "head"
+      ]
+
+
+  academic-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.academic
+
+    image: gpt-researcher-academic:local
+    container_name: academic-api
+    restart: unless-stopped
+
+    environment:
+      # Inside Docker we use service names and internal ports.
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: academic
+      MYSQL_PASSWORD: academic_dev
+      MYSQL_DATABASE: academic_evaluation
+
+      REDIS_URL: redis://redis:6379/0
+
+      # Ollama continues running directly on the Mac.
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      ACADEMIC_PDF_IMPORT_ROOTS: "${ACADEMIC_DATA_DIR:-/Users/mia/Desktop}"
+      ACADEMIC_PDF_STORAGE_DIR: /data/academic/pdfs
+      ACADEMIC_CHECKPOINT_STORAGE_DIR: /data/academic/checkpoints
+      ACADEMIC_HYBRID_RETRIEVAL_ENABLED: "${ACADEMIC_HYBRID_RETRIEVAL_ENABLED:-true}"
+      ACADEMIC_HYBRID_CANDIDATE_TOP_K: "${ACADEMIC_HYBRID_CANDIDATE_TOP_K:-20}"
+      ACADEMIC_HYBRID_RRF_K: "${ACADEMIC_HYBRID_RRF_K:-100}"
+      ACADEMIC_EMBEDDING_MODEL: "${ACADEMIC_EMBEDDING_MODEL:-qwen3-embedding:4b}"
+      ACADEMIC_EXTERNAL_EVIDENCE_ENABLED: "${ACADEMIC_EXTERNAL_EVIDENCE_ENABLED:-false}"
+      ACADEMIC_EXTERNAL_EVIDENCE_LIMIT: "${ACADEMIC_EXTERNAL_EVIDENCE_LIMIT:-5}"
+      OPENALEX_API_KEY: "${OPENALEX_API_KEY:-}"
+      CROSSREF_MAILTO: "${CROSSREF_MAILTO:-}"
+
+    ports:
+      - "127.0.0.1:8001:8001"
+
+    volumes:
+      # Keep the current PDF/checkpoint path valid inside
+      # both the Mac and the container.
+      - "${ACADEMIC_DATA_DIR:-/Users/mia/Desktop}:${ACADEMIC_DATA_DIR:-/Users/mia/Desktop}"
+      - academic_secure_data:/data/academic
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    depends_on:
+      academic-migrate:
+        condition: service_completed_successfully
+
+      redis:
+        condition: service_healthy
+
+    command:
+      [
+        "python",
+        "-m",
+        "uvicorn",
+        "backend.academic_api.main:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8001"
+      ]
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/health/ready', timeout=5)"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+
+  academic-worker:
+    image: gpt-researcher-academic:local
+    container_name: academic-worker
+    restart: unless-stopped
+
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: academic
+      MYSQL_PASSWORD: academic_dev
+      MYSQL_DATABASE: academic_evaluation
+
+      REDIS_URL: redis://redis:6379/0
+
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      ACADEMIC_PDF_STORAGE_DIR: /data/academic/pdfs
+      ACADEMIC_CHECKPOINT_STORAGE_DIR: /data/academic/checkpoints
+      ACADEMIC_HYBRID_RETRIEVAL_ENABLED: "${ACADEMIC_HYBRID_RETRIEVAL_ENABLED:-true}"
+      ACADEMIC_HYBRID_CANDIDATE_TOP_K: "${ACADEMIC_HYBRID_CANDIDATE_TOP_K:-20}"
+      ACADEMIC_HYBRID_RRF_K: "${ACADEMIC_HYBRID_RRF_K:-100}"
+      ACADEMIC_EMBEDDING_MODEL: "${ACADEMIC_EMBEDDING_MODEL:-qwen3-embedding:4b}"
+      ACADEMIC_EXTERNAL_EVIDENCE_ENABLED: "${ACADEMIC_EXTERNAL_EVIDENCE_ENABLED:-false}"
+      ACADEMIC_EXTERNAL_EVIDENCE_LIMIT: "${ACADEMIC_EXTERNAL_EVIDENCE_LIMIT:-5}"
+      OPENALEX_API_KEY: "${OPENALEX_API_KEY:-}"
+      CROSSREF_MAILTO: "${CROSSREF_MAILTO:-}"
+
+    volumes:
+      - "${ACADEMIC_DATA_DIR:-/Users/mia/Desktop}:${ACADEMIC_DATA_DIR:-/Users/mia/Desktop}"
+      - academic_secure_data:/data/academic
+
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+    depends_on:
+      academic-migrate:
+        condition: service_completed_successfully
+
+      redis:
+        condition: service_healthy
+
+      academic-api:
+        condition: service_healthy
+
+    command:
+      [
+        "python",
+        "-m",
+        "backend.academic_api.worker"
+      ]
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-m",
+          "backend.academic_api.health",
+          "worker-ready"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    container_name: academic-prometheus
+    restart: unless-stopped
+    profiles: ["observability"]
+    ports:
+      - "127.0.0.1:9090:9090"
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./observability/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - academic_prometheus_data:/prometheus
+    depends_on:
+      academic-api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:9090/-/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+
+  grafana:
+    image: grafana/grafana:12.1.0
+    container_name: academic-grafana
+    restart: unless-stopped
+    profiles: ["observability"]
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: academic_dev
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    ports:
+      - "127.0.0.1:3002:3000"
+    volumes:
+      - ./observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./observability/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - academic_grafana_data:/var/lib/grafana
+    depends_on:
+      prometheus:
+        condition: service_healthy
+
+
+volumes:
+  academic_mysql_data:
+  academic_redis_data:
+  academic_secure_data:
+  academic_prometheus_data:
+  academic_grafana_data:

@@ -1,0 +1,30 @@
+{
+  "format_version": 1,
+  "label_file": "contradiction_labels.chatgpt.dev.v1.jsonl",
+  "annotator_type": "ai",
+  "annotator_name": "ChatGPT",
+  "independent_human_review": false,
+  "split": "development",
+  "source_paper_ids": [
+    "arxiv:1706.03762",
+    "arxiv:1810.04805",
+    "arxiv:2005.11401"
+  ],
+  "excluded_heldout_paper_ids": [
+    "arxiv:2106.09685",
+    "arxiv:2410.02902"
+  ],
+  "construction": "ChatGPT created controlled claim pairs around propositions from the three development papers. Positive, condition-shift, paraphrase, unrelated and underspecified cases were included deliberately.",
+  "permitted_claim": "The labels support provisional engineering calibration of a contradiction-warning confidence threshold.",
+  "prohibited_claims": [
+    "human-labelled contradiction benchmark",
+    "independent peer review",
+    "held-out contradiction accuracy",
+    "real-world generalisation"
+  ],
+  "limitations": [
+    "The set is small and uses one AI annotator.",
+    "Many pairs are controlled challenge examples rather than naturally occurring cross-paper disagreements.",
+    "Threshold selection and model evaluation on this same development set are not independent evidence of accuracy."
+  ]
+}

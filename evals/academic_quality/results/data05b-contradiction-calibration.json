@@ -1,0 +1,1205 @@
+{
+  "format_version": 1,
+  "created_at": "2026-09-02T16:40:23.132274+00:00",
+  "split": "development",
+  "label_provenance": "ChatGPT AI labels; not independent human review",
+  "labels_path": "evals/academic_quality/contradiction_labels.chatgpt.dev.v1.jsonl",
+  "labels_sha256": "f3fc81893d66960ad0c0869e4330822c62cc851433fe50b63fe31d37f6582369",
+  "model": "qwen3.5:9b",
+  "temperature": 0.0,
+  "minimum_precision": 0.8,
+  "sample_count": 24,
+  "positive_count": 8,
+  "negative_count": 16,
+  "selected_threshold": 0.95,
+  "selected_metrics": {
+    "threshold": 0.95,
+    "true_positive": 8,
+    "false_positive": 0,
+    "true_negative": 16,
+    "false_negative": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "relation_accuracy": 0.875,
+  "predictions": {
+    "dev-contradiction-01": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly address the same dataset (WMT 2014 English-to-German), metric (BLEU), and baseline (previous best reported result). Claim A states the Transformer scored 'more than 2 points above' this baseline, while Claim B states it scored 'more than 2 points below'. These are mutually exclusive numerical conclusions regarding the same experimental conditions."
+    },
+    "dev-contradiction-02": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims address the same proposition regarding the architectural requirements of Transformer encoders and decoders (specifically the use of recurrent layers). Claim A states they 'dispense with' recurrent layers, while Claim B states they 'require' them as a central component. These are mutually exclusive conclusions about the same subject matter under comparable conditions, with no stated differences in datasets, populations, or methods to explain the discrepancy."
+    },
+    "dev-contradiction-03": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly state they refer to the 'same BERT pre-training procedure'. Claim A asserts that tokens are conditioned on both left and right context, while Claim B asserts that under this same procedure, tokens are conditioned only on left context. These descriptions of the conditioning mechanism are mutually exclusive and incompatible."
+    },
+    "dev-contradiction-04": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly state that the retriever, generator, and test split are identical. Claim A reports that increasing retrieved documents from 5 to 10 improved exact match, while Claim B reports that the same intervention reduced exact match under the same conditions. These are incompatible conclusions regarding the effect of the intervention."
+    },
+    "dev-contradiction-05": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly state that they use the same dataset (SQuAD 1.1 test set), the same metric (exact-match), and compare the same models (BERT-Base vs BERT-Large). Claim A states BERT-Large outperformed BERT-Base, while Claim B states BERT-Base outperformed BERT-Large. These are incompatible conclusions under identical conditions."
+    },
+    "dev-partial-01": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly address the same dataset (WMT English-to-German), metric (BLEU), and comparison subjects (Transformer vs. recurrent systems). Claim A states the Transformer required 'less' training time, while Claim B states it required 'more' training time. Since the conditions are identical as stated in the text and the conclusions regarding training time are mutually exclusive, this constitutes a contradiction."
+    },
+    "dev-partial-02": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly state that the evaluations are 'the same' (same datasets, metrics, and evaluation settings). Claim A states BERT-Large improved SQuAD 1.1 exact match over BERT-Base, while Claim B states it reduced SQuAD 1.1 exact match relative to BERT-Base. Since the conditions are identical and the conclusions regarding the direction of change for SQuAD are incompatible (improved vs. reduced), this constitutes a contradiction."
+    },
+    "dev-partial-03": {
+      "relation": "contradiction",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims explicitly state they address the 'same task' and evaluate RAG's impact on factuality and dependence on parameter-only knowledge. Claim A concludes that RAG 'reduced' this dependence, while Claim B concludes it 'increased' it. Since the conditions are stated to be identical and the conclusions regarding the direction of change (increase vs. decrease) are mutually exclusive, they constitute a contradiction."
+    },
+    "dev-conditions-01": {
+      "relation": "different_conditions",
+      "confidence": 0.95,
+      "condition_differences": [
+        "dataset"
+      ],
+      "explanation": "Claim A reports results on the WMT 2014 English-to-German dataset, while Claim B reports results on the WMT 2014 English-to-French dataset. Since the target languages differ, the datasets are distinct, making the numerical difference in BLEU scores expected and not a contradiction."
+    },
+    "dev-conditions-02": {
+      "relation": "different_conditions",
+      "confidence": 0.95,
+      "condition_differences": [
+        "dataset",
+        "metric"
+      ],
+      "explanation": "Claim A compares BERT-Large and BERT-Base on the SQuAD 1.1 dataset using the F1 score, while Claim B compares them on the SWAG dataset using accuracy. Since the datasets (SQuAD vs. SWAG) and evaluation metrics (F1 vs. accuracy) are explicitly different, the results do not address the same proposition under comparable conditions."
+    },
+    "dev-conditions-03": {
+      "relation": "different_conditions",
+      "confidence": 0.95,
+      "condition_differences": [
+        "dataset",
+        "metric",
+        "method",
+        "intervention"
+      ],
+      "explanation": "The claims address different datasets (Natural Questions vs. CNN/DailyMail), use different metrics (exact match vs. ROUGE-L), employ different methods/interventions (RAG-Sequence with retrieval index vs. closed-book generator without retrieval index). These explicit differences in experimental conditions explain the differing results, so they are not a contradiction."
+    },
+    "dev-conditions-04": {
+      "relation": "different_conditions",
+      "confidence": 0.95,
+      "condition_differences": [
+        "method"
+      ],
+      "explanation": "Claim A describes the complexity of 'Full self-attention', while Claim B describes the complexity of 'Restricted self-attention' with a specific neighborhood size r. These are distinct methods addressing different architectural constraints (global vs. local attention). The difference in complexity formulas (O(n^2 d) vs O(rnd)) is explicitly due to this methodological difference, not a contradiction."
+    },
+    "dev-conditions-05": {
+      "relation": "different_conditions",
+      "confidence": 0.95,
+      "condition_differences": [
+        "sample_size"
+      ],
+      "explanation": "Claim A reports results using 100% of the training data, while Claim B reports results using only 10% of the training data. The difference in outcomes (BERT achieving a lower score with less data) is explicitly explained by this difference in sample size, which is an allowed condition difference."
+    },
+    "dev-consistent-01": {
+      "relation": "consistent",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims describe the Transformer architecture as removing recurrence to perform sequence transduction. Claim A states it 'removes recurrence', while Claim B states it performs transduction 'without recurrent layers'. These are semantically equivalent descriptions of the same architectural property, indicating consistency."
+    },
+    "dev-consistent-02": {
+      "relation": "consistent",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims describe the same pre-training objective for BERT: Claim A states it uses 'masked language modeling', and Claim B specifies that this involves 'predicting selected masked input tokens'. These are equivalent descriptions of the same method, with no conflicting conditions or outcomes."
+    },
+    "dev-consistent-03": {
+      "relation": "consistent",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims describe the Retrieval-Augmented Generation (RAG) method using compatible definitions. Claim A states that RAG combines parametric generation with retrieved non-parametric memory, while Claim B states that the RAG model conditions a generator on documents fetched from an external index. These are semantically equivalent descriptions of the same underlying mechanism: using external retrieval to augment a generative model."
+    },
+    "dev-consistent-04": {
+      "relation": "consistent",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Both claims describe the use of multi-head self-attention for building contextual representations. Claim A states this is a feature of the Transformer architecture, while Claim B specifies that BERT uses a multi-layer bidirectional Transformer encoder to achieve the same goal. Since BERT is an implementation of the Transformer architecture, these statements are compatible and support the same conclusion regarding the mechanism."
+    },
+    "dev-unrelated-01": {
+      "relation": "unrelated",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Claim A describes a specific architectural mechanism (masking future positions) used in Transformer decoders for autoregressive training. Claim B describes a retrieval strategy (RAG using Wikipedia) for open-domain question answering. These claims address completely different technical propositions, methods, and application domains without overlapping or conflicting."
+    },
+    "dev-unrelated-02": {
+      "relation": "unrelated",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Claim A describes the fine-tuning procedure for BERT on GLUE tasks (a classification method), while Claim B describes the mechanism of sinusoidal positional encodings within the Transformer architecture. These claims address distinct aspects of the model's lifecycle and internal structure without overlapping propositions or conflicting conclusions."
+    },
+    "dev-unrelated-03": {
+      "relation": "unrelated",
+      "confidence": 0.95,
+      "condition_differences": [
+        "method"
+      ],
+      "explanation": "Claim A describes the data indexing method (using a fixed Wikipedia snapshot) for RAG, while Claim B describes the tokenization method (WordPiece with a fixed vocabulary) used by BERT. These claims address different technical components of different systems and do not overlap in proposition or conclusion."
+    },
+    "dev-unrelated-04": {
+      "relation": "unrelated",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "Claim A describes the hardware resources (Eight GPUs) used for a specific training run in an English-to-French task. Claim B describes a theoretical fact about BERT's pre-training objectives (Next sentence prediction). The claims address completely different propositions: one is about experimental setup/hardware, and the other is about model architecture/methodology. They do not overlap or conflict."
+    },
+    "dev-uncertain-01": {
+      "relation": "uncertain",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "The claims refer to 'the model' and 'the other model' without explicitly stating that they are the same model, nor do they specify if the experiments used comparable datasets, metrics, or conditions. Without explicit confirmation that these are the same proposition under comparable conditions, we cannot determine if the results contradict each other."
+    },
+    "dev-uncertain-02": {
+      "relation": "uncertain",
+      "confidence": 0.85,
+      "condition_differences": [],
+      "explanation": "The claims report opposite outcomes ('helped' vs 'did not help') regarding pre-training, but the supplied text does not explicitly state whether the datasets, tasks, metrics, or evaluation settings are comparable. Without explicit confirmation that the conditions are identical (or sufficiently similar to expect consistent results), we cannot classify this as a direct contradiction based on the provided information alone."
+    },
+    "dev-uncertain-03": {
+      "relation": "uncertain",
+      "confidence": 0.95,
+      "condition_differences": [],
+      "explanation": "The claims address the same proposition (the effect of retrieval on output quality/outcome) but reach incompatible conclusions ('changed' vs 'did not change'). However, the supplied text lacks explicit information regarding the datasets, metrics, methods, populations, or evaluation settings used in either study. Per Rule 7 and Rule 9, condition differences cannot be inferred or hypothesized; they must be explicitly stated. Since no conditions are stated to be different, nor is it explicitly stated that they are identical, the relationship cannot be definitively classified as a contradiction (which requires comparable conditions) or different_conditions (which requires explicit statement of differing conditions). Therefore, there is insufficient information."
+    }
+  },
+  "candidate_metrics": [
+    {
+      "threshold": 0.0,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.01,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.02,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.03,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.04,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.05,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.06,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.07,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.08,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.09,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.1,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.11,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.12,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.13,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.14,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.15,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.16,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.17,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.18,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.19,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.2,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.21,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.22,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.23,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.24,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.25,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.26,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.27,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.28,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.29,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.3,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.31,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.32,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.33,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.34,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.35,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.36,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.37,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.38,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.39,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.4,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.41,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.42,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.43,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.44,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.45,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.46,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.47,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.48,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.49,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.5,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.51,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.52,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.53,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.54,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.55,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.56,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.57,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.58,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.59,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.6,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.61,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.62,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.63,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.64,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.65,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.66,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.67,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.68,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.69,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.7,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.71,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.72,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.73,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.74,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.75,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.76,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.77,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.78,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.79,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.8,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.81,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.82,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.83,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.84,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.85,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.86,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.87,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.88,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.89,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.9,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.91,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.92,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.93,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.94,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.95,
+      "true_positive": 8,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    {
+      "threshold": 0.96,
+      "true_positive": 0,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 8,
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "threshold": 0.97,
+      "true_positive": 0,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 8,
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "threshold": 0.98,
+      "true_positive": 0,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 8,
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "threshold": 0.99,
+      "true_positive": 0,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 8,
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    {
+      "threshold": 1.0,
+      "true_positive": 0,
+      "false_positive": 0,
+      "true_negative": 16,
+      "false_negative": 8,
+      "precision": 1.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  ],
+  "limitations": [
+    "Threshold and metrics use the same small development set.",
+    "The labels are ChatGPT-authored controlled examples, not human annotations.",
+    "Held-out contradiction accuracy remains an EVAL-02B task."
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "format_version": 1,
+  "collection_name": "ret07b-five-paper-cs-benchmark",
+  "members": [
+    {
+      "dataset_dir": "datasets/arxiv-2410.02902",
+      "annotation_provenance": "annotation_tasks.human-review-provenance.json"
+    },
+    {
+      "dataset_dir": "datasets/arxiv-1706.03762",
+      "annotation_provenance": "annotation_tasks.chatgpt-review-provenance.json"
+    },
+    {
+      "dataset_dir": "datasets/arxiv-1810.04805",
+      "annotation_provenance": "annotation_tasks.chatgpt-review-provenance.json"
+    },
+    {
+      "dataset_dir": "datasets/arxiv-2005.11401",
+      "annotation_provenance": "annotation_tasks.chatgpt-review-provenance.json"
+    },
+    {
+      "dataset_dir": "datasets/arxiv-2106.09685",
+      "annotation_provenance": "annotation_tasks.chatgpt-review-provenance.json"
+    }
+  ]
+}

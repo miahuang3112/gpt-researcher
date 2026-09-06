@@ -1,0 +1,21 @@
+{
+  "format_version": 1,
+  "score_scale": {
+    "1": "Poor: absent, seriously flawed, or unsupported.",
+    "2": "Weak: material gaps substantially limit confidence.",
+    "3": "Adequate: acceptable coverage with notable limitations.",
+    "4": "Strong: well supported with only minor limitations.",
+    "5": "Exceptional: unusually complete, rigorous, and well supported."
+  },
+  "dimensions": {
+    "research_question_clarity": "Research problem, objectives, scope, and motivation are explicit; writing style alone is not rewarded.",
+    "methodological_rigor": "The method is technically sound, justified, internally consistent, and sufficiently detailed.",
+    "experimental_design": "Datasets, protocols, controls, metrics, sample sizes, and ablations answer the research question.",
+    "baseline_quality": "Relevant competitive baselines are included and compared under reasonably fair conditions.",
+    "result_validity": "Conclusions follow from results, uncertainty and negative findings are handled, and claims are proportionate.",
+    "reproducibility": "Model versions, data, parameters, training details, implementation, and evaluation procedures are documented.",
+    "novelty": "The contribution is clearly differentiated from relevant prior work.",
+    "limitations_discussion": "Assumptions, failure cases, generalisation limits, ethical concerns, and unresolved questions are acknowledged.",
+    "citation_quality": "Important claims are connected to relevant prior work with balanced coverage; citation count alone is not rewarded."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "format_version": 1,
+  "papers": [
+    {
+      "paper_id": "arxiv:1706.03762",
+      "title": "Attention Is All You Need",
+      "split_role": "development",
+      "source_document": "1706.03762v7.pdf",
+      "source_sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697",
+      "source_url": "https://arxiv.org/abs/1706.03762"
+    },
+    {
+      "paper_id": "arxiv:1810.04805",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "split_role": "development",
+      "source_document": "1810.04805v2.pdf",
+      "source_sha256": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e",
+      "source_url": "https://arxiv.org/abs/1810.04805"
+    },
+    {
+      "paper_id": "arxiv:2005.11401",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "split_role": "development",
+      "source_document": "2005.11401v4.pdf",
+      "source_sha256": "23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233",
+      "source_url": "https://arxiv.org/abs/2005.11401"
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "split_role": "test",
+      "source_document": "2106.09685v2.pdf",
+      "source_sha256": "e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "source_url": "https://arxiv.org/abs/2106.09685"
+    },
+    {
+      "paper_id": "arxiv:2410.02902",
+      "title": "Better Instruction-Following Through Minimum Bayes Risk",
+      "split_role": "test",
+      "source_document": "2410.02902v4.pdf",
+      "source_sha256": "8876ce43e066a9f90f7915e9cae9f118b949ccf4f30b726e03ec07d5db91d897",
+      "source_url": "https://arxiv.org/abs/2410.02902"
+    }
+  ]
+}

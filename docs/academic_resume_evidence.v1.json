@@ -1,0 +1,127 @@
+{
+  "format_version": 1,
+  "created_on": "2026-09-05",
+  "claim_policy": "Resume metrics must be copied only from the facts below. AI-referenced measurements must retain that qualifier.",
+  "sources": {
+    "async_demo": {
+      "path": "docs/demos/api_queue_worker_database.md",
+      "sha256": "7eb0a36e1613700a4520954b904816cd08215f6d6c6dad745180fba8db09df6c"
+    },
+    "interface_demo": {
+      "path": "docs/demos/web_mcp_skill.md",
+      "sha256": "cac23bc05d83b51b79b8f1f6ac4b0376965d865e22d45595415b6dba263789af"
+    },
+    "ret10b": {
+      "path": "evals/academic_retrieval/ret10b_heldout_summary.json",
+      "sha256": "def39eec5e820801bbf94479dab9da2d13590ace3beb0e18fe5e1fc38af50b8c"
+    },
+    "ret11a": {
+      "path": "evals/academic_retrieval/ret11a_selector_comparison_summary.json",
+      "sha256": "4d6339f04feb54a462f0b84e6f027e2e77cd1b4ded800aa14176e6c9ddef2e75"
+    },
+    "ret11b": {
+      "path": "evals/academic_quality/ret11b_selector_quality_summary.json",
+      "sha256": "c85a0bc92b93a13fae4a79498df5a20fee20f442d3fccd01161b3c596cf16459"
+    },
+    "eval02a": {
+      "path": "evals/academic_quality/eval02a_score_reliability_summary.json",
+      "sha256": "07ba5a42b462ae3e87ad58346a78880963492c34e282a82be732109efeb30210"
+    },
+    "eval02b": {
+      "path": "evals/academic_quality/eval02b_validation_accuracy_summary.json",
+      "sha256": "68cdac40d26df110004da3b34f3009b5cccf59952de8f7fba3a338dc87a06ee1"
+    },
+    "eval03": {
+      "path": "evals/academic_quality/eval03_development_ablation_summary.json",
+      "sha256": "eb747cd45de3e6ad3b92148c7227405d42f9dec4866c830d5e76151843f643c4"
+    },
+    "fast_ci": {
+      "path": ".github/workflows/academic-ci.yml",
+      "sha256": "a8813f81dcc8a593d31751d5880e78c23561d5488b1a9e305bc564c0721e6ff2"
+    },
+    "scheduled_ci": {
+      "path": ".github/workflows/academic-benchmarks.yml",
+      "sha256": "16813f95a52a94449dbe3f0392b6f7755fcee266ee4a21cbd07e6b888565254f"
+    }
+  },
+  "facts": {
+    "async_reliability": {
+      "dimensions_completed": 9,
+      "worker_killed_after_dimensions": 8,
+      "recovered_delivery_number": 2,
+      "poison_job_dlq_delivery_number": 3,
+      "source": "async_demo"
+    },
+    "agent_interfaces": {
+      "mcp_tool_count": 7,
+      "web_dimension_card_count": 9,
+      "mobile_viewport_verified": "390x844",
+      "skill_validation": "passed",
+      "source": "interface_demo"
+    },
+    "retrieval_heldout": {
+      "heldout_paper_count": 2,
+      "heldout_query_count": 18,
+      "hybrid_recall_at_10": 0.1824,
+      "bm25_recall_at_10": 0.2555,
+      "hybrid_ndcg_at_10": 0.3462,
+      "bm25_ndcg_at_10": 0.4338,
+      "policy_retuned_from_test": false,
+      "source": "ret10b"
+    },
+    "score_reliability": {
+      "paper_count": 5,
+      "dimension_label_count": 45,
+      "scorable_count": 42,
+      "terminal_failure_count": 0,
+      "chatgpt_reference_mae": 0.5,
+      "within_one_point_rate": 0.928571,
+      "repeat_comparable_item_count": 16,
+      "repeat_exact_agreement_rate": 1.0,
+      "reference_annotator": "ChatGPT",
+      "source": "eval02a"
+    },
+    "validation_accuracy": {
+      "controlled_heldout_case_count": 28,
+      "citation_case_count": 16,
+      "citation_four_class_accuracy": 0.8125,
+      "citation_macro_f1": 0.781818,
+      "citation_supported_binary_f1": 1.0,
+      "contradiction_case_count": 12,
+      "contradiction_six_class_accuracy": 0.833333,
+      "contradiction_macro_f1": 0.777778,
+      "warning_threshold": 0.95,
+      "warning_f1": 1.0,
+      "reference_annotator": "ChatGPT",
+      "source": "eval02b"
+    },
+    "development_ablation": {
+      "paper_count": 3,
+      "configuration_count": 3,
+      "total_evaluation_count": 81,
+      "terminal_failure_count": 0,
+      "hybrid_anchored_mae": 0.304348,
+      "hybrid_no_anchors_mae": 0.521739,
+      "section_anchored_mae": 0.28,
+      "section_mae_improvement": 0.024348,
+      "minimum_mae_improvement_for_adoption": 0.1,
+      "selected_prompt_and_retriever": "hybrid_anchored",
+      "heldout_used": false,
+      "reference_annotator": "ChatGPT",
+      "source": "eval03"
+    },
+    "benchmark_automation": {
+      "deterministic_hash_check_count": 11,
+      "deterministic_invariant_count": 15,
+      "scheduled_report_count": 8,
+      "artifact_retention_days": 30,
+      "source": "scheduled_ci"
+    }
+  },
+  "prohibited_claims": [
+    "Do not call ChatGPT labels independent human labels or ground truth.",
+    "Do not claim the frozen Hybrid retriever beat BM25 on held-out data.",
+    "Do not claim automated assessment is peer review or publication-quality judgement.",
+    "Do not claim statistical significance or real-world generalisation from these small samples."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "format_version": 1,
+  "label_file": "labels.chatgpt.v1.jsonl",
+  "annotator_type": "ai",
+  "annotator_name": "ChatGPT",
+  "review_method": "Evidence-bounded assessment of the five local public paper PDFs and their frozen extracted corpus, using rubric.v1.json.",
+  "completed_at": "2026-09-02",
+  "independent_human_review": false,
+  "permitted_claim": "Metrics may be described as agreement with the versioned ChatGPT reference labels.",
+  "prohibited_claims": [
+    "human-scored benchmark",
+    "independent peer review",
+    "publication recommendation",
+    "ground-truth paper quality"
+  ],
+  "separation_guarantee": "Paper-quality scores are stored outside academic_retrieval and were not copied from RET relevance grades. Retrieval chunk IDs are used only as evidence pointers.",
+  "limitations": [
+    "A single AI annotator cannot estimate inter-rater reliability.",
+    "All five papers are influential computer-science preprints, so score range and domain coverage are limited.",
+    "The set is suitable for engineering regression and provisional calibration, not external validity claims."
+  ]
+}

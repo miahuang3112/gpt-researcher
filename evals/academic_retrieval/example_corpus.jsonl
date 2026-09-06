@@ -1,0 +1,4 @@
+{"chunk_id":"example-paper-p1-c1","paper_id":"example-paper","text":"The experiments use the CIFAR-10 dataset and report accuracy against ResNet baselines.","section":"Experiments","page":1}
+{"chunk_id":"example-paper-p2-c2","paper_id":"example-paper","text":"All training hyperparameters, random seeds, hardware details and source code are provided for reproducibility.","section":"Methods","page":2}
+{"chunk_id":"example-paper-p3-c3","paper_id":"example-paper","text":"The paper discusses related work on semantic evidence retrieval and dense representation learning.","section":"Related Work","page":3}
+{"chunk_id":"example-paper-p4-c4","paper_id":"example-paper","text":"The conclusion summarises the main contribution and future work.","section":"Conclusion","page":4}

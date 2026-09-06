@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "comparison": "section-only-vs-frozen-hybrid-v1",
+  "scope": "held-out-test-descriptive-only",
+  "policy_id": "ret10b-hybrid-v1",
+  "policy_sha256": "24dbd793106691392c26cdf17b690277a285ddb2d5c5d38da03109501a3b9214",
+  "test_manifest_sha256": "0e13e875f66e50e1981209d2ac0eeb99cf7c662cda487449e2272e539226a464",
+  "full_report": "results/ret11a-section-vs-hybrid-heldout.json",
+  "full_report_sha256": "a64da04e7c3c325e2a7a15b47e59f55dc6906c16eb54d4a4ade1a70a7f5f35a1",
+  "config": {
+    "paper_count": 2,
+    "query_count": 18,
+    "top_k": 4,
+    "hybrid_candidate_top_k": 20,
+    "hybrid_rrf_k": 100,
+    "embedding_model": "qwen3-embedding:4b"
+  },
+  "section": {
+    "failure_count": 0,
+    "recall_at_4": 0.18462320983975467,
+    "precision_at_4": 0.7361111111111112,
+    "ndcg_at_4": 0.60658550435372,
+    "valid_candidate_rate": 1.0,
+    "relevant_candidate_rate": 0.7361111111111112,
+    "highly_relevant_candidate_rate": 0.4861111111111111,
+    "query_coverage_rate": 1.0,
+    "mean_query_latency_ms": 1.3169929993131921,
+    "p95_query_latency_ms": 1.782999956049025
+  },
+  "hybrid": {
+    "failure_count": 0,
+    "index_failure_count": 0,
+    "recall_at_4": 0.07549736860388322,
+    "precision_at_4": 0.4861111111111111,
+    "ndcg_at_4": 0.3930046761800182,
+    "valid_candidate_rate": 1.0,
+    "relevant_candidate_rate": 0.4861111111111111,
+    "highly_relevant_candidate_rate": 0.3333333333333333,
+    "query_coverage_rate": 0.7222222222222222,
+    "total_index_build_latency_ms": 364300.25566602126,
+    "mean_index_build_latency_ms_per_paper": 182150.12783301063,
+    "mean_query_latency_ms": 292.044250042333,
+    "p95_query_latency_ms": 329.5894169714302
+  },
+  "interpretation": {
+    "winner_on_automatic_evidence_metrics": "section",
+    "policy_changed": false,
+    "retuning_permitted": false,
+    "citation_metrics_are": "qrels-based citation-readiness proxies",
+    "actual_model_citation_choice_measured": false,
+    "human_paper_quality_measured": false,
+    "caveat": "Section preferences and benchmark dimensions share rubric semantics, and labels have mixed ChatGPT/project-owner provenance. RET-11B is required before making paper-quality claims."
+  }
+}

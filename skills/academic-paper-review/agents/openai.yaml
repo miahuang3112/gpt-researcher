@@ -1,0 +1,13 @@
+interface:
+  display_name: "Academic Paper Review"
+  short_description: "Run evidence-grounded automated paper assessments"
+  default_prompt: "Use $academic-paper-review to evaluate this computer-science paper and explain the evidence behind each score."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "academic-evaluation"
+      description: "Submit evaluations and retrieve persisted scores and evidence"
+
+policy:
+  allow_implicit_invocation: true

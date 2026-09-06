@@ -1,0 +1,5 @@
+.git
+output/
+**/node_modules/
+**/.next/
+backups/

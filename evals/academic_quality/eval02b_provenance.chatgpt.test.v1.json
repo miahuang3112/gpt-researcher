@@ -1,0 +1,33 @@
+{
+  "format_version": 1,
+  "citation_label_file": "citation_validation_labels.chatgpt.test.v1.jsonl",
+  "contradiction_label_file": "contradiction_labels.chatgpt.test.v1.jsonl",
+  "annotator_type": "ai",
+  "annotator_name": "ChatGPT",
+  "independent_human_review": false,
+  "split": "test",
+  "source_paper_ids": [
+    "arxiv:2106.09685",
+    "arxiv:2410.02902"
+  ],
+  "excluded_development_paper_ids": [
+    "arxiv:1706.03762",
+    "arxiv:1810.04805",
+    "arxiv:2005.11401"
+  ],
+  "frozen_test_corpus_sha256": "5fd28cf85a7bdc18d02e5ff707d989b6220f14501ea28ab6dd7772420d94ef34",
+  "construction": "ChatGPT created balanced controlled citation-support and cross-claim relation cases from propositions and evidence chunks in the two frozen held-out papers. Labels were authored after DATA-05B threshold selection and were not used to tune the model, prompts or frozen warning threshold.",
+  "permitted_claim": "The labels support descriptive held-out engineering measurements for citation validation and contradiction warnings.",
+  "prohibited_claims": [
+    "human-labelled benchmark",
+    "independent peer review",
+    "statistical significance",
+    "real-world generalisation",
+    "ground-truth scientific correctness"
+  ],
+  "limitations": [
+    "The benchmark is small and uses one AI annotator.",
+    "Most cases are controlled perturbations rather than naturally occurring citation errors or cross-paper disputes.",
+    "The two source papers are both computer-science papers and do not represent other disciplines."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "evaluation": "eval02a-paper-score-reliability",
+  "scope": "five-paper-descriptive-measurement",
+  "generated_at_utc": "2026-09-03T09:37:38.437453+00:00",
+  "model": "qwen3.5:9b",
+  "temperature": 0.0,
+  "paper_count": 5,
+  "dimension_label_count": 45,
+  "scorable_count": 42,
+  "insufficient_evidence_count": 3,
+  "terminal_failure_count": 0,
+  "full_report": "results/eval02a-score-reliability.json",
+  "full_report_sha256": "c3f851cbbb661f8c8eedd5fcd2b390c6175757f263afc00dc68ab3eb8030ebee",
+  "checkpoint_sha256": "c4775da8393c5444a3cad8f34654755ee56990b9dc7a75a3ae055697c2cf2013",
+  "reference_labels_sha256": "a4ea3d519fcc740b1059e5cee14a40efd1f1463edb85e9cba7a0d2ae1ef9925e",
+  "aggregate": {
+    "chatgpt_reference_mae": 0.5,
+    "chatgpt_reference_pearson": 0.149366,
+    "chatgpt_reference_spearman": 0.168941,
+    "exact_match_rate": 0.571429,
+    "within_one_point_rate": 0.928571
+  },
+  "heldout_repeat_stability": {
+    "expected_item_count": 18,
+    "complete_item_count": 16,
+    "selection_mismatch_count": 1,
+    "exact_run_agreement_rate": 1.0,
+    "mean_within_item_standard_deviation": 0.0,
+    "mean_pairwise_run_pearson": 1.0,
+    "mean_pairwise_run_spearman": 1.0
+  },
+  "recovery_audit": {
+    "model_call_count": 113,
+    "failed_model_call_count": 68,
+    "failed_item_count": 15,
+    "recovered_item_count": 15,
+    "compact_recovery_item_count": 2
+  },
+  "interpretation": {
+    "reference_annotator_type": "ai",
+    "reference_annotator_name": "ChatGPT",
+    "human_paper_quality_measured": false,
+    "heldout_used_for_retuning": false,
+    "inferential_significance_claimed": false,
+    "caveat": "Five papers and one AI reference annotator support descriptive engineering measurements only. Per-dimension correlations use four or five scorable papers and are unstable; null correlations indicate constant values. Stability covers 16 comparable held-out dimension pairs across two independent temperature-zero runs."
+  }
+}

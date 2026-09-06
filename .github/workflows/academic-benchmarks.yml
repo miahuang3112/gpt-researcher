@@ -1,0 +1,77 @@
+name: Academic Benchmarks
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: academic-benchmarks
+  cancel-in-progress: false
+
+jobs:
+  deterministic-smoke:
+    name: Verify frozen benchmark evidence
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify hashes, failures, splits and frozen decisions
+        run: python -m evals.verify_academic_benchmarks
+
+  full-model-benchmark:
+    name: Run retrieval and model-quality benchmarks
+    needs: deterministic-smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-academic.txt
+
+      - name: Install benchmark dependencies
+        run: >-
+          python -m pip install
+          -r requirements-academic.txt
+          "pytest>=8,<9"
+          "pytest-asyncio>=0.24,<2"
+
+      - name: Start pinned Ollama service
+        run: |
+          docker run --detach --name academic-ollama --publish 11434:11434 ollama/ollama:0.32.13
+          timeout 60 bash -c 'until curl --fail --silent http://127.0.0.1:11434/api/tags >/dev/null; do sleep 2; done'
+
+      - name: Pull frozen benchmark models
+        run: |
+          docker exec academic-ollama ollama pull qwen3-embedding:4b
+          docker exec academic-ollama ollama pull qwen3.5:9b
+
+      - name: Run full Academic benchmark suite
+        env:
+          OLLAMA_BASE_URL: http://127.0.0.1:11434
+        run: ./scripts/run_academic_benchmarks.sh artifacts/academic-benchmarks
+
+      - name: Upload benchmark reports and checkpoints
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: academic-benchmarks-${{ github.run_id }}
+          path: artifacts/academic-benchmarks
+          if-no-files-found: error
+          retention-days: 30

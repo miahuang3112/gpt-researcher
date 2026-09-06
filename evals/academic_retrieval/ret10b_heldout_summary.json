@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "policy_id": "ret10b-hybrid-v1",
+  "policy_sha256": "24dbd793106691392c26cdf17b690277a285ddb2d5c5d38da03109501a3b9214",
+  "held_out_report": "results/ret10b-heldout-test-qwen3-embedding-4b.json",
+  "held_out_report_sha256": "354a423b468f4e1e434264370d6995f1ca143bdfe762646a1ab10ca50be98f2a",
+  "test_manifest_sha256": "0e13e875f66e50e1981209d2ac0eeb99cf7c662cda487449e2272e539226a464",
+  "paper_ids": ["arxiv:2410.02902", "arxiv:2106.09685"],
+  "query_count": 18,
+  "failure_count": 0,
+  "metrics": {
+    "bm25": {
+      "recall_at_4": 0.1204510994502269,
+      "recall_at_10": 0.25551468789011755,
+      "ndcg_at_4": 0.41753321655543113,
+      "ndcg_at_10": 0.4338185797978756
+    },
+    "vector": {
+      "recall_at_4": 0.038223044542559204,
+      "recall_at_10": 0.1024323543497101,
+      "ndcg_at_4": 0.18440097877559306,
+      "ndcg_at_10": 0.19468425328882352
+    },
+    "hybrid_frozen_default": {
+      "recall_at_4": 0.07549736860388322,
+      "recall_at_10": 0.18239441136267398,
+      "ndcg_at_4": 0.3901651004164249,
+      "ndcg_at_10": 0.34619214304192114
+    }
+  },
+  "interpretation": {
+    "test_used_for_retuning": false,
+    "policy_changed_after_test": false,
+    "conclusion": "The development-selected Hybrid v1 policy did not generalise as well as BM25 on the two held-out papers.",
+    "required_follow_up": "Do not revise v1 from these test results. Collect a new development set and issue a separately versioned policy before changing the default."
+  },
+  "annotation_warning": "Four of five benchmark papers use ChatGPT annotation and ChatGPT review; results are not independent human-gold estimates."
+}
