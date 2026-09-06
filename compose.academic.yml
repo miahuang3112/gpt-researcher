@@ -55,7 +55,7 @@ services:
 
 
   academic-migrate:
-    image: gpt-researcher-academic:local
+    image: academic-paper-evaluator:local
     container_name: academic-migrate
     restart: "no"
 
@@ -87,7 +87,7 @@ services:
       context: .
       dockerfile: Dockerfile.academic
 
-    image: gpt-researcher-academic:local
+    image: academic-paper-evaluator:local
     container_name: academic-api
     restart: unless-stopped
 
@@ -103,7 +103,7 @@ services:
 
       # Ollama continues running directly on the Mac.
       OLLAMA_BASE_URL: http://host.docker.internal:11434
-      ACADEMIC_PDF_IMPORT_ROOTS: "${ACADEMIC_DATA_DIR:-/Users/mia/Desktop}"
+      ACADEMIC_PDF_IMPORT_ROOTS: /imports
       ACADEMIC_PDF_STORAGE_DIR: /data/academic/pdfs
       ACADEMIC_CHECKPOINT_STORAGE_DIR: /data/academic/checkpoints
       ACADEMIC_HYBRID_RETRIEVAL_ENABLED: "${ACADEMIC_HYBRID_RETRIEVAL_ENABLED:-true}"
@@ -121,7 +121,7 @@ services:
     volumes:
       # Keep the current PDF/checkpoint path valid inside
       # both the Mac and the container.
-      - "${ACADEMIC_DATA_DIR:-/Users/mia/Desktop}:${ACADEMIC_DATA_DIR:-/Users/mia/Desktop}"
+      - "${ACADEMIC_DATA_DIR:-./data}:/imports:ro"
       - academic_secure_data:/data/academic
 
     extra_hosts:
@@ -161,7 +161,7 @@ services:
 
 
   academic-worker:
-    image: gpt-researcher-academic:local
+    image: academic-paper-evaluator:local
     container_name: academic-worker
     restart: unless-stopped
 
@@ -187,7 +187,7 @@ services:
       CROSSREF_MAILTO: "${CROSSREF_MAILTO:-}"
 
     volumes:
-      - "${ACADEMIC_DATA_DIR:-/Users/mia/Desktop}:${ACADEMIC_DATA_DIR:-/Users/mia/Desktop}"
+      - "${ACADEMIC_DATA_DIR:-./data}:/imports:ro"
       - academic_secure_data:/data/academic
 
     extra_hosts:

@@ -189,14 +189,14 @@ invariants without calling Ollama or the network:
 python -m evals.verify_academic_benchmarks
 ```
 
-`.github/workflows/academic-benchmarks.yml` also runs weekly and on manual
-dispatch. It starts pinned Ollama `0.32.13`, pulls the frozen embedding and
-scoring models, re-runs development tuning, held-out retrieval, selector
-comparison, contradiction calibration, score reliability, held-out validation,
-and development ablations, then validates all eight outputs. Reports,
-checkpoints, and a SHA-256 run manifest are retained as one CI artifact for 30
-days. A terminal model failure or a development/held-out boundary violation
-fails the scheduled run.
+`.github/workflows/academic-benchmarks.yml` runs the deterministic public gate
+weekly. The complete eight-report Ollama job is manual because the source PDF
+corpora are intentionally not committed. With that protected corpus supplied,
+the job re-runs development tuning, held-out retrieval, selector comparison,
+contradiction calibration, score reliability, held-out validation, and
+development ablations. Reports, checkpoints, and a SHA-256 run manifest are
+retained as one CI artifact for 30 days. Missing corpus data, terminal model
+failure, or a development/held-out boundary violation fails the full run.
 
 For the same complete run against an existing local Ollama service:
 

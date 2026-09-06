@@ -1,0 +1,50 @@
+{
+  "format_version": 1,
+  "split_name": "ret09-five-paper-v1",
+  "split_role": "test",
+  "tuning_permitted": false,
+  "paper_ids": [
+    "arxiv:2410.02902",
+    "arxiv:2106.09685"
+  ],
+  "paper_count": 2,
+  "chunk_count": 157,
+  "query_count": 18,
+  "positive_judgement_count": 432,
+  "corpus_sha256": "5fd28cf85a7bdc18d02e5ff707d989b6220f14501ea28ab6dd7772420d94ef34",
+  "queries_sha256": "b4ef0bc936b8ba20f79c5382dd90885f1e336059d164f409ecf122948cdc2b5b",
+  "parent_collection_manifest_sha256": "71ba1c9131d5e74147edee48c8214f13feb17aee96f4044d12195b3dfde0b85f",
+  "members": [
+    {
+      "paper_id": "arxiv:2410.02902",
+      "dataset_dir": "datasets/arxiv-2410.02902",
+      "chunk_count": 90,
+      "query_count": 9,
+      "positive_judgement_count": 190,
+      "source_document": "2410.02902v4.pdf",
+      "source_sha256": "8876ce43e066a9f90f7915e9cae9f118b949ccf4f30b726e03ec07d5db91d897",
+      "corpus_sha256": "7a7449c75ebef63dae26ae8f31e0728a24a5a46a75e724d958e68265a25a7ad1",
+      "queries_sha256": "503552a563cacff754d7c8226c36a57ba79344575b5b494da44b4492e1aea154",
+      "annotation_provenance": "annotation_tasks.human-review-provenance.json",
+      "annotation_provenance_sha256": "cea2406e67dde17ee47ca848b8d26e31e0db3e6cee4728698986e0c86157f4b8",
+      "annotation_type": "Human-reviewed and project-owner-adjudicated AI pre-annotations",
+      "independent_human_annotation": false
+    },
+    {
+      "paper_id": "arxiv:2106.09685",
+      "dataset_dir": "datasets/arxiv-2106.09685",
+      "chunk_count": 67,
+      "query_count": 9,
+      "positive_judgement_count": 242,
+      "source_document": "2106.09685v2.pdf",
+      "source_sha256": "e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "corpus_sha256": "a55467c74f6005f3f847bc6cdab2255955d33f2ec63dfe3d4b237d4c0e01ee82",
+      "queries_sha256": "93d32f59c6fc59c6c7bdf17807e6ba7fe2ab6e1b2d9b7d6f1ed3696fe33361b2",
+      "annotation_provenance": "annotation_tasks.chatgpt-review-provenance.json",
+      "annotation_provenance_sha256": "6da4f7ac26c034eff1936096dd59eb958d44a9e9124d4a2918351a00923c9918",
+      "annotation_type": "ChatGPT AI annotation and ChatGPT review",
+      "independent_human_annotation": false
+    }
+  ],
+  "usage_policy": "Held-out test split: parameter selection is forbidden."
+}

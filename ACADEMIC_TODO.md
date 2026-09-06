@@ -399,17 +399,19 @@ Rules:
   - Versioned the full report, frozen protocol, hash-pinned summary, resumable
     runner, recovery audit trail, and regression tests. Measurements use one AI
     annotator and three development papers; no generalisation claim is made.
-- [x] **EVAL-04** Add deterministic benchmark smoke checks to CI and scheduled
-  full benchmark runs.
+- [x] **EVAL-04** Add deterministic benchmark smoke checks to CI and a manual
+  full benchmark run.
   - Dependencies: RET-09, EVAL-02A.
   - Added a fail-closed, network-free CI smoke command that verifies 11 pinned
     artifact hashes and 15 zero-failure, split-isolation, no-retuning and frozen
     policy invariants before the Academic test suite.
-  - Added a weekly/manual six-hour full benchmark workflow with pinned Ollama
+  - Added a manually dispatched six-hour full benchmark workflow with pinned Ollama
     `0.32.13`, frozen `qwen3-embedding:4b`/`qwen3.5:9b` models, eight retrieval
     and quality reports, checkpoint/recovery, post-run validation, SHA-256 run
     manifest, and 30-day artifact retention.
-  - Added a reusable local full-suite runner, scheduled-output validator and
+  - The weekly schedule runs only the public, deterministic smoke gate because
+    copyrighted PDF corpora are deliberately excluded from the repository.
+  - Added a reusable local full-suite runner, full-output validator and
     workflow regression tests. Verified: EVAL-04/EVAL-03 tests `11 passed`, both
     workflow YAML files parse, shell syntax passes, and `git diff --check`
     passes.

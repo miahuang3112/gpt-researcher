@@ -1,42 +1,13 @@
-import withPWAInit from "@ducanh2912/next-pwa";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        hostname: 'www.google.com',
-      },
-      {
-        hostname: 'www.google-analytics.com',
-      },
-      {
-        hostname: 'localhost',
-      }
-    ],
-  },
-  // Proxy /outputs requests to the backend server for generated images
+  output: "standalone",
   async rewrites() {
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
-    const academicBackendUrl = process.env.ACADEMIC_API_URL || 'http://localhost:8001';
-    return [
-      {
-        source: '/api/academic/:path*',
-        destination: `${academicBackendUrl}/api/academic/:path*`,
-      },
-      {
-        source: '/outputs/:path*',
-        destination: `${backendUrl}/outputs/:path*`,
-      },
-    ];
+    const academicApi = process.env.ACADEMIC_API_URL || "http://127.0.0.1:8001";
+    return [{
+      source: "/api/academic/:path*",
+      destination: `${academicApi}/api/academic/:path*`,
+    }];
   },
 };
 
-const withPWA = withPWAInit({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === "development",
-});
-
-export default withPWA(nextConfig);
+export default nextConfig;

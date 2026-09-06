@@ -1,0 +1,1943 @@
+{
+  "schema_version": 1,
+  "evaluated_at_utc": "2026-09-01T14:44:46.839952+00:00",
+  "evaluation_scope": "held-out-test",
+  "parameter_selection_permitted": false,
+  "policy": {
+    "path": "/Users/mia/Desktop/gpt-researcher/evals/academic_retrieval/ret10b_frozen_policy.json",
+    "sha256": "24dbd793106691392c26cdf17b690277a285ddb2d5c5d38da03109501a3b9214",
+    "policy_id": "ret10b-hybrid-v1",
+    "retriever": "hybrid",
+    "parameters": {
+      "embedding_provider": "ollama",
+      "embedding_model": "qwen3-embedding:4b",
+      "candidate_top_k": 20,
+      "rrf_k": 100,
+      "evidence_top_k_default": 4,
+      "evaluation_cutoffs": [
+        4,
+        10
+      ]
+    }
+  },
+  "test_split": {
+    "manifest": "/Users/mia/Desktop/gpt-researcher/evals/academic_retrieval/datasets/ret09-five-paper-v1/test/manifest.json",
+    "manifest_sha256": "0e13e875f66e50e1981209d2ac0eeb99cf7c662cda487449e2272e539226a464",
+    "paper_ids": [
+      "arxiv:2410.02902",
+      "arxiv:2106.09685"
+    ],
+    "corpus_sha256": "5fd28cf85a7bdc18d02e5ff707d989b6220f14501ea28ab6dd7772420d94ef34",
+    "queries_sha256": "b4ef0bc936b8ba20f79c5382dd90885f1e336059d164f409ecf122948cdc2b5b"
+  },
+  "default_system": "hybrid",
+  "default_system_summary": {
+    "query_count": 18,
+    "failure_count": 0,
+    "recall_at_k": {
+      "4": 0.07549736860388322,
+      "10": 0.18239441136267398
+    },
+    "precision_at_k": {
+      "4": 0.4861111111111111,
+      "10": 0.43333333333333335
+    },
+    "ndcg_at_k": {
+      "4": 0.3901651004164249,
+      "10": 0.34619214304192114
+    },
+    "mean_reciprocal_rank": 0.6301587301587301,
+    "mean_latency_ms": 213.01298389961528,
+    "p95_latency_ms": 331.9564589764923
+  },
+  "benchmark": {
+    "config": {
+      "cutoffs": [
+        4,
+        10
+      ],
+      "candidate_top_k": 20,
+      "rrf_k": 100
+    },
+    "summary": {
+      "bm25": {
+        "query_count": 18,
+        "failure_count": 0,
+        "recall_at_k": {
+          "4": 0.1204510994502269,
+          "10": 0.25551468789011755
+        },
+        "precision_at_k": {
+          "4": 0.6111111111111112,
+          "10": 0.5499999999999999
+        },
+        "ndcg_at_k": {
+          "4": 0.41753321655543113,
+          "10": 0.4338185797978756
+        },
+        "mean_reciprocal_rank": 0.7546296296296297,
+        "mean_latency_ms": 1.5507755969237123,
+        "p95_latency_ms": 7.469834061339498
+      },
+      "vector": {
+        "query_count": 18,
+        "failure_count": 0,
+        "recall_at_k": {
+          "4": 0.038223044542559204,
+          "10": 0.1024323543497101
+        },
+        "precision_at_k": {
+          "4": 0.2916666666666667,
+          "10": 0.2833333333333334
+        },
+        "ndcg_at_k": {
+          "4": 0.18440097877559306,
+          "10": 0.19468425328882352
+        },
+        "mean_reciprocal_rank": 0.4564814814814815,
+        "mean_latency_ms": 321.3801226617458,
+        "p95_latency_ms": 483.70804195292294
+      },
+      "hybrid": {
+        "query_count": 18,
+        "failure_count": 0,
+        "recall_at_k": {
+          "4": 0.07549736860388322,
+          "10": 0.18239441136267398
+        },
+        "precision_at_k": {
+          "4": 0.4861111111111111,
+          "10": 0.43333333333333335
+        },
+        "ndcg_at_k": {
+          "4": 0.3901651004164249,
+          "10": 0.34619214304192114
+        },
+        "mean_reciprocal_rank": 0.6301587301587301,
+        "mean_latency_ms": 213.01298389961528,
+        "p95_latency_ms": 331.9564589764923
+      }
+    },
+    "queries": [
+      {
+        "query_id": "arxiv:2410.02902-research_question_clarity",
+        "paper_id": "arxiv:2410.02902",
+        "dimension": "research_question_clarity",
+        "query": "Where does the paper state its research problem, objectives, scope and motivation?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p1-c3-df06b8be6e1e8233",
+              "arxiv:2410.02902-p10-c26-0d24a7e5cb9acf91",
+              "arxiv:2410.02902-p29-c74-5023c879f4032d2a",
+              "arxiv:2410.02902-p11-c28-f694ed0def84138c",
+              "arxiv:2410.02902-p9-c22-31ecf2c7ee28004b",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p3-c7-9bdbfd9a4efda6d8",
+              "arxiv:2410.02902-p3-c8-9a930b5361221c7d",
+              "arxiv:2410.02902-p6-c14-0128e198dfcbe0d6"
+            ],
+            "latency_ms": 7.469834061339498,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.3333333333333333,
+                "10": 0.3333333333333333
+              },
+              "precision_at_k": {
+                "4": 0.5,
+                "10": 0.2
+              },
+              "ndcg_at_k": {
+                "4": 0.3506706597878829,
+                "10": 0.3162335422899268
+              },
+              "reciprocal_rank": 0.5
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+              "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+              "arxiv:2410.02902-p11-c28-f694ed0def84138c",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038",
+              "arxiv:2410.02902-p14-c38-37d7cb6e47143829",
+              "arxiv:2410.02902-p15-c40-47424ab1878fa52d"
+            ],
+            "latency_ms": 314.0724159311503,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "reciprocal_rank": 0.0
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p11-c28-f694ed0def84138c",
+              "arxiv:2410.02902-p26-c68-9236b792d5ac27e7",
+              "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p1-c3-df06b8be6e1e8233",
+              "arxiv:2410.02902-p10-c26-0d24a7e5cb9acf91",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p29-c74-5023c879f4032d2a"
+            ],
+            "latency_ms": 220.64616600982845,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.3333333333333333
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.2
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.17385321999470074
+              },
+              "reciprocal_rank": 0.14285714285714285
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2410.02902-methodological_rigor",
+        "paper_id": "arxiv:2410.02902",
+        "dimension": "methodological_rigor",
+        "query": "What evidence describes and justifies the method, assumptions, technical design and implementation details?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p16-c44-d36235f0aedf9c5d",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p6-c13-b68e3c359a6a93f4",
+              "arxiv:2410.02902-p3-c8-9a930b5361221c7d",
+              "arxiv:2410.02902-p1-c2-7a4fa9c1eb7b4655",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038",
+              "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+              "arxiv:2410.02902-p1-c3-df06b8be6e1e8233",
+              "arxiv:2410.02902-p21-c56-517a0dde7d8b69e3"
+            ],
+            "latency_ms": 1.5130839310586452,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.08695652173913043,
+                "10": 0.17391304347826086
+              },
+              "precision_at_k": {
+                "4": 0.5,
+                "10": 0.4
+              },
+              "ndcg_at_k": {
+                "4": 0.2502283325180275,
+                "10": 0.23264203610173867
+              },
+              "reciprocal_rank": 0.5
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p15-c40-47424ab1878fa52d",
+              "arxiv:2410.02902-p32-c85-fb721200094e196c",
+              "arxiv:2410.02902-p14-c38-37d7cb6e47143829",
+              "arxiv:2410.02902-p13-c36-4957ce3ff4e0f092"
+            ],
+            "latency_ms": 321.5595409274101,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.08695652173913043,
+                "10": 0.21739130434782608
+              },
+              "precision_at_k": {
+                "4": 0.5,
+                "10": 0.5
+              },
+              "ndcg_at_k": {
+                "4": 0.1381433083372825,
+                "10": 0.19009698939665
+              },
+              "reciprocal_rank": 0.5
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p1-c2-7a4fa9c1eb7b4655",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038",
+              "arxiv:2410.02902-p11-c29-418e93e53c7cdff6",
+              "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+              "arxiv:2410.02902-p16-c44-d36235f0aedf9c5d",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5"
+            ],
+            "latency_ms": 203.95683404058218,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.13043478260869565,
+                "10": 0.21739130434782608
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.5
+              },
+              "ndcg_at_k": {
+                "4": 0.27729082124296084,
+                "10": 0.2516699166181725
+              },
+              "reciprocal_rank": 1.0
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2410.02902-experimental_design",
+        "paper_id": "arxiv:2410.02902",
+        "dimension": "experimental_design",
+        "query": "What datasets, evaluation protocols, controls, metrics, ablations and sample sizes are used in the experiments?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p10-c26-0d24a7e5cb9acf91",
+              "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p16-c44-d36235f0aedf9c5d",
+              "arxiv:2410.02902-p4-c9-58cbe89aa5795de5",
+              "arxiv:2410.02902-p21-c56-517a0dde7d8b69e3",
+              "arxiv:2410.02902-p2-c4-6b28076934ba1e9e",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p5-c12-ae16594a367cb7fc",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12"
+            ],
+            "latency_ms": 1.3909999979659915,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.07692307692307693,
+                "10": 0.15384615384615385
+              },
+              "precision_at_k": {
+                "4": 0.5,
+                "10": 0.4
+              },
+              "ndcg_at_k": {
+                "4": 0.4414924137367808,
+                "10": 0.357195185309808
+              },
+              "reciprocal_rank": 0.5
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p13-c37-64854211309737ff",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5",
+              "arxiv:2410.02902-p8-c19-ff864b577c227fb7",
+              "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f",
+              "arxiv:2410.02902-p31-c81-c59d47fa4b650d21",
+              "arxiv:2410.02902-p30-c78-a1cef1d8a2e4472d",
+              "arxiv:2410.02902-p18-c51-ef0e8dd7b81d13dc",
+              "arxiv:2410.02902-p26-c70-24c1c589c4291fe3"
+            ],
+            "latency_ms": 303.2065840670839,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.11538461538461539,
+                "10": 0.19230769230769232
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.5
+              },
+              "ndcg_at_k": {
+                "4": 0.4934442445978689,
+                "10": 0.38454821665922245
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f",
+              "arxiv:2410.02902-p16-c44-d36235f0aedf9c5d",
+              "arxiv:2410.02902-p8-c19-ff864b577c227fb7",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p10-c24-03becaa63ee20ff6",
+              "arxiv:2410.02902-p10-c26-0d24a7e5cb9acf91",
+              "arxiv:2410.02902-p13-c37-64854211309737ff"
+            ],
+            "latency_ms": 196.9910830957815,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.11538461538461539,
+                "10": 0.15384615384615385
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.4
+              },
+              "ndcg_at_k": {
+                "4": 0.7017457803981819,
+                "10": 0.47403444019999
+              },
+              "reciprocal_rank": 1.0
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2410.02902-baseline_quality",
+        "paper_id": "arxiv:2410.02902",
+        "dimension": "baseline_quality",
+        "query": "Which baselines are compared, and is there evidence that the comparison conditions are relevant, competitive and fair?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p4-c9-58cbe89aa5795de5",
+              "arxiv:2410.02902-p21-c57-b017afa807a1e0b2",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p9-c21-8853b33a64689dd5",
+              "arxiv:2410.02902-p3-c8-9a930b5361221c7d",
+              "arxiv:2410.02902-p22-c58-7e767b37f324af41",
+              "arxiv:2410.02902-p5-c12-ae16594a367cb7fc",
+              "arxiv:2410.02902-p21-c56-517a0dde7d8b69e3",
+              "arxiv:2410.02902-p7-c16-5118396dd952b5d0"
+            ],
+            "latency_ms": 1.4869589358568192,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.13043478260869565,
+                "10": 0.34782608695652173
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.8
+              },
+              "ndcg_at_k": {
+                "4": 0.49753492582715325,
+                "10": 0.4685581815401525
+              },
+              "reciprocal_rank": 0.5
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p30-c80-357cd6251e11dc8a",
+              "arxiv:2410.02902-p20-c54-914225812cd09390",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p25-c66-9404b641cf0b31e1",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p31-c81-c59d47fa4b650d21",
+              "arxiv:2410.02902-p24-c64-b2d6af1b2d7ba948"
+            ],
+            "latency_ms": 284.7041659988463,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.043478260869565216,
+                "10": 0.13043478260869565
+              },
+              "precision_at_k": {
+                "4": 0.25,
+                "10": 0.3
+              },
+              "ndcg_at_k": {
+                "4": 0.05604251209037249,
+                "10": 0.08334876153713783
+              },
+              "reciprocal_rank": 0.25
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p4-c9-58cbe89aa5795de5",
+              "arxiv:2410.02902-p22-c58-7e767b37f324af41",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p3-c8-9a930b5361221c7d",
+              "arxiv:2410.02902-p29-c75-6a61201d166d0143",
+              "arxiv:2410.02902-p7-c16-5118396dd952b5d0",
+              "arxiv:2410.02902-p6-c14-0128e198dfcbe0d6",
+              "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5"
+            ],
+            "latency_ms": 190.54091605357826,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.13043478260869565,
+                "10": 0.2608695652173913
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.6
+              },
+              "ndcg_at_k": {
+                "4": 0.4454183575140784,
+                "10": 0.3811399496152999
+              },
+              "reciprocal_rank": 0.5
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2410.02902-result_validity",
+        "paper_id": "arxiv:2410.02902",
+        "dimension": "result_validity",
+        "query": "What results, uncertainty analyses and negative findings support or limit the paper's conclusions?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p11-c28-f694ed0def84138c",
+              "arxiv:2410.02902-p7-c17-467b664175b4fd02",
+              "arxiv:2410.02902-p24-c63-f5dbd9a830413804",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p16-c44-d36235f0aedf9c5d",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p29-c74-5023c879f4032d2a",
+              "arxiv:2410.02902-p14-c39-6b8656dd62d528dd",
+              "arxiv:2410.02902-p22-c58-7e767b37f324af41",
+              "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5"
+            ],
+            "latency_ms": 1.457958947867155,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.03225806451612903,
+                "10": 0.16129032258064516
+              },
+              "precision_at_k": {
+                "4": 0.25,
+                "10": 0.5
+              },
+              "ndcg_at_k": {
+                "4": 0.06506334166535029,
+                "10": 0.2741496814781301
+              },
+              "reciprocal_rank": 0.3333333333333333
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+              "arxiv:2410.02902-p22-c58-7e767b37f324af41",
+              "arxiv:2410.02902-p21-c55-436ed724986aaaf6",
+              "arxiv:2410.02902-p1-c1-9f78c5c7b13e2465",
+              "arxiv:2410.02902-p14-c38-37d7cb6e47143829",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038"
+            ],
+            "latency_ms": 295.4681250266731,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.06451612903225806
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.2
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.04733968572587567
+              },
+              "reciprocal_rank": 0.16666666666666666
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p11-c28-f694ed0def84138c",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p22-c58-7e767b37f324af41",
+              "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p7-c17-467b664175b4fd02",
+              "arxiv:2410.02902-p24-c63-f5dbd9a830413804"
+            ],
+            "latency_ms": 189.19633398763835,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.03225806451612903,
+                "10": 0.12903225806451613
+              },
+              "precision_at_k": {
+                "4": 0.25,
+                "10": 0.4
+              },
+              "ndcg_at_k": {
+                "4": 0.05604251209037249,
+                "10": 0.21634443747646379
+              },
+              "reciprocal_rank": 0.25
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2410.02902-reproducibility",
+        "paper_id": "arxiv:2410.02902",
+        "dimension": "reproducibility",
+        "query": "Does the paper report data, model versions, random seeds, hyperparameters, hardware, code and evaluation procedures?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p29-c74-5023c879f4032d2a",
+              "arxiv:2410.02902-p7-c17-467b664175b4fd02",
+              "arxiv:2410.02902-p8-c18-109627e80d174340",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038",
+              "arxiv:2410.02902-p34-c90-0ce9fb8f6fd7ea91",
+              "arxiv:2410.02902-p4-c9-58cbe89aa5795de5",
+              "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f",
+              "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5",
+              "arxiv:2410.02902-p21-c57-b017afa807a1e0b2",
+              "arxiv:2410.02902-p8-c19-ff864b577c227fb7"
+            ],
+            "latency_ms": 0.9375830413773656,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.13333333333333333,
+                "10": 0.3333333333333333
+              },
+              "precision_at_k": {
+                "4": 1.0,
+                "10": 1.0
+              },
+              "ndcg_at_k": {
+                "4": 0.4634600166640339,
+                "10": 0.5586560965511989
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f",
+              "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p31-c81-c59d47fa4b650d21",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p17-c45-0c1968bfa68772e3",
+              "arxiv:2410.02902-p15-c40-47424ab1878fa52d",
+              "arxiv:2410.02902-p13-c36-4957ce3ff4e0f092",
+              "arxiv:2410.02902-p20-c54-914225812cd09390",
+              "arxiv:2410.02902-p14-c38-37d7cb6e47143829"
+            ],
+            "latency_ms": 304.90604194346815,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.1,
+                "10": 0.13333333333333333
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.4
+              },
+              "ndcg_at_k": {
+                "4": 0.641612587078525,
+                "10": 0.4468768885452581
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f",
+              "arxiv:2410.02902-p32-c84-2bf0e745ebd03dd5",
+              "arxiv:2410.02902-p34-c90-0ce9fb8f6fd7ea91",
+              "arxiv:2410.02902-p8-c19-ff864b577c227fb7",
+              "arxiv:2410.02902-p4-c10-c33027ed6e6d8ac5",
+              "arxiv:2410.02902-p29-c74-5023c879f4032d2a",
+              "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+              "arxiv:2410.02902-p7-c17-467b664175b4fd02",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p8-c18-109627e80d174340"
+            ],
+            "latency_ms": 201.72999997157604,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.13333333333333333,
+                "10": 0.3
+              },
+              "precision_at_k": {
+                "4": 1.0,
+                "10": 0.9
+              },
+              "ndcg_at_k": {
+                "4": 0.8879149758192549,
+                "10": 0.7081287626162235
+              },
+              "reciprocal_rank": 1.0
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2410.02902-novelty",
+        "paper_id": "arxiv:2410.02902",
+        "dimension": "novelty",
+        "query": "Where does the paper distinguish its contributions from prior work and explain what is technically new?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p29-c74-5023c879f4032d2a",
+              "arxiv:2410.02902-p3-c8-9a930b5361221c7d",
+              "arxiv:2410.02902-p10-c26-0d24a7e5cb9acf91",
+              "arxiv:2410.02902-p5-c12-ae16594a367cb7fc",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p1-c3-df06b8be6e1e8233",
+              "arxiv:2410.02902-p31-c81-c59d47fa4b650d21",
+              "arxiv:2410.02902-p10-c24-03becaa63ee20ff6",
+              "arxiv:2410.02902-p7-c16-5118396dd952b5d0"
+            ],
+            "latency_ms": 0.9715839987620711,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.125,
+                "10": 0.5
+              },
+              "precision_at_k": {
+                "4": 0.25,
+                "10": 0.4
+              },
+              "ndcg_at_k": {
+                "4": 0.05604251209037249,
+                "10": 0.2889638279628955
+              },
+              "reciprocal_rank": 0.25
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p11-c29-418e93e53c7cdff6",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038",
+              "arxiv:2410.02902-p13-c36-4957ce3ff4e0f092",
+              "arxiv:2410.02902-p15-c40-47424ab1878fa52d",
+              "arxiv:2410.02902-p14-c38-37d7cb6e47143829",
+              "arxiv:2410.02902-p30-c77-076625281e73b896",
+              "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6"
+            ],
+            "latency_ms": 330.67975006997585,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "reciprocal_rank": 0.0
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p9-c22-31ecf2c7ee28004b",
+              "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p29-c74-5023c879f4032d2a",
+              "arxiv:2410.02902-p3-c8-9a930b5361221c7d",
+              "arxiv:2410.02902-p10-c26-0d24a7e5cb9acf91",
+              "arxiv:2410.02902-p11-c29-418e93e53c7cdff6",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038"
+            ],
+            "latency_ms": 202.2243330720812,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.125
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.1
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.03475554676462964
+              },
+              "reciprocal_rank": 0.125
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2410.02902-limitations_discussion",
+        "paper_id": "arxiv:2410.02902",
+        "dimension": "limitations_discussion",
+        "query": "What assumptions, failure cases, generalisation limits, ethical concerns and unresolved questions does the paper acknowledge?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p6-c13-b68e3c359a6a93f4",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p16-c44-d36235f0aedf9c5d",
+              "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+              "arxiv:2410.02902-p29-c74-5023c879f4032d2a",
+              "arxiv:2410.02902-p1-c3-df06b8be6e1e8233",
+              "arxiv:2410.02902-p21-c56-517a0dde7d8b69e3",
+              "arxiv:2410.02902-p24-c62-f62622bafa6caab3"
+            ],
+            "latency_ms": 0.9467499330639839,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.13043478260869565,
+                "10": 0.2608695652173913
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.6
+              },
+              "ndcg_at_k": {
+                "4": 0.4454183575140784,
+                "10": 0.43019294665923546
+              },
+              "reciprocal_rank": 0.5
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+              "arxiv:2410.02902-p20-c54-914225812cd09390",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p17-c45-0c1968bfa68772e3",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p18-c50-81f4c7117eb7303d",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038",
+              "arxiv:2410.02902-p15-c40-47424ab1878fa52d"
+            ],
+            "latency_ms": 327.2386249154806,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.043478260869565216,
+                "10": 0.08695652173913043
+              },
+              "precision_at_k": {
+                "4": 0.25,
+                "10": 0.2
+              },
+              "ndcg_at_k": {
+                "4": 0.3903800499921017,
+                "10": 0.2990289619202565
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p11-c29-418e93e53c7cdff6",
+              "arxiv:2410.02902-p6-c13-b68e3c359a6a93f4",
+              "arxiv:2410.02902-p16-c43-6f8e3dc3d598654f",
+              "arxiv:2410.02902-p20-c54-914225812cd09390"
+            ],
+            "latency_ms": 253.1175420153886,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.08695652173913043,
+                "10": 0.13043478260869565
+              },
+              "precision_at_k": {
+                "4": 0.5,
+                "10": 0.3
+              },
+              "ndcg_at_k": {
+                "4": 0.5855700749881525,
+                "10": 0.36892909670741464
+              },
+              "reciprocal_rank": 1.0
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2410.02902-citation_quality",
+        "paper_id": "arxiv:2410.02902",
+        "dimension": "citation_quality",
+        "query": "Which evidence shows that important claims are connected to relevant and balanced prior work?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p3-c8-9a930b5361221c7d",
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p1-c3-df06b8be6e1e8233",
+              "arxiv:2410.02902-p4-c9-58cbe89aa5795de5",
+              "arxiv:2410.02902-p7-c16-5118396dd952b5d0",
+              "arxiv:2410.02902-p10-c24-03becaa63ee20ff6",
+              "arxiv:2410.02902-p30-c77-076625281e73b896",
+              "arxiv:2410.02902-p21-c56-517a0dde7d8b69e3",
+              "arxiv:2410.02902-p1-c2-7a4fa9c1eb7b4655",
+              "arxiv:2410.02902-p10-c26-0d24a7e5cb9acf91"
+            ],
+            "latency_ms": 1.3593329349532723,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.15,
+                "10": 0.3
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.6
+              },
+              "ndcg_at_k": {
+                "4": 0.28294661530471193,
+                "10": 0.4203792992110091
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p11-c29-418e93e53c7cdff6",
+              "arxiv:2410.02902-p20-c54-914225812cd09390",
+              "arxiv:2410.02902-p31-c82-c758c8903fb9d038",
+              "arxiv:2410.02902-p11-c28-f694ed0def84138c",
+              "arxiv:2410.02902-p13-c36-4957ce3ff4e0f092"
+            ],
+            "latency_ms": 378.51170799694955,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "reciprocal_rank": 0.0
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2410.02902-p25-c67-857ff040cc908b39",
+              "arxiv:2410.02902-p33-c88-95c3a567c4f7ae12",
+              "arxiv:2410.02902-p22-c58-7e767b37f324af41",
+              "arxiv:2410.02902-p11-c27-fdc92d3d4f869e6f",
+              "arxiv:2410.02902-p3-c8-9a930b5361221c7d",
+              "arxiv:2410.02902-p28-c72-828e7bc3b5ea41d5",
+              "arxiv:2410.02902-p1-c3-df06b8be6e1e8233",
+              "arxiv:2410.02902-p26-c69-d9e99ccb332985c4",
+              "arxiv:2410.02902-p27-c71-df245d0b3b23a8a6",
+              "arxiv:2410.02902-p4-c9-58cbe89aa5795de5"
+            ],
+            "latency_ms": 331.9564589764923,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.15
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.3
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.11461703124234023
+              },
+              "reciprocal_rank": 0.2
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2106.09685-research_question_clarity",
+        "paper_id": "arxiv:2106.09685",
+        "dimension": "research_question_clarity",
+        "query": "Where does the paper state its research problem, objectives, scope and motivation?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p2-c5-c28bfba120197ff2",
+              "arxiv:2106.09685-p3-c7-ee3760d3c3988eb6",
+              "arxiv:2106.09685-p3-c6-2fa77c5e6944fbdf",
+              "arxiv:2106.09685-p9-c19-ee2df2ca3c7f6a97",
+              "arxiv:2106.09685-p4-c8-8ddb9b55bde0a2f0",
+              "arxiv:2106.09685-p2-c4-1f0eff862fb7218b",
+              "arxiv:2106.09685-p22-c55-4adce77a01cd2944",
+              "arxiv:2106.09685-p16-c36-f8756f99bf621ea7",
+              "arxiv:2106.09685-p8-c18-d6ab30b8363f332b",
+              "arxiv:2106.09685-p11-c24-0925c7b33a4bb957"
+            ],
+            "latency_ms": 1.7869580769911408,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.16666666666666666,
+                "10": 0.3333333333333333
+              },
+              "precision_at_k": {
+                "4": 0.25,
+                "10": 0.2
+              },
+              "ndcg_at_k": {
+                "4": 0.3903800499921017,
+                "10": 0.44216531859062036
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p24-c60-f48df59a0e5beabc",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p2-c5-c28bfba120197ff2",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p14-c30-73f9b75b8cb90021",
+              "arxiv:2106.09685-p16-c34-7dfd1a94bb7cce64",
+              "arxiv:2106.09685-p15-c32-ed0fd6c1d533c132",
+              "arxiv:2106.09685-p14-c31-fb6089f34124275d"
+            ],
+            "latency_ms": 483.70804195292294,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.16666666666666666
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.1
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.1261259314834412
+              },
+              "reciprocal_rank": 0.2
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p2-c5-c28bfba120197ff2",
+              "arxiv:2106.09685-p3-c7-ee3760d3c3988eb6",
+              "arxiv:2106.09685-p16-c34-7dfd1a94bb7cce64",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p4-c9-533b9985d99d6104",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p24-c60-f48df59a0e5beabc",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589",
+              "arxiv:2106.09685-p3-c6-2fa77c5e6944fbdf",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0"
+            ],
+            "latency_ms": 250.86912501137704,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.16666666666666666,
+                "10": 0.16666666666666666
+              },
+              "precision_at_k": {
+                "4": 0.25,
+                "10": 0.1
+              },
+              "ndcg_at_k": {
+                "4": 0.3903800499921017,
+                "10": 0.32603080325322137
+              },
+              "reciprocal_rank": 1.0
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2106.09685-methodological_rigor",
+        "paper_id": "arxiv:2106.09685",
+        "dimension": "methodological_rigor",
+        "query": "What evidence describes and justifies the method, assumptions, technical design and implementation details?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p24-c63-6dec547ab8822bf8",
+              "arxiv:2106.09685-p8-c18-d6ab30b8363f332b",
+              "arxiv:2106.09685-p10-c21-d73b7fda20b2f161",
+              "arxiv:2106.09685-p25-c65-72690a002e03a80e",
+              "arxiv:2106.09685-p6-c14-6d590bec76dd52c1",
+              "arxiv:2106.09685-p2-c4-1f0eff862fb7218b",
+              "arxiv:2106.09685-p20-c47-6a5fe3e5d3b1d1cf",
+              "arxiv:2106.09685-p4-c8-8ddb9b55bde0a2f0",
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p15-c33-e2e8492202096143"
+            ],
+            "latency_ms": 1.0515840258449316,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.17647058823529413,
+                "10": 0.23529411764705882
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.4
+              },
+              "ndcg_at_k": {
+                "4": 0.4934442445978689,
+                "10": 0.30134191026354334
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p24-c60-f48df59a0e5beabc",
+              "arxiv:2106.09685-p14-c30-73f9b75b8cb90021",
+              "arxiv:2106.09685-p23-c58-5b09a7727cf53844",
+              "arxiv:2106.09685-p12-c26-bf6815c46961f578",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p24-c59-69f798909c2fac22",
+              "arxiv:2106.09685-p16-c34-7dfd1a94bb7cce64"
+            ],
+            "latency_ms": 331.89812500495464,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.0
+              },
+              "reciprocal_rank": 0.0
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p8-c18-d6ab30b8363f332b",
+              "arxiv:2106.09685-p23-c58-5b09a7727cf53844",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p14-c30-73f9b75b8cb90021",
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p8-c17-37c0c9860b3fcbcb",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p24-c63-6dec547ab8822bf8",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589"
+            ],
+            "latency_ms": 197.37650000024587,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.11764705882352941
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.2
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.048217497477688116
+              },
+              "reciprocal_rank": 0.16666666666666666
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2106.09685-experimental_design",
+        "paper_id": "arxiv:2106.09685",
+        "dimension": "experimental_design",
+        "query": "What datasets, evaluation protocols, controls, metrics, ablations and sample sizes are used in the experiments?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p18-c40-c175a4291794a259",
+              "arxiv:2106.09685-p21-c49-c5fc52154e084c71",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p24-c62-bb9ff17a9b8fa87a",
+              "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+              "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+              "arxiv:2106.09685-p6-c14-6d590bec76dd52c1",
+              "arxiv:2106.09685-p13-c29-e74dde2a76e376ae"
+            ],
+            "latency_ms": 1.0829169768840075,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.06976744186046512,
+                "10": 0.18604651162790697
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.8
+              },
+              "ndcg_at_k": {
+                "4": 0.8318724637288825,
+                "10": 0.8415908474314975
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p18-c40-c175a4291794a259",
+              "arxiv:2106.09685-p23-c58-5b09a7727cf53844",
+              "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p19-c43-592ef4332bb23ea5",
+              "arxiv:2106.09685-p6-c12-b0f1cb1957e25b4f",
+              "arxiv:2106.09685-p16-c36-f8756f99bf621ea7",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p7-c15-ca77a23903b2f02d"
+            ],
+            "latency_ms": 283.8887919206172,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.09302325581395349,
+                "10": 0.23255813953488372
+              },
+              "precision_at_k": {
+                "4": 1.0,
+                "10": 1.0
+              },
+              "ndcg_at_k": {
+                "4": 0.6096199500078984,
+                "10": 0.7799082337019198
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p18-c40-c175a4291794a259",
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p16-c36-f8756f99bf621ea7",
+              "arxiv:2106.09685-p18-c41-554a5ff3a2d6131e",
+              "arxiv:2106.09685-p8-c17-37c0c9860b3fcbcb",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p21-c49-c5fc52154e084c71"
+            ],
+            "latency_ms": 179.39437495078892,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.09302325581395349,
+                "10": 0.20930232558139536
+              },
+              "precision_at_k": {
+                "4": 1.0,
+                "10": 0.9
+              },
+              "ndcg_at_k": {
+                "4": 1.0,
+                "10": 0.870687400055453
+              },
+              "reciprocal_rank": 1.0
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2106.09685-baseline_quality",
+        "paper_id": "arxiv:2106.09685",
+        "dimension": "baseline_quality",
+        "query": "Which baselines are compared, and is there evidence that the comparison conditions are relevant, competitive and fair?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p6-c14-6d590bec76dd52c1",
+              "arxiv:2106.09685-p25-c65-72690a002e03a80e",
+              "arxiv:2106.09685-p3-c7-ee3760d3c3988eb6",
+              "arxiv:2106.09685-p18-c41-554a5ff3a2d6131e",
+              "arxiv:2106.09685-p17-c38-80a87561fc827f0a",
+              "arxiv:2106.09685-p24-c63-6dec547ab8822bf8",
+              "arxiv:2106.09685-p11-c24-0925c7b33a4bb957",
+              "arxiv:2106.09685-p5-c10-6bbe664ef6ed0164",
+              "arxiv:2106.09685-p18-c40-c175a4291794a259"
+            ],
+            "latency_ms": 1.3244999572634697,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.1,
+                "10": 0.16666666666666666
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.5
+              },
+              "ndcg_at_k": {
+                "4": 0.6927249508232041,
+                "10": 0.5540917182484478
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p6-c12-b0f1cb1957e25b4f",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p6-c13-e25eb1210bd598e1",
+              "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+              "arxiv:2106.09685-p23-c58-5b09a7727cf53844",
+              "arxiv:2106.09685-p24-c59-69f798909c2fac22",
+              "arxiv:2106.09685-p22-c53-63e80a8b5190a73a"
+            ],
+            "latency_ms": 274.30858404841274,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.06666666666666667,
+                "10": 0.16666666666666666
+              },
+              "precision_at_k": {
+                "4": 0.5,
+                "10": 0.5
+              },
+              "ndcg_at_k": {
+                "4": 0.4144299250118475,
+                "10": 0.35858845907303033
+              },
+              "reciprocal_rank": 0.5
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p6-c14-6d590bec76dd52c1",
+              "arxiv:2106.09685-p18-c41-554a5ff3a2d6131e",
+              "arxiv:2106.09685-p18-c42-e75f28accccc93b2",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p25-c65-72690a002e03a80e",
+              "arxiv:2106.09685-p3-c7-ee3760d3c3988eb6",
+              "arxiv:2106.09685-p6-c12-b0f1cb1957e25b4f"
+            ],
+            "latency_ms": 186.50320905726403,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.1,
+                "10": 0.2
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.6
+              },
+              "ndcg_at_k": {
+                "4": 0.75369761125927,
+                "10": 0.5957746608087068
+              },
+              "reciprocal_rank": 1.0
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2106.09685-result_validity",
+        "paper_id": "arxiv:2106.09685",
+        "dimension": "result_validity",
+        "query": "What results, uncertainty analyses and negative findings support or limit the paper's conclusions?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p10-c21-d73b7fda20b2f161",
+              "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+              "arxiv:2106.09685-p14-c31-fb6089f34124275d",
+              "arxiv:2106.09685-p16-c36-f8756f99bf621ea7",
+              "arxiv:2106.09685-p22-c55-4adce77a01cd2944",
+              "arxiv:2106.09685-p12-c25-f492a46afa3a6e6e",
+              "arxiv:2106.09685-p5-c10-6bbe664ef6ed0164",
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p9-c19-ee2df2ca3c7f6a97",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0"
+            ],
+            "latency_ms": 0.8096669334918261,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.08108108108108109,
+                "10": 0.16216216216216217
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.6
+              },
+              "ndcg_at_k": {
+                "4": 0.432471584161803,
+                "10": 0.41285890774453465
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p24-c60-f48df59a0e5beabc",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p14-c30-73f9b75b8cb90021",
+              "arxiv:2106.09685-p16-c34-7dfd1a94bb7cce64",
+              "arxiv:2106.09685-p23-c58-5b09a7727cf53844",
+              "arxiv:2106.09685-p6-c12-b0f1cb1957e25b4f",
+              "arxiv:2106.09685-p10-c22-60971cb29c574cd8"
+            ],
+            "latency_ms": 297.8889170335606,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.05405405405405406,
+                "10": 0.13513513513513514
+              },
+              "precision_at_k": {
+                "4": 0.5,
+                "10": 0.5
+              },
+              "ndcg_at_k": {
+                "4": 0.21222747957761057,
+                "10": 0.27267015568947806
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p15-c32-ed0fd6c1d533c132",
+              "arxiv:2106.09685-p10-c21-d73b7fda20b2f161",
+              "arxiv:2106.09685-p24-c60-f48df59a0e5beabc",
+              "arxiv:2106.09685-p14-c31-fb6089f34124275d"
+            ],
+            "latency_ms": 221.21224994771183,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.08108108108108109,
+                "10": 0.16216216216216217
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.6
+              },
+              "ndcg_at_k": {
+                "4": 0.544556608342548,
+                "10": 0.4373863297811418
+              },
+              "reciprocal_rank": 1.0
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2106.09685-reproducibility",
+        "paper_id": "arxiv:2106.09685",
+        "dimension": "reproducibility",
+        "query": "Does the paper report data, model versions, random seeds, hyperparameters, hardware, code and evaluation procedures?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+              "arxiv:2106.09685-p19-c45-625c29c64d93a5f3",
+              "arxiv:2106.09685-p18-c42-e75f28accccc93b2",
+              "arxiv:2106.09685-p18-c41-554a5ff3a2d6131e",
+              "arxiv:2106.09685-p11-c24-0925c7b33a4bb957",
+              "arxiv:2106.09685-p8-c17-37c0c9860b3fcbcb",
+              "arxiv:2106.09685-p18-c40-c175a4291794a259",
+              "arxiv:2106.09685-p10-c21-d73b7fda20b2f161",
+              "arxiv:2106.09685-p13-c29-e74dde2a76e376ae",
+              "arxiv:2106.09685-p21-c49-c5fc52154e084c71"
+            ],
+            "latency_ms": 0.8077910169959068,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.09302325581395349,
+                "10": 0.20930232558139536
+              },
+              "precision_at_k": {
+                "4": 1.0,
+                "10": 0.9
+              },
+              "ndcg_at_k": {
+                "4": 0.7397466333385989,
+                "10": 0.7870179323468908
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p6-c12-b0f1cb1957e25b4f",
+              "arxiv:2106.09685-p19-c45-625c29c64d93a5f3",
+              "arxiv:2106.09685-p7-c16-eb02375af6278956",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p18-c42-e75f28accccc93b2",
+              "arxiv:2106.09685-p16-c34-7dfd1a94bb7cce64",
+              "arxiv:2106.09685-p15-c32-ed0fd6c1d533c132"
+            ],
+            "latency_ms": 297.9043750092387,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.046511627906976744,
+                "10": 0.09302325581395349
+              },
+              "precision_at_k": {
+                "4": 0.5,
+                "10": 0.4
+              },
+              "ndcg_at_k": {
+                "4": 0.23319087793646776,
+                "10": 0.28604466499762904
+              },
+              "reciprocal_rank": 0.3333333333333333
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p19-c45-625c29c64d93a5f3",
+              "arxiv:2106.09685-p18-c42-e75f28accccc93b2",
+              "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+              "arxiv:2106.09685-p18-c41-554a5ff3a2d6131e",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p6-c12-b0f1cb1957e25b4f",
+              "arxiv:2106.09685-p11-c24-0925c7b33a4bb957",
+              "arxiv:2106.09685-p7-c16-eb02375af6278956"
+            ],
+            "latency_ms": 195.9516250062734,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.09302325581395349,
+                "10": 0.16279069767441862
+              },
+              "precision_at_k": {
+                "4": 1.0,
+                "10": 0.7
+              },
+              "ndcg_at_k": {
+                "4": 0.8698733166692995,
+                "10": 0.6434432878897987
+              },
+              "reciprocal_rank": 1.0
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2106.09685-novelty",
+        "paper_id": "arxiv:2106.09685",
+        "dimension": "novelty",
+        "query": "Where does the paper distinguish its contributions from prior work and explain what is technically new?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p24-c63-6dec547ab8822bf8",
+              "arxiv:2106.09685-p3-c6-2fa77c5e6944fbdf",
+              "arxiv:2106.09685-p10-c21-d73b7fda20b2f161",
+              "arxiv:2106.09685-p1-c3-2a182e241739357e",
+              "arxiv:2106.09685-p6-c14-6d590bec76dd52c1",
+              "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+              "arxiv:2106.09685-p5-c10-6bbe664ef6ed0164",
+              "arxiv:2106.09685-p9-c20-ba40865da677f9fa",
+              "arxiv:2106.09685-p3-c7-ee3760d3c3988eb6"
+            ],
+            "latency_ms": 1.474624965339899,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.15789473684210525,
+                "10": 0.3684210526315789
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.7
+              },
+              "ndcg_at_k": {
+                "4": 0.36331756126716835,
+                "10": 0.44686973995102874
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p24-c60-f48df59a0e5beabc",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589",
+              "arxiv:2106.09685-p14-c30-73f9b75b8cb90021",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p16-c34-7dfd1a94bb7cce64",
+              "arxiv:2106.09685-p20-c48-26fcbbee11e95f48",
+              "arxiv:2106.09685-p24-c63-6dec547ab8822bf8",
+              "arxiv:2106.09685-p12-c25-f492a46afa3a6e6e"
+            ],
+            "latency_ms": 316.3182500284165,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.05263157894736842
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.1
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.02120692939965057
+              },
+              "reciprocal_rank": 0.1
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p24-c63-6dec547ab8822bf8",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p12-c25-f492a46afa3a6e6e",
+              "arxiv:2106.09685-p12-c26-bf6815c46961f578",
+              "arxiv:2106.09685-p24-c60-f48df59a0e5beabc",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589",
+              "arxiv:2106.09685-p3-c6-2fa77c5e6944fbdf",
+              "arxiv:2106.09685-p10-c21-d73b7fda20b2f161",
+              "arxiv:2106.09685-p14-c30-73f9b75b8cb90021"
+            ],
+            "latency_ms": 197.74458301253617,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.15789473684210525,
+                "10": 0.2631578947368421
+              },
+              "precision_at_k": {
+                "4": 0.75,
+                "10": 0.5
+              },
+              "ndcg_at_k": {
+                "4": 0.3152916741833778,
+                "10": 0.2671557708103971
+              },
+              "reciprocal_rank": 0.5
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2106.09685-limitations_discussion",
+        "paper_id": "arxiv:2106.09685",
+        "dimension": "limitations_discussion",
+        "query": "What assumptions, failure cases, generalisation limits, ethical concerns and unresolved questions does the paper acknowledge?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p3-c7-ee3760d3c3988eb6",
+              "arxiv:2106.09685-p10-c21-d73b7fda20b2f161",
+              "arxiv:2106.09685-p15-c33-e2e8492202096143",
+              "arxiv:2106.09685-p15-c32-ed0fd6c1d533c132",
+              "arxiv:2106.09685-p22-c55-4adce77a01cd2944",
+              "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+              "arxiv:2106.09685-p16-c36-f8756f99bf621ea7",
+              "arxiv:2106.09685-p11-c24-0925c7b33a4bb957",
+              "arxiv:2106.09685-p6-c14-6d590bec76dd52c1",
+              "arxiv:2106.09685-p24-c63-6dec547ab8822bf8"
+            ],
+            "latency_ms": 1.037833048030734,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.07692307692307693,
+                "10": 0.23076923076923078
+              },
+              "precision_at_k": {
+                "4": 0.5,
+                "10": 0.6
+              },
+              "ndcg_at_k": {
+                "4": 0.6366824387328316,
+                "10": 0.5524452711865245
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p15-c32-ed0fd6c1d533c132",
+              "arxiv:2106.09685-p16-c34-7dfd1a94bb7cce64",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p15-c33-e2e8492202096143",
+              "arxiv:2106.09685-p14-c30-73f9b75b8cb90021",
+              "arxiv:2106.09685-p2-c5-c28bfba120197ff2"
+            ],
+            "latency_ms": 309.0075000654906,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.038461538461538464,
+                "10": 0.07692307692307693
+              },
+              "precision_at_k": {
+                "4": 0.25,
+                "10": 0.2
+              },
+              "ndcg_at_k": {
+                "4": 0.13012668333070057,
+                "10": 0.1467278441987201
+              },
+              "reciprocal_rank": 1.0
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p15-c32-ed0fd6c1d533c132",
+              "arxiv:2106.09685-p15-c33-e2e8492202096143",
+              "arxiv:2106.09685-p3-c7-ee3760d3c3988eb6",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+              "arxiv:2106.09685-p4-c9-533b9985d99d6104",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p10-c21-d73b7fda20b2f161",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589"
+            ],
+            "latency_ms": 197.40354199893773,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.038461538461538464,
+                "10": 0.15384615384615385
+              },
+              "precision_at_k": {
+                "4": 0.25,
+                "10": 0.4
+              },
+              "ndcg_at_k": {
+                "4": 0.19519002499605084,
+                "10": 0.289074863427225
+              },
+              "reciprocal_rank": 0.3333333333333333
+            }
+          }
+        }
+      },
+      {
+        "query_id": "arxiv:2106.09685-citation_quality",
+        "paper_id": "arxiv:2106.09685",
+        "dimension": "citation_quality",
+        "query": "Which evidence shows that important claims are connected to relevant and balanced prior work?",
+        "systems": {
+          "bm25": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p24-c63-6dec547ab8822bf8",
+              "arxiv:2106.09685-p6-c14-6d590bec76dd52c1",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83",
+              "arxiv:2106.09685-p26-c67-e8a8dc519ef8f2ac",
+              "arxiv:2106.09685-p25-c65-72690a002e03a80e",
+              "arxiv:2106.09685-p17-c38-80a87561fc827f0a",
+              "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+              "arxiv:2106.09685-p12-c25-f492a46afa3a6e6e",
+              "arxiv:2106.09685-p4-c8-8ddb9b55bde0a2f0",
+              "arxiv:2106.09685-p1-c2-9769ee0cbe7ad5be"
+            ],
+            "latency_ms": 1.003999961540103,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.047619047619047616,
+                "10": 0.14285714285714285
+              },
+              "precision_at_k": {
+                "4": 0.25,
+                "10": 0.3
+              },
+              "ndcg_at_k": {
+                "4": 0.08210079624691,
+                "10": 0.12338199349457823
+              },
+              "reciprocal_rank": 0.5
+            }
+          },
+          "vector": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p24-c60-f48df59a0e5beabc",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p1-c1-fe782b6904aba589",
+              "arxiv:2106.09685-p13-c28-167c505f8065785a",
+              "arxiv:2106.09685-p16-c34-7dfd1a94bb7cce64",
+              "arxiv:2106.09685-p20-c48-26fcbbee11e95f48",
+              "arxiv:2106.09685-p11-c24-0925c7b33a4bb957",
+              "arxiv:2106.09685-p13-c27-d82f2192bb3344d0",
+              "arxiv:2106.09685-p15-c32-ed0fd6c1d533c132"
+            ],
+            "latency_ms": 329.5726659707725,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.09523809523809523
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.2
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.06180483687055408
+              },
+              "reciprocal_rank": 0.16666666666666666
+            }
+          },
+          "hybrid": {
+            "retrieved_chunk_ids": [
+              "arxiv:2106.09685-p12-c25-f492a46afa3a6e6e",
+              "arxiv:2106.09685-p10-c22-60971cb29c574cd8",
+              "arxiv:2106.09685-p11-c24-0925c7b33a4bb957",
+              "arxiv:2106.09685-p22-c54-56ff8464cc6bd32a",
+              "arxiv:2106.09685-p24-c60-f48df59a0e5beabc",
+              "arxiv:2106.09685-p24-c63-6dec547ab8822bf8",
+              "arxiv:2106.09685-p22-c51-b5c4a250581cf539",
+              "arxiv:2106.09685-p6-c14-6d590bec76dd52c1",
+              "arxiv:2106.09685-p24-c61-2f43524945e271a0",
+              "arxiv:2106.09685-p5-c11-c16cb8a82e181e83"
+            ],
+            "latency_ms": 217.4188339849934,
+            "error": null,
+            "metrics": {
+              "recall_at_k": {
+                "4": 0.0,
+                "10": 0.047619047619047616
+              },
+              "precision_at_k": {
+                "4": 0.0,
+                "10": 0.1
+              },
+              "ndcg_at_k": {
+                "4": 0.0,
+                "10": 0.030215560015714335
+              },
+              "reciprocal_rank": 0.125
+            }
+          }
+        }
+      }
+    ]
+  },
+  "integrity_warning": "This is a one-time held-out report. Test results must not be used to change this frozen policy; any later policy requires a new development split and policy version."
+}

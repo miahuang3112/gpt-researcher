@@ -3,3 +3,10 @@ output/
 **/node_modules/
 **/.next/
 backups/
+.env
+.env.*
+data/
+artifacts/
+evals/academic_retrieval/.cache/
+evals/academic_retrieval/datasets/
+evals/academic_retrieval/sources/

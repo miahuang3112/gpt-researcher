@@ -32,6 +32,11 @@ RETRIEVAL_REPORT = ROOT / (
 POLICY_REPORT = QUALITY_DIR / "results/data05b-contradiction-calibration.json"
 SUMMARY = QUALITY_DIR / "eval03_development_ablation_summary.json"
 
+requires_protected_corpus = pytest.mark.skipif(
+    not CORPUS.is_file() or not QUERIES.is_file(),
+    reason="protected real-paper corpus is not distributed publicly",
+)
+
 
 def test_frozen_protocol_is_development_only() -> None:
     protocol = json.loads(PROTOCOL.read_text(encoding="utf-8"))
@@ -67,6 +72,7 @@ def test_anchor_ablation_removes_only_numeric_anchor_block() -> None:
     assert result == "before\nafter"
 
 
+@requires_protected_corpus
 def test_loads_three_paper_development_selections_and_recall() -> None:
     reference, chunks, hybrid, section, metrics = load_development_inputs(
         protocol_path=PROTOCOL,
@@ -160,6 +166,7 @@ class RecordingEvaluationClient(FixedEvaluationClient):
 
 
 @pytest.mark.asyncio
+@requires_protected_corpus
 async def test_runner_scores_all_three_predeclared_configurations(
     tmp_path: Path,
 ) -> None:
@@ -195,6 +202,7 @@ async def test_runner_scores_all_three_predeclared_configurations(
 
 
 @pytest.mark.asyncio
+@requires_protected_corpus
 async def test_retry_failures_uses_compact_audited_recovery(tmp_path: Path) -> None:
     args = argparse.Namespace(
         protocol=str(PROTOCOL),

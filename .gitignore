@@ -1,5 +1,7 @@
 #Ignore env containing secrets
 .env
+.env.*
+!.env.example
 .venv
 .envrc
 
@@ -16,6 +18,8 @@ venv.bak/
 #Ignore generated outputs
 outputs/
 backups/
+data/
+artifacts/
 *.lock
 dist/
 gpt_researcher.egg-info/
@@ -38,7 +42,6 @@ docs/build
 .vscode/launch.json
 .langgraph-data/
 .next/
-package-lock.json
 
 #Vim swp files
 *.swp

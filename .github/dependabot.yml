@@ -9,7 +9,20 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
+    groups:
+      academic-python:
+        patterns: ["*"]
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      academic-containers:
+        patterns: ["*"]
+  - package-ecosystem: "npm"
+    directory: "/frontend/nextjs"
+    schedule:
+      interval: "weekly"
+    groups:
+      academic-web:
+        patterns: ["*"]

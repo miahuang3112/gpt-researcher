@@ -1,17 +1,8 @@
 {
   "mcpServers": {
-    "gpt-researcher": {
-      "command": "uvx",
-      "args": [
-        "gpt-researcher"
-      ]
-    },
     "academic-evaluation": {
       "command": "python3",
-      "args": [
-        "-m",
-        "backend.academic_mcp"
-      ],
+      "args": ["-m", "backend.academic_mcp"],
       "env": {
         "ACADEMIC_API_BASE_URL": "http://127.0.0.1:8001/api/v1"
       }

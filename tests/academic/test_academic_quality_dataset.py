@@ -3,10 +3,23 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import pytest
+
 from evals.academic_quality.validate_dataset import QUALITY_DIR, validate_dataset
 from gpt_researcher.academic.paper_evaluator import REQUIRED_DIMENSIONS
 
 
+PROTECTED_DATASET = (
+    QUALITY_DIR.parent
+    / "academic_retrieval/datasets/arxiv-1706.03762/corpus.jsonl"
+)
+requires_protected_corpus = pytest.mark.skipif(
+    not PROTECTED_DATASET.is_file(),
+    reason="protected real-paper corpus is not distributed publicly",
+)
+
+
+@requires_protected_corpus
 def test_chatgpt_quality_dataset_is_complete_and_valid() -> None:
     summary = validate_dataset()
 

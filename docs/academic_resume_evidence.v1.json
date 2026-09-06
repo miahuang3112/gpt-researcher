@@ -37,11 +37,11 @@
     },
     "fast_ci": {
       "path": ".github/workflows/academic-ci.yml",
-      "sha256": "a8813f81dcc8a593d31751d5880e78c23561d5488b1a9e305bc564c0721e6ff2"
+      "sha256": "fd75187e287ed97e81551bdbcd5b4b0333346f20c703c94ac04f38524aa52d85"
     },
-    "scheduled_ci": {
+    "benchmark_ci": {
       "path": ".github/workflows/academic-benchmarks.yml",
-      "sha256": "16813f95a52a94449dbe3f0392b6f7755fcee266ee4a21cbd07e6b888565254f"
+      "sha256": "be385d1f20d95c650d50e443b0028002da11c70f5f2996fd87cd173a69cc7d8b"
     }
   },
   "facts": {
@@ -113,9 +113,9 @@
     "benchmark_automation": {
       "deterministic_hash_check_count": 11,
       "deterministic_invariant_count": 15,
-      "scheduled_report_count": 8,
+      "manual_full_report_count": 8,
       "artifact_retention_days": 30,
-      "source": "scheduled_ci"
+      "source": "benchmark_ci"
     }
   },
   "prohibited_claims": [

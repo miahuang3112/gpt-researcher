@@ -15,7 +15,7 @@ API_BASE_URL = os.getenv(
 
 E2E_PDF_PATH = os.getenv(
     "ACADEMIC_E2E_PDF_PATH",
-    "/Users/mia/Desktop/2410.02902v4.pdf",
+    "data/sample.pdf",
 )
 
 E2E_PAPER_ID = os.getenv(

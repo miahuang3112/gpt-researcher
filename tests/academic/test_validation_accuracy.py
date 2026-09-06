@@ -30,7 +30,13 @@ CORPUS = (
 )
 PROVENANCE = QUALITY_DIR / "eval02b_provenance.chatgpt.test.v1.json"
 
+requires_protected_corpus = pytest.mark.skipif(
+    not CORPUS.is_file(),
+    reason="protected real-paper corpus is not distributed publicly",
+)
 
+
+@requires_protected_corpus
 def test_eval02b_dataset_is_balanced_and_heldout_only() -> None:
     citations, contradictions, chunks = validate_eval02b_dataset(
         CITATION_LABELS, CONTRADICTION_LABELS, CORPUS
@@ -48,6 +54,7 @@ def test_eval02b_dataset_is_balanced_and_heldout_only() -> None:
     )
 
 
+@requires_protected_corpus
 def test_eval02b_provenance_matches_frozen_test_corpus() -> None:
     provenance = json.loads(PROVENANCE.read_text(encoding="utf-8"))
 
@@ -154,6 +161,7 @@ class GoldContradictionEvaluator:
 
 
 @pytest.mark.asyncio
+@requires_protected_corpus
 async def test_runner_checkpoints_and_scores_all_frozen_cases(tmp_path: Path) -> None:
     citations = [json.loads(line) for line in CITATION_LABELS.read_text().splitlines()]
     contradictions = [

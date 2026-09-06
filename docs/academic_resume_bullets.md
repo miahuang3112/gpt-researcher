@@ -25,8 +25,8 @@ project descriptions.
   development-only 消融保留带评分锚点的 Hybrid 配置，展示可复现、可否证的 Agent
   评测与决策流程。
 - 建立双层质量门禁：PR CI 无网络校验 11 个版本化 SHA-256 与 15 条失败/分割/冻结
-  策略不变量；每周真实运行 8 组 Ollama 检索与评分 benchmark，保存 checkpoint、
-  运行清单和 30 天 CI artifacts。
+  策略不变量；完整 8 组 Ollama benchmark 通过手动 CI/本地流程运行并保存
+  checkpoint、运行清单和 30 天 CI artifacts，论文语料不进入公开仓库。
 
 建议简历选前两条，再从第 3、4、5、6 条中按岗位描述选择两条。
 
@@ -55,8 +55,9 @@ project descriptions.
   then ran 81 development-only ablations to retain the anchored Hybrid baseline
   under a predeclared adoption rule.
 - Added two-tier benchmark automation: network-free PR checks for 11 pinned
-  hashes and 15 policy/data invariants, plus a weekly eight-report Ollama suite
-  with checkpoints, fail-closed validation, and 30-day CI artifact retention.
+  hashes and 15 policy/data invariants, plus a manually dispatched eight-report
+  Ollama suite with checkpoints, fail-closed validation, protected-corpus
+  boundaries, and 30-day CI artifact retention.
 
 ## Interview boundaries
 

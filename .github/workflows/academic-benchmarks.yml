@@ -31,6 +31,7 @@ jobs:
 
   full-model-benchmark:
     name: Run retrieval and model-quality benchmarks
+    if: github.event_name == 'workflow_dispatch'
     needs: deterministic-smoke
     runs-on: ubuntu-latest
     timeout-minutes: 360
@@ -51,6 +52,11 @@ jobs:
           -r requirements-academic.txt
           "pytest>=8,<9"
           "pytest-asyncio>=0.24,<2"
+
+      - name: Require protected local benchmark corpus
+        run: |
+          test -f evals/academic_retrieval/datasets/ret09-five-paper-v1/development/corpus.jsonl
+          test -f evals/academic_retrieval/datasets/ret09-five-paper-v1/test/corpus.jsonl
 
       - name: Start pinned Ollama service
         run: |

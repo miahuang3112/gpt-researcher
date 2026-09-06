@@ -5,7 +5,8 @@ set -euo pipefail
 COMPOSE_FILE="${COMPOSE_FILE:-compose.academic.yml}"
 API_URL="${ACADEMIC_API_URL:-http://127.0.0.1:8001}"
 OLLAMA_MODEL="${ACADEMIC_MODEL:-qwen3.5:9b}"
-E2E_PDF_PATH="${ACADEMIC_E2E_PDF_PATH:-/Users/mia/Desktop/2410.02902v4.pdf}"
+E2E_PDF_PATH="${ACADEMIC_E2E_PDF_PATH:-${ACADEMIC_DATA_DIR:-./data}/sample.pdf}"
+PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 
 compose() {
@@ -108,7 +109,7 @@ run_e2e() {
 
     RUN_ACADEMIC_E2E=1 \
     ACADEMIC_E2E_PDF_PATH="${E2E_PDF_PATH}" \
-        python -m pytest \
+        "${PYTHON_BIN}" -m pytest \
         tests/academic/test_academic_api_e2e.py \
         -v -s
 }

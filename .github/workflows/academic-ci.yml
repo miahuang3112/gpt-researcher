@@ -10,6 +10,7 @@ on:
       - "backend/academic_api/**"
       - "compose.academic.yml"
       - "Dockerfile.academic"
+      - "frontend/nextjs/**"
       - "evals/academic_quality/**"
       - "evals/academic_retrieval/**"
       - "evals/verify_academic_benchmarks.py"
@@ -27,6 +28,7 @@ on:
       - "backend/academic_api/**"
       - "compose.academic.yml"
       - "Dockerfile.academic"
+      - "frontend/nextjs/**"
       - "evals/academic_quality/**"
       - "evals/academic_retrieval/**"
       - "evals/verify_academic_benchmarks.py"
@@ -117,3 +119,24 @@ jobs:
 
       - name: Run Academic fast gate
         run: python -m pytest tests/academic
+
+  academic-web:
+    name: Build Academic Web
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: frontend/nextjs
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/nextjs/package-lock.json
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build
