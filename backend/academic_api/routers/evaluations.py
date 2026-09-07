@@ -131,25 +131,28 @@ async def _persist_evaluation(
     started_at: float,
 ) -> EvaluationJobResponse:
     public_job_id = uuid4().hex
+    paper_id = (payload.paper_id or "").strip() or f"local:{uuid4().hex}"
+    title = (payload.title or "").strip() or None
+    source_url = (payload.source_url or "").strip() or None
     try:
         paper = await db.scalar(
-            select(Paper).where(Paper.paper_id == payload.paper_id)
+            select(Paper).where(Paper.paper_id == paper_id)
         )
         if paper is None:
             paper = Paper(
-                paper_id=payload.paper_id,
-                title=payload.title,
-                source_url=payload.source_url,
+                paper_id=paper_id,
+                title=title,
+                source_url=source_url,
                 pdf_path=str(stored_pdf.path),
             )
             db.add(paper)
             await db.flush()
         else:
             paper.pdf_path = str(stored_pdf.path)
-            if payload.title is not None:
-                paper.title = payload.title
-            if payload.source_url is not None:
-                paper.source_url = payload.source_url
+            if title is not None:
+                paper.title = title
+            if source_url is not None:
+                paper.source_url = source_url
 
         job = EvaluationJob(
             job_id=public_job_id,
@@ -244,7 +247,7 @@ async def create_evaluation(
 )
 async def upload_evaluation(
     file: Annotated[UploadFile, File(description="PDF document to evaluate")],
-    paper_id: Annotated[str, Form(min_length=1, max_length=255)],
+    paper_id: Annotated[str | None, Form(min_length=1, max_length=255)] = None,
     title: Annotated[str | None, Form(max_length=500)] = None,
     source_url: Annotated[str | None, Form(max_length=1000)] = None,
     model_name: Annotated[str, Form(min_length=1, max_length=255)] = "qwen3.5:9b",

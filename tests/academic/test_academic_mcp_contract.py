@@ -119,6 +119,8 @@ def test_initialize_and_tool_contract() -> None:
         "get_evaluation_dimensions",
     }
     assert all(tool["inputSchema"]["additionalProperties"] is False for tool in tools)
+    submit = next(tool for tool in tools if tool["name"] == "submit_evaluation")
+    assert submit["inputSchema"]["required"] == ["pdf_path"]
 
 
 def test_status_result_evidence_and_dimension_shapes() -> None:
@@ -153,6 +155,10 @@ def test_submit_retry_cancel_and_default_deny() -> None:
         call(1, "submit_evaluation", {"paper_id": "paper-1", "pdf_path": "/data/paper.pdf"})
     )
     assert submitted["result"]["structuredContent"]["status"] == "queued"
+    generated_id_submission = instance.handle(
+        call(5, "submit_evaluation", {"pdf_path": "/data/unpublished.pdf"})
+    )
+    assert generated_id_submission["result"]["isError"] is False
     assert instance.handle(call(2, "retry_evaluation", {"job_id": "job-1"}))["result"]["isError"] is False
     assert instance.handle(call(3, "cancel_evaluation", {"job_id": "job-1"}))["result"]["isError"] is False
 

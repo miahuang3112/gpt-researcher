@@ -9,7 +9,7 @@ Use the Academic MCP tools to run and interpret an evidence-grounded automated a
 
 ## Start or resume
 
-- For a new evaluation, require a `paper_id` and a PDF path visible to the Academic API. Preserve any supplied title, source URL, model, and chunk limit. Call `submit_evaluation` once and retain its `job_id`.
+- For a new evaluation, require only a PDF path visible to the Academic API. Preserve any supplied paper ID, title, source URL, model, and chunk limit. When no `paper_id` is supplied, let the API generate a `local:<uuid>` identifier. Call `submit_evaluation` once and retain its `job_id`.
 - When the user supplies a `job_id`, resume with `get_evaluation_status`. Never resubmit merely because a conversation or polling loop was interrupted.
 - State the `job_id` whenever work remains queued or running so another session can resume it.
 

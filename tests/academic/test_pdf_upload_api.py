@@ -130,6 +130,42 @@ def test_secure_upload_creates_job_and_outbox(
     assert stored_files[0].stat().st_mode & 0o077 == 0
 
 
+def test_secure_upload_generates_paper_id_when_metadata_is_omitted(
+    tmp_path: Path,
+    monkeypatch,
+) -> None:
+    storage = tmp_path / "managed-pdfs"
+    checkpoints = tmp_path / "checkpoints"
+    monkeypatch.setattr(settings, "academic_pdf_storage_dir", str(storage))
+    monkeypatch.setattr(
+        settings,
+        "academic_checkpoint_storage_dir",
+        str(checkpoints),
+    )
+    session = FakeSession()
+
+    with TestClient(create_app(session)) as client:
+        response = client.post(
+            "/api/academic/evaluations/upload",
+            files={
+                "file": (
+                    "unpublished-paper.pdf",
+                    pdf_bytes(tmp_path),
+                    "application/pdf",
+                )
+            },
+        )
+
+    assert response.status_code == 201, response.text
+    payload = response.json()
+    assert payload["paper_id"].startswith("local:")
+    assert len(payload["paper_id"]) == len("local:") + 32
+    paper = next(value for value in session.added if isinstance(value, Paper))
+    assert paper.paper_id == payload["paper_id"]
+    assert paper.title is None
+    assert paper.source_url is None
+
+
 def test_secure_upload_rejects_non_pdf_before_database_write(
     tmp_path: Path,
     monkeypatch,

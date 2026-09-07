@@ -44,7 +44,7 @@ TOOL_DEFINITIONS: list[dict[str, Any]] = [
                 "model_name": {"type": "string", "minLength": 1, "maxLength": 255},
                 "max_chunks": {"type": "integer", "minimum": 1, "maximum": 20},
             },
-            "required": ["paper_id", "pdf_path"],
+            "required": ["pdf_path"],
             "additionalProperties": False,
         },
         "annotations": {
@@ -166,8 +166,10 @@ class AcademicMcpTools:
     def _submit(self, arguments: dict[str, Any]) -> dict[str, Any]:
         paper_id = arguments.get("paper_id")
         pdf_path = arguments.get("pdf_path")
-        if not isinstance(paper_id, str) or not paper_id.strip():
-            raise ValueError("paper_id is required.")
+        if paper_id is not None and (
+            not isinstance(paper_id, str) or not paper_id.strip()
+        ):
+            raise ValueError("paper_id must be a non-empty string when supplied.")
         if not isinstance(pdf_path, str) or not pdf_path.strip():
             raise ValueError("pdf_path is required.")
         return self.client.submit_evaluation(arguments)

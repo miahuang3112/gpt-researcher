@@ -4,7 +4,7 @@ All responses are sanitized public data. Evaluation API payloads use `academic-e
 
 ## Tools
 
-- `submit_evaluation`: requires `paper_id` and `pdf_path`; optionally accepts `title`, `source_url`, `model_name`, and `max_chunks`. Returns a resumable `job_id` and initial state.
+- `submit_evaluation`: requires `pdf_path`; optionally accepts `paper_id`, `title`, `source_url`, `model_name`, and `max_chunks`. The API generates a `local:<uuid>` paper ID when omitted. Returns a resumable `job_id` and initial state.
 - `get_evaluation_status`: requires `job_id`; returns compact persisted state, progress, retry count, timestamps, and public errors without the large result.
 - `get_evaluation_result`: requires `job_id`; returns the full completed result.
 - `get_evaluation_dimensions`: requires `job_id`; returns overall assessment, evidence coverage, missing dimensions, and dimension name/score/status records.

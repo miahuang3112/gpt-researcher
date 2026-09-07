@@ -277,9 +277,9 @@ export default function AcademicEvaluationPage() {
           <form className={styles.card} onSubmit={submit}>
             <h2>New evaluation</h2>
             <label>PDF<input name="file" type="file" accept="application/pdf,.pdf" required /></label>
-            <label>Paper ID<input name="paper_id" placeholder="arxiv:2410.02902" maxLength={255} required /></label>
+            <label>Paper ID (optional)<input name="paper_id" placeholder="Generated automatically when empty" maxLength={255} /></label>
             <label>Title<input name="title" placeholder="Optional title" maxLength={500} /></label>
-            <label>Source URL<input name="source_url" type="url" placeholder="https://arxiv.org/abs/..." /></label>
+            <label>Source URL (optional)<input name="source_url" type="url" placeholder="Leave empty for unpublished work" /></label>
             <div className={styles.formRow}>
               <label>Model<input name="model_name" defaultValue="qwen3.5:9b" /></label>
               <label>Chunks<input name="max_chunks" type="number" min="1" max="20" defaultValue="4" /></label>
