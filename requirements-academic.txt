@@ -3,22 +3,22 @@
 # Do not add GPT-Researcher browser dependencies here.
 
 asyncmy==0.2.14
-alembic==1.19.1
+alembic==1.20.0
 fastapi==0.141.1
-greenlet==3.5.5
+greenlet==3.5.6
 httpx==0.28.1
 langchain-text-splitters==1.1.2
-numpy==2.2.6
-pydantic==2.13.4
+numpy==2.4.6
+pydantic==2.13.5
 pydantic-settings==2.15.0
 pymupdf==1.28.2
 python-dotenv==1.2.3
-python-multipart==0.0.20
+python-multipart==0.0.32
 rank-bm25==0.2.2
 redis==8.1.0
-SQLAlchemy==2.0.52
-tiktoken==0.13.0
-uvicorn==0.52.3
+SQLAlchemy==2.0.54
+tiktoken==0.14.0
+uvicorn==0.53.0
 
 # Unresolved import modules:
 # - schemas
