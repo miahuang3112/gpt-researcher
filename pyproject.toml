@@ -19,7 +19,7 @@ dependencies = [
   "numpy>=2,<3",
   "pydantic>=2.13,<3",
   "pydantic-settings>=2.15,<3",
-  "pymupdf>=1.28,<2",
+  "pymupdf>=1.28,<3",
   "python-multipart>=0.0.20,<1",
   "rank-bm25>=0.2.2,<1",
   "redis>=7,<9",
@@ -29,7 +29,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest>=8,<9", "pytest-asyncio>=0.24,<2", "PyYAML>=6,<7"]
+test = ["pytest>=8,<10", "pytest-asyncio>=0.24,<2", "PyYAML>=6,<7"]
 
 [tool.setuptools.packages.find]
 include = ["backend*", "gpt_researcher*", "evals*"]
